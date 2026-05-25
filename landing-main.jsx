@@ -27,7 +27,6 @@ function App() {
         title="Hoy lo que ves. Mañana lo que puede ser."
         sub="Tres tomas reales del predio, luego el edificio que puede levantarse encima — el mismo terreno, dos tiempos."/>
       <L_Mercado/>
-      <L_Compartir/>
       <L_FAQ/>
       <L_Contacto/>
     </>

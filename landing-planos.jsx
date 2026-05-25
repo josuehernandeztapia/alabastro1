@@ -280,6 +280,7 @@ const zoomBtn = {
 function L_Planos() {
   const ref = React.useRef(null);
   const t = useInView(ref);
+  const vp = useViewport();
   const ease = Easing.easeOutCubic(Math.max(0, Math.min(1, (t - 0.1) / 0.4)));
   const [open, setOpen] = React.useState(null);
 
@@ -287,12 +288,12 @@ function L_Planos() {
     <section ref={ref} id="planos" data-screen-label="Planos" style={{
       background: L_PALETTE.ivory,
       color: L_PALETTE.navy,
-      padding: '180px 96px 200px',
+      padding: `${vp.padY}px ${vp.padX}px ${vp.padY + 20}px`,
     }}>
       <div style={{ maxWidth: 1600, margin: '0 auto' }}>
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1.6fr',
-          gap: 80, alignItems: 'end', marginBottom: 80,
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 1.6fr'),
+          gap: vp.mobile ? 32 : 80, alignItems: 'end', marginBottom: vp.mobile ? 48 : 80,
           opacity: ease,
         }}>
           <div>
@@ -305,7 +306,7 @@ function L_Planos() {
               fontSize: 'clamp(48px, 5.5vw, 88px)',
               lineHeight: 1.0, letterSpacing: '-0.02em',
             }}>
-              El<br/>
+              El{' '}
               <em style={{ color: L_PALETTE.gold, fontStyle: 'italic' }}>anteproyecto.</em>
             </h2>
           </div>
@@ -317,13 +318,13 @@ function L_Planos() {
           }}>
             Cinco láminas MLA — plantas por nivel, fachadas y secciones.
             Base lista para que el arquitecto del comprador desarrolle el
-            proyecto ejecutivo. <strong style={{ color: L_PALETTE.navy }}>Click cualquiera para abrirla.</strong>
+            proyecto ejecutivo. <strong style={{ color: L_PALETTE.navy }}>Selecciona cualquiera para abrirla.</strong>
           </div>
         </div>
 
         {/* Stat strip */}
         <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
+          display: 'grid', gridTemplateColumns: vp.cols('repeat(2, 1fr)', 'repeat(4, 1fr)'),
           gap: 0,
           borderTop: `1px solid ${L_PALETTE.rule}`,
           borderBottom: `1px solid ${L_PALETTE.rule}`,
@@ -360,8 +361,8 @@ function L_Planos() {
 
         {/* Cards grid */}
         <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 28,
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)'),
+          gap: vp.mobile ? 20 : 28,
         }}>
           {L_PLANOS.map((p, i) => (
             <L_PlanoCard key={p.id} plano={p} idx={i} onOpen={setOpen}/>

@@ -215,34 +215,39 @@ function L_FAQItem({ q, a }) {
 function L_FAQ() {
   const ref = React.useRef(null);
   const t = useInView(ref);
+  const vp = useViewport();
   const ease = Easing.easeOutCubic(Math.max(0, Math.min(1, (t - 0.1) / 0.4)));
 
   return (
     <section ref={ref} id="faq" data-screen-label="09 FAQ" style={{
       background: L_PALETTE.ivory,
       color: L_PALETTE.navy,
-      padding: '180px 96px 200px',
+      padding: `${vp.padY}px ${vp.padX}px ${vp.padY + 20}px`,
     }}>
       <div style={{ maxWidth: 1600, margin: '0 auto' }}>
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 2fr',
-          gap: 80, alignItems: 'flex-start',
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 2fr'),
+          gap: vp.mobile ? 32 : 80, alignItems: 'flex-start',
           opacity: ease,
         }}>
-          <div style={{ position: 'sticky', top: 100, alignSelf: 'flex-start' }}>
+          <div style={{
+            position: vp.mobile ? 'static' : 'sticky', top: 100, alignSelf: 'flex-start',
+            background: L_PALETTE.ivory, zIndex: 2,
+            paddingRight: vp.mobile ? 0 : 24,
+          }}>
             <div style={{
-              fontFamily: L_MONO, color: L_PALETTE.gold, fontSize: 13,
-              letterSpacing: '0.4em', marginBottom: 22,
+              fontFamily: L_MONO, color: L_PALETTE.gold, fontSize: 14,
+              letterSpacing: '0.4em', marginBottom: 22, fontWeight: 700,
             }}>X.</div>
             <h2 style={{
               fontFamily: L_SERIF, fontWeight: 400,
               fontSize: 'clamp(48px, 5vw, 78px)',
               lineHeight: 1.0, letterSpacing: '-0.02em',
             }}>
-              Lo que un<br/>
+              Lo que un{' '}
               <em style={{ color: L_PALETTE.gold, fontStyle: 'italic' }}>
                 comprador serio
-              </em><br/>
+              </em>{' '}
               quiere saber.
             </h2>
 
@@ -273,7 +278,7 @@ function L_FAQ() {
                 fontFamily: L_SANS, fontWeight: 700, fontSize: 12,
                 letterSpacing: '0.32em', textTransform: 'uppercase',
                 textDecoration: 'none', borderRadius: 999,
-              }}>Solicitar acceso →</a>
+              }}>Solicitar expediente y due diligence →</a>
             </div>
 
             {/* Brokers card — open the door without converting the landing into a traditional broker channel */}
@@ -290,11 +295,6 @@ function L_FAQ() {
                 fontSize: 11, letterSpacing: '0.4em', marginBottom: 12,
               }}>BROKERS · AGENCIAS</div>
               <div style={{
-                fontFamily: L_SERIF, color: L_PALETTE.navy, fontSize: 22, lineHeight: 1.2,
-                letterSpacing: '-0.01em',
-              }}>Co-broke disponible.</div>
-              <div style={{
-                marginTop: 12,
                 fontFamily: L_SERIF, fontStyle: 'italic',
                 color: 'rgba(15,30,71,0.65)', fontSize: 14, lineHeight: 1.55,
               }}>
@@ -344,13 +344,14 @@ function L_FAQ() {
 function L_Contacto() {
   const ref = React.useRef(null);
   const t = useInView(ref);
+  const vp = useViewport();
   const ease = Easing.easeOutCubic(Math.max(0, Math.min(1, (t - 0.1) / 0.5)));
 
   return (
     <section ref={ref} id="contacto" data-screen-label="10 Contacto" style={{
       background: L_PALETTE.ink,
       color: L_PALETTE.ivory,
-      padding: '200px 96px 120px',
+      padding: `${vp.mobile ? 120 : 200}px ${vp.padX}px ${vp.mobile ? 80 : 120}px`,
       position: 'relative',
       overflow: 'hidden',
     }}>
@@ -388,13 +389,62 @@ function L_Contacto() {
           Documentación completa bajo LOI.
         </div>
 
+        {/* What you receive on LOI — transactional close */}
+        <div style={{
+          marginTop: 64,
+          padding: '36px 40px',
+          background: 'rgba(245,241,232,0.03)',
+          border: `1px solid rgba(201,169,97,0.22)`,
+          opacity: ease,
+        }}>
+          <div style={{
+            fontFamily: L_SANS, fontWeight: 800, color: L_PALETTE.gold,
+            fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase',
+            marginBottom: 22,
+          }}>AL FIRMAR LOI · RECIBES</div>
+
+          <div style={{
+            display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 1fr'),
+            gap: vp.mobile ? 14 : 22,
+          }}>
+            {[
+              ['01', 'Paquete documental completo', 'Escrituras · folio · dictámenes · factibilidades · planos MLA · estudios técnicos'],
+              ['02', 'Pro-forma base', 'Resumen indicativo de tipologías y supuestos de mercado para ambas rutas'],
+              ['03', 'Visita al predio', 'Coordinada a través del broker acreditado · recorrido en sitio + corredor médico vecino'],
+              ['04', 'Ventana de exclusividad', '30 días para revisión documental antes del cierre notarial'],
+            ].map(([n, title, desc]) => (
+              <div key={n} style={{
+                display: 'grid', gridTemplateColumns: '36px 1fr',
+                gap: 14,
+                padding: vp.mobile ? '10px 0' : '8px 0',
+              }}>
+                <div style={{
+                  fontFamily: L_MONO, color: L_PALETTE.gold, fontSize: 13,
+                  letterSpacing: '0.2em', paddingTop: 4,
+                }}>{n}</div>
+                <div>
+                  <div style={{
+                    fontFamily: L_SERIF, color: L_PALETTE.ivory, fontSize: 19,
+                    letterSpacing: '-0.005em',
+                  }}>{title}</div>
+                  <div style={{
+                    marginTop: 6,
+                    fontFamily: L_SANS, color: 'rgba(202,220,252,0.65)', fontSize: 13,
+                    lineHeight: 1.5,
+                  }}>{desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Price block */}
         <div style={{
           marginTop: 80,
           padding: '40px 0',
           borderTop: `1px solid rgba(201,169,97,0.25)`,
           borderBottom: `1px solid rgba(201,169,97,0.25)`,
-          display: 'grid', gridTemplateColumns: '1fr 1fr 1fr',
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 1fr 1fr'),
           gap: 0,
           opacity: ease,
         }}>
@@ -433,8 +483,8 @@ function L_Contacto() {
             opacity: ease,
           }}>
           <div style={{
-            display: 'grid', gridTemplateColumns: '1.4fr 1fr',
-            gap: 56, alignItems: 'center',
+            display: 'grid', gridTemplateColumns: vp.cols('1fr', '1.4fr 1fr'),
+            gap: vp.mobile ? 32 : 56, alignItems: 'center',
           }}>
             <div>
               <div style={{
@@ -448,7 +498,7 @@ function L_Contacto() {
                 fontSize: 'clamp(36px, 4vw, 60px)',
                 lineHeight: 1.0, letterSpacing: '-0.02em',
               }}>
-                Solicita<br/>
+                Solicita{' '}
                 <em style={{ fontStyle: 'italic' }}>acreditación.</em>
               </div>
               <div style={{

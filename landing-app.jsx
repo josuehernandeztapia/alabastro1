@@ -37,10 +37,11 @@ function useInView(ref, { offset = 0 } = {}) {
         if (!el) return;
         const r = el.getBoundingClientRect();
         const vh = window.innerHeight;
-        // 0 when bottom of el at vh, 1 when top of el at offset
-        const total = r.height + vh;
+        // t reaches 1 quickly: when element top has moved 60% of viewport height
+        // (i.e., element top is 40% from top of viewport)
+        const triggerDistance = vh * 0.6;
         const traveled = vh - r.top + offset;
-        setT(Math.max(0, Math.min(1, traveled / total)));
+        setT(Math.max(0, Math.min(1, traveled / triggerDistance)));
       });
     };
     onScroll();
@@ -53,6 +54,30 @@ function useInView(ref, { offset = 0 } = {}) {
     };
   }, [ref, offset]);
   return t;
+}
+
+// useViewport — tracks window width, returns breakpoint flags + helpers
+function useViewport() {
+  const [w, setW] = React.useState(() =>
+    typeof window !== 'undefined' ? window.innerWidth : 1600
+  );
+  React.useEffect(() => {
+    const f = () => setW(window.innerWidth);
+    window.addEventListener('resize', f);
+    return () => window.removeEventListener('resize', f);
+  }, []);
+  const mobile = w < 700;
+  const tablet = w >= 700 && w < 1100;
+  const desktop = w >= 1100;
+  return {
+    w, mobile, tablet, desktop,
+    // helpers — common scaled values
+    padX: mobile ? 20 : tablet ? 48 : 96,
+    padY: mobile ? 100 : tablet ? 130 : 180,
+    gap:  mobile ? 32 : tablet ? 48 : 80,
+    // conditional columns: pass mobile/tablet/desktop strings
+    cols: (m, t, d) => mobile ? m : tablet ? (t || d) : d,
+  };
 }
 
 // useRevealOnce — fires true once when element is visible
@@ -72,7 +97,7 @@ function useRevealOnce(ref, { threshold = 0.2 } = {}) {
 
 Object.assign(window, {
   L_PALETTE, L_SERIF, L_SANS, L_MONO,
-  ScrollContext, useScroll, useInView, useRevealOnce,
+  ScrollContext, useScroll, useInView, useRevealOnce, useViewport,
 });
 
 // ── Top nav — minimal, sticky ───────────────────────────────────────────────
@@ -119,7 +144,7 @@ function L_Nav() {
         letterSpacing: '0.32em', textTransform: 'uppercase',
         textDecoration: 'none',
         borderRadius: 999,
-      }}>Hablemos →</a>
+      }}>Solicitar expediente →</a>
     </nav>
   );
 }
@@ -231,22 +256,27 @@ function L_HeroBackdrop() {
           position: 'absolute', inset: 0,
           opacity: i === active ? 1 : 0,
           transition: `opacity ${HERO_FADE_MS}ms ease-in-out`,
+          willChange: 'opacity',
+          transform: 'translateZ(0)',
         }}>
           <img src={p.src} alt=""
             style={{
               width: '100%', height: '100%',
               objectFit: 'cover',
               objectPosition: p.pos,
-              filter: 'brightness(0.38) contrast(1.05) saturate(0.7)',
+              filter: 'brightness(0.42) contrast(1.05) saturate(0.7)',
               animation: i === active ? `kenburns-${i % 3} ${HERO_CYCLE_MS + HERO_FADE_MS}ms ease-out forwards` : 'none',
               transformOrigin: 'center center',
+              willChange: 'transform',
+              imageRendering: 'high-quality',
+              backfaceVisibility: 'hidden',
             }}/>
         </div>
       ))}
       <style>{`
-        @keyframes kenburns-0 { from { transform: scale(1.02) translateX(0); } to { transform: scale(1.08) translateX(-1.5%); } }
-        @keyframes kenburns-1 { from { transform: scale(1.06) translateY(0); } to { transform: scale(1.10) translateY(-1.5%); } }
-        @keyframes kenburns-2 { from { transform: scale(1.02) translateX(0); } to { transform: scale(1.08) translateX(1.5%); } }
+        @keyframes kenburns-0 { from { transform: translateZ(0) scale(1.04); } to { transform: translateZ(0) scale(1.08) translateX(-1%); } }
+        @keyframes kenburns-1 { from { transform: translateZ(0) scale(1.06); } to { transform: translateZ(0) scale(1.09) translateY(-1%); } }
+        @keyframes kenburns-2 { from { transform: translateZ(0) scale(1.04); } to { transform: translateZ(0) scale(1.08) translateX(1%); } }
       `}</style>
     </div>
   );
@@ -254,6 +284,7 @@ function L_HeroBackdrop() {
 
 function L_Hero() {
   const [mode, setMode] = React.useState('resi'); // 'resi' | 'med'
+  const vp = useViewport();
 
   // Pulse for hero text
   const heroRef = React.useRef(null);
@@ -263,7 +294,7 @@ function L_Hero() {
 
   const COPY = {
     resi: {
-      eyebrow: 'Predio shovel-ready · Milenio III, Querétaro',
+      eyebrow: 'Predio con expediente avanzado · Milenio III, Querétaro',
       title: 'Alabastro',
       one: '1',
       tag: 'Tres residencias verticales,',
@@ -271,7 +302,7 @@ function L_Hero() {
       meta: '447 m² · H3 · 1 + 3 N. Oficiales · Anteproyecto incluido',
     },
     med: {
-      eyebrow: 'Predio shovel-ready · Corredor médico Milenio III',
+      eyebrow: 'Predio con expediente avanzado · Corredor médico Milenio III',
       title: 'Alabastro',
       one: '1',
       tag: 'Una torre médica boutique,',
@@ -303,32 +334,34 @@ function L_Hero() {
 
       {/* Gold hairline frame */}
       <div style={{
-        position: 'absolute', inset: 48,
+        position: 'absolute', inset: vp.mobile ? 16 : 48,
         border: `1px solid rgba(201,169,97,0.25)`,
         pointerEvents: 'none',
       }}/>
 
       {/* Top brand */}
       <div style={{
-        position: 'absolute', top: 72, left: 96, zIndex: 5,
+        position: 'absolute', top: vp.mobile ? 28 : 72, left: vp.padX, zIndex: 5,
         display: 'flex', alignItems: 'center', gap: 14,
       }}>
         <span style={{ width: 10, height: 10, borderRadius: '50%', background: accent }}/>
         <span style={{
           fontFamily: L_SANS, fontWeight: 800, color: L_PALETTE.ivory,
-          letterSpacing: '0.4em', fontSize: 13,
+          letterSpacing: '0.4em', fontSize: vp.mobile ? 11 : 13,
         }}>ALABASTRO 1</span>
       </div>
 
       {/* Mode toggle — top right */}
       <div style={{
-        position: 'absolute', top: 64, right: 96, zIndex: 5,
-        display: 'flex', alignItems: 'center', gap: 16,
+        position: 'absolute', top: vp.mobile ? 70 : 64, right: vp.padX, zIndex: 5,
+        display: 'flex', alignItems: 'center', gap: vp.mobile ? 10 : 16,
       }}>
-        <span style={{
-          fontFamily: L_MONO, color: 'rgba(202,220,252,0.6)', fontSize: 11,
-          letterSpacing: '0.25em', textTransform: 'uppercase',
-        }}>Ver como</span>
+        {!vp.mobile && (
+          <span style={{
+            fontFamily: L_MONO, color: 'rgba(202,220,252,0.6)', fontSize: 11,
+            letterSpacing: '0.25em', textTransform: 'uppercase',
+          }}>Ver como</span>
+        )}
         <div style={{
           display: 'inline-flex', alignItems: 'center',
           background: 'rgba(15,30,71,0.65)',
@@ -338,9 +371,9 @@ function L_Hero() {
         }}>
           {['resi', 'med'].map(m => (
             <button key={m} onClick={() => setMode(m)} style={{
-              padding: '10px 22px',
-              fontFamily: L_SANS, fontWeight: 700, fontSize: 12,
-              letterSpacing: '0.3em', textTransform: 'uppercase',
+              padding: vp.mobile ? '8px 14px' : '10px 22px',
+              fontFamily: L_SANS, fontWeight: 700, fontSize: vp.mobile ? 10 : 12,
+              letterSpacing: vp.mobile ? '0.2em' : '0.3em', textTransform: 'uppercase',
               border: 'none', cursor: 'pointer', borderRadius: 999,
               background: mode === m
                 ? (m === 'med' ? L_PALETTE.teal : L_PALETTE.gold)
@@ -357,7 +390,7 @@ function L_Hero() {
         position: 'relative', zIndex: 2,
         minHeight: '100vh',
         display: 'flex', flexDirection: 'column', justifyContent: 'center',
-        padding: '0 96px',
+        padding: `${vp.mobile ? 140 : 0}px ${vp.padX}px ${vp.mobile ? 220 : 0}px`,
       }}>
         {/* Eyebrow */}
         <div style={{
@@ -419,7 +452,7 @@ function L_Hero() {
             letterSpacing: '0.32em', textTransform: 'uppercase',
             textDecoration: 'none', borderRadius: 999,
             transition: 'all 240ms',
-          }}>Solicitar expediente</a>
+          }}>Solicitar expediente y due diligence</a>
           <a href="#predio" style={{
             padding: '18px 36px',
             background: 'transparent', color: L_PALETTE.ivory,
@@ -433,8 +466,13 @@ function L_Hero() {
 
       {/* Bottom: scroll indicator + price stamp */}
       <div style={{
-        position: 'absolute', bottom: 80, left: 96, right: 96, zIndex: 2,
-        display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
+        position: 'absolute', bottom: vp.mobile ? 32 : 80,
+        left: vp.padX, right: vp.padX, zIndex: 2,
+        display: 'flex',
+        flexDirection: vp.mobile ? 'column' : 'row',
+        justifyContent: 'space-between',
+        alignItems: vp.mobile ? 'flex-start' : 'flex-end',
+        gap: vp.mobile ? 16 : 0,
       }}>
         <div style={{
           fontFamily: L_MONO, color: 'rgba(245,241,232,0.5)', fontSize: 11,

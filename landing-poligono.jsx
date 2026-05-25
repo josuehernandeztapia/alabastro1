@@ -24,12 +24,13 @@ const POLY_PTS = {
 // Each side: { from, to, length, label, colindancia, description, midX, midY, side }
 const POLY_SIDES = [
   { id: 'top1', from: 'A', to: 'B', len: '6.52 m',     label: 'A',
-    colindancia: 'Lote vecino al norte', kind: 'lot',
+    colindancia: 'Frente abierto al norte', kind: 'open',
+    description: 'Borde norte del predio sin construcciones colindantes — la barranca abre vista panorámica sin obstrucción.',
     midX: 295, midY: 175 },
   { id: 'top2', from: 'B', to: 'C', len: 'Lc 13.82 m', label: 'B',
-    colindancia: 'Sendero del Alabastro', subtag: 'Acceso vehicular',
-    description: 'Frente sobre la vialidad — curva del privado. El Número Oficial 1 (acceso exterior) está aquí; los oficiales 1A, 1B y 1C habilitan la división interior en régimen de condominio.',
-    kind: 'street',
+    colindancia: 'Vista al norte · sin colindancia',
+    description: 'Curva del frente norte sobre el cañón. Sin construcciones colindantes actuales que obstruyan la vista.',
+    kind: 'open',
     midX: 435, midY: 175 },
   { id: 'east-upper', from: 'C', to: 'D', len: '5.28 m', label: 'C',
     colindancia: 'Lote 15 · esquina este', kind: 'lot',
@@ -40,19 +41,20 @@ const POLY_SIDES = [
     kind: 'lot',
     midX: 488, midY: 415 },
   { id: 'south', from: 'E', to: 'F', len: '7.09 m',    label: 'E',
-    colindancia: 'Sendero del Alabastro · curva sur',
-    description: 'Segundo punto de la vialidad. Curva pequeña — habilita acceso peatonal o secundario.',
+    colindancia: 'Sendero del Alabastro', subtag: 'Frente / acceso vehicular',
+    description: 'Frente principal sobre la vialidad. El Número Oficial 1 (acceso exterior) está aquí; los oficiales 1A, 1B y 1C habilitan la división interior en régimen de condominio.',
     kind: 'street',
     midX: 305, midY: 565 },
   { id: 'west', from: 'F', to: 'A', len: '30.00 m',    label: 'F',
     colindancia: 'Lote vecino al poniente',
-    description: 'Banda larga de 30 m — borde más grande del predio. Aprovechable para fachada principal con vistas N/NO sobre la barranca.',
+    description: 'Banda larga de 30 m — borde más grande del predio. Costado oeste.',
     kind: 'lot',
     midX: 232, midY: 360 },
 ];
 
 function L_PolygonView() {
   const [hovered, setHovered] = React.useState(null);
+  const vp = useViewport();
 
   const pts = POLY_PTS;
   // Build polygon path. Curves: B→C is the main top arc (Lc 13.82),
@@ -72,8 +74,8 @@ function L_PolygonView() {
 
   return (
     <div style={{
-      display: 'grid', gridTemplateColumns: '1.4fr 1fr',
-      gap: 48,
+      display: 'grid', gridTemplateColumns: vp.cols('1fr', '1.4fr 1fr'),
+      gap: vp.mobile ? 32 : 48,
       marginTop: 80,
     }}>
       {/* SVG polygon */}
@@ -135,10 +137,10 @@ function L_PolygonView() {
               fill={L_PALETTE.ice} opacity="0.7" textAnchor="middle">vecino W</text>
           </g>
 
-          {/* Street arc above (Sendero del Alabastro, where Lc 13.82 lives) */}
-          <path d={`M ${pts.A.x - 30} ${pts.A.y - 70} Q ${(pts.B.x + pts.C.x)/2} ${pts.B.y - 110} ${pts.C.x + 60} ${pts.C.y - 30}`}
+          {/* Street arc below (Sendero del Alabastro — the 7.09 m frente lives here) */}
+          <path d={`M ${pts.E.x + 80} ${pts.E.y + 70} Q ${(pts.E.x + pts.F.x)/2} ${pts.F.y + 80} ${pts.F.x - 80} ${pts.F.y + 50}`}
             fill="none" stroke={L_PALETTE.ivory} strokeWidth="34" opacity="0.06"/>
-          <text x={(pts.B.x + pts.C.x)/2 - 30} y={pts.B.y - 70}
+          <text x={(pts.E.x + pts.F.x)/2} y={pts.F.y + 95}
             fontFamily={L_MONO} fontSize="13" fill={L_PALETTE.ice} opacity="0.55"
             letterSpacing="2.5" textAnchor="middle">
             SENDERO DEL ALABASTRO
@@ -253,7 +255,7 @@ function L_PolygonView() {
                   fontFamily: L_MONO, color: 'rgba(202,220,252,0.5)', fontSize: 10,
                   letterSpacing: '0.2em', marginTop: 4,
                   textTransform: 'uppercase',
-                }}>{s.kind === 'street' ? 'Vialidad' : 'Lote colindante'}</div>
+                }}>{s.kind === 'street' ? 'Vialidad' : s.kind === 'open' ? 'Vista abierta' : 'Lote colindante'}</div>
               </div>
               <div style={{
                 fontFamily: L_MONO, color: L_PALETTE.gold, fontSize: 14,

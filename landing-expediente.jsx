@@ -48,6 +48,7 @@ function L_DocTick({ active, accent = L_PALETTE.gold, size = 36 }) {
 function L_Expediente() {
   const ref = React.useRef(null);
   const t = useInView(ref);
+  const vp = useViewport();
   const ease = Easing.easeOutCubic(Math.max(0, Math.min(1, (t - 0.1) / 0.4)));
   // How many docs are sealed
   // Docs reveal between t = 0.25 and t = 0.85
@@ -66,14 +67,14 @@ function L_Expediente() {
     <section ref={ref} data-screen-label="06 Expediente" style={{
       background: L_PALETTE.ivory,
       color: L_PALETTE.navy,
-      padding: '180px 96px 200px',
+      padding: `${vp.padY}px ${vp.padX}px ${vp.padY + 20}px`,
       position: 'relative',
     }}>
       <div style={{ maxWidth: 1600, margin: '0 auto' }}>
         {/* Header */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1.6fr',
-          gap: 80, alignItems: 'end', marginBottom: 80,
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 1.6fr'),
+          gap: vp.mobile ? 32 : 80, alignItems: 'end', marginBottom: vp.mobile ? 48 : 80,
           opacity: ease,
         }}>
           <div>
@@ -103,7 +104,7 @@ function L_Expediente() {
 
         {/* Top stat strip */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1fr 1fr',
+          display: 'grid', gridTemplateColumns: vp.cols('repeat(2, 1fr)', '1fr 1fr 1fr'),
           gap: 0,
           borderTop: `1px solid ${L_PALETTE.rule}`,
           borderBottom: `1px solid ${L_PALETTE.rule}`,
@@ -112,7 +113,7 @@ function L_Expediente() {
           {[
             { v: '6', l: 'Categorías', sub: 'cubiertas' },
             { v: '11 / 14', l: 'Trámites', sub: 'realizados' },
-            { v: '~ 6 meses', l: 'Ganados', sub: 'vs empezar de cero' },
+            { v: '9 – 12 meses', l: 'De avance documental', sub: 'ya ejecutados' },
           ].map((s, i) => (
             <div key={i} style={{
               padding: '40px 28px',
@@ -139,11 +140,15 @@ function L_Expediente() {
 
         {/* Two columns: category checklist + docs grid */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 2fr',
-          gap: 64,
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 2fr'),
+          gap: vp.mobile ? 32 : 64,
         }}>
           {/* Category checklist — sticky */}
-          <div style={{ position: 'sticky', top: 100, alignSelf: 'flex-start' }}>
+          <div style={{
+            position: vp.mobile ? 'static' : 'sticky', top: 100, alignSelf: 'flex-start',
+            background: L_PALETTE.ivory, zIndex: 2,
+            paddingRight: vp.mobile ? 0 : 24,
+          }}>
             <div style={{
               fontFamily: L_SANS, fontWeight: 800, color: L_PALETTE.gold,
               fontSize: 11, letterSpacing: '0.4em', marginBottom: 20,
@@ -175,7 +180,7 @@ function L_Expediente() {
 
           {/* Doc cards grid */}
           <div style={{
-            display: 'grid', gridTemplateColumns: '1fr 1fr',
+            display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 1fr'),
             gap: 16,
           }}>
             {L_DOCS.map(([cat, code, title, sub], i) => {
@@ -232,7 +237,7 @@ function L_Expediente() {
         {/* Evidence block — peñasco rocoso · supports the Mecánica de Suelos finding */}
         <div style={{
           marginTop: 80,
-          display: 'grid', gridTemplateColumns: '1.4fr 1fr',
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1.4fr 1fr'),
           gap: 0,
           background: L_PALETTE.navy,
           color: L_PALETTE.ivory,
@@ -267,7 +272,7 @@ function L_Expediente() {
               fontSize: 'clamp(36px, 3.2vw, 52px)',
               lineHeight: 1.05, letterSpacing: '-0.02em',
             }}>
-              La prueba está<br/>
+              La prueba está{' '}
               <em style={{ color: L_PALETTE.gold, fontStyle: 'italic' }}>a la vista.</em>
             </div>
 
@@ -322,8 +327,8 @@ function L_Expediente() {
           borderTop: `1px solid ${L_PALETTE.rule}`,
         }}>
           <div style={{
-            display: 'grid', gridTemplateColumns: '1fr 2fr',
-            gap: 64, alignItems: 'flex-start',
+            display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 2fr'),
+            gap: vp.mobile ? 32 : 64, alignItems: 'flex-start',
           }}>
             <div>
               <div style={{
@@ -333,7 +338,7 @@ function L_Expediente() {
               <div style={{
                 fontFamily: L_SERIF, color: L_PALETTE.navy, fontSize: 30,
                 lineHeight: 1.15, letterSpacing: '-0.01em',
-              }}>A cargo del<br/>
+              }}>A cargo del{' '}
                 <em style={{ color: L_PALETTE.gold, fontStyle: 'italic' }}>comprador.</em>
               </div>
               <div style={{
@@ -346,7 +351,7 @@ function L_Expediente() {
               </div>
             </div>
             <div style={{
-              display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 16,
+              display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 1fr 1fr'), gap: 16,
             }}>
               {L_PENDING.map(([t, sub], i) => (
                 <div key={i} style={{
@@ -382,6 +387,7 @@ function L_Expediente() {
 function L_Mercado() {
   const ref = React.useRef(null);
   const t = useInView(ref);
+  const vp = useViewport();
   const ease = Easing.easeOutCubic(Math.max(0, Math.min(1, (t - 0.15) / 0.4)));
   const barT = Easing.easeOutCubic(Math.max(0, Math.min(1, (t - 0.25) / 0.5)));
 
@@ -399,13 +405,13 @@ function L_Mercado() {
     <section ref={ref} data-screen-label="07 Mercado" style={{
       background: L_PALETTE.ink,
       color: L_PALETTE.ivory,
-      padding: '180px 96px 200px',
+      padding: `${vp.padY}px ${vp.padX}px ${vp.padY + 20}px`,
     }}>
       <div style={{ maxWidth: 1600, margin: '0 auto' }}>
         {/* Header */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1.6fr',
-          gap: 80, alignItems: 'end', marginBottom: 80,
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 1.6fr'),
+          gap: vp.mobile ? 32 : 80, alignItems: 'end', marginBottom: vp.mobile ? 48 : 80,
           opacity: ease,
         }}>
           <div>
@@ -419,7 +425,7 @@ function L_Mercado() {
               lineHeight: 1.0, letterSpacing: '-0.02em',
               color: L_PALETTE.ivory,
             }}>
-              Precio<br/>
+              Precio{' '}
               <em style={{ color: L_PALETTE.gold, fontStyle: 'italic' }}>vs. mercado.</em>
             </h2>
           </div>
@@ -437,8 +443,8 @@ function L_Mercado() {
 
         {/* Big anchor number */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 2fr',
-          gap: 80, alignItems: 'baseline', marginBottom: 56,
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 2fr'),
+          gap: vp.mobile ? 32 : 80, alignItems: 'baseline', marginBottom: 56,
           opacity: ease,
         }}>
           <div>
@@ -470,8 +476,8 @@ function L_Mercado() {
             return (
               <div key={i} style={{
                 display: 'grid',
-                gridTemplateColumns: '320px 1fr 100px 160px',
-                gap: 24, alignItems: 'center',
+                gridTemplateColumns: vp.cols('1fr', '320px 1fr 100px 160px'),
+                gap: vp.mobile ? 8 : 24, alignItems: 'center',
                 padding: '22px 0',
                 borderBottom: `1px solid rgba(201,169,97,${isUs ? 0.4 : 0.1})`,
                 background: isUs ? 'rgba(201,169,97,0.06)' : 'transparent',

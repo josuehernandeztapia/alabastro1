@@ -30,7 +30,7 @@ function L_Building({ progress = 1, mode = 'resi' }) {
 
       {/* Ground line */}
       <line x1="50" y1="600" x2="650" y2="600" stroke={L_PALETTE.ivory} strokeWidth="1" opacity="0.6"/>
-      <text x="60" y="592" fontFamily={L_MONO} fontSize="11" fill={L_PALETTE.ivory} opacity="0.55" letterSpacing="3">GROUND</text>
+      <text x="60" y="592" fontFamily={L_MONO} fontSize="11" fill={L_PALETTE.ivory} opacity="0.55" letterSpacing="3">PLANTA BAJA</text>
 
       {/* Sotano */}
       {progress > 0.08 && (() => {
@@ -102,6 +102,7 @@ function L_Building({ progress = 1, mode = 'resi' }) {
 function L_Rutas() {
   const ref = React.useRef(null);
   const t = useInView(ref);
+  const vp = useViewport();
   // Build progress is driven by scroll position through this section
   const buildT = Math.max(0, Math.min(1, (t - 0.3) / 0.5));
   const ease = Easing.easeOutCubic(Math.max(0, Math.min(1, (t - 0.1) / 0.4)));
@@ -111,7 +112,7 @@ function L_Rutas() {
   const accentDk = mode === 'med' ? L_PALETTE.tealDk : L_PALETTE.goldDk;
 
   const DATA = mode === 'med' ? {
-    badge: 'Track A · Torre Médica Boutique',
+    badge: 'Ruta A · Torre Médica Boutique',
     title: 'Un cluster ya validado.',
     sub: 'Tres torres operando a menos de 700 metros del predio. Renta de consultorio 70 m² entre $27k y $32k al mes — demanda institucional probada, no proyectada.',
     kpis: [
@@ -124,15 +125,15 @@ function L_Rutas() {
       'Compatibilidad explícita con consultorios y laboratorios · dictamen H3',
       'Número Oficial 1 (acceso) + 1A · 1B · 1C (interiores) · habilita régimen de condominio',
       'Lab Corregidora, IML buscando expansión en zona',
-      'Plusvalía Milenio III 8-12% anual · fuente Spot2.mx · Doorvel',
+      'Plusvalía históricamente positiva en Milenio III · fuente Spot2.mx · Doorvel',
     ],
     formula: 'Pro-forma completa bajo LOI',
   } : {
-    badge: 'Track B · Residencias Boutique',
+    badge: 'Ruta B · Residencias Boutique',
     title: 'Tres unidades, una sola tesis.',
     sub: 'Vivienda vertical de lujo aprovechando la pendiente natural para vistas panorámicas N/NO sobre la barranca. Escasez programada, ticket aspiracional.',
     kpis: [
-      { v: '8-12%', l: 'Plusvalía anual · Milenio III' },
+      { v: 'Apreciación', l: 'Plusvalía histórica · Milenio III' },
       { v: '3', l: 'Residencias programadas' },
       { v: '274 m²', l: 'Privativa c/u' },
       { v: 'N / NO', l: 'Vista protegida' },
@@ -150,14 +151,14 @@ function L_Rutas() {
     <section ref={ref} data-screen-label="05 Rutas" style={{
       background: L_PALETTE.ink,
       color: L_PALETTE.ivory,
-      padding: '180px 96px 200px',
+      padding: `${vp.padY}px ${vp.padX}px ${vp.padY + 20}px`,
       position: 'relative',
     }}>
       <div style={{ maxWidth: 1600, margin: '0 auto' }}>
         {/* Header */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1.6fr',
-          gap: 80, alignItems: 'end', marginBottom: 60,
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 1.6fr'),
+          gap: vp.mobile ? 32 : 80, alignItems: 'end', marginBottom: vp.mobile ? 40 : 60,
           opacity: ease,
         }}>
           <div>
@@ -192,8 +193,8 @@ function L_Rutas() {
           borderBottom: `1px solid rgba(201,169,97,0.18)`,
         }}>
           {[
-            { id: 'med', label: 'Track A', sub: 'Torre Médica', color: L_PALETTE.teal },
-            { id: 'resi', label: 'Track B', sub: 'Residencias',  color: L_PALETTE.gold },
+            { id: 'med', label: 'Ruta A', sub: 'Torre Médica', color: L_PALETTE.teal },
+            { id: 'resi', label: 'Ruta B', sub: 'Residencias',  color: L_PALETTE.gold },
           ].map(tab => {
             const active = mode === tab.id;
             return (
@@ -221,8 +222,8 @@ function L_Rutas() {
 
         {/* Main grid: building viz + content */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1fr',
-          gap: 80, alignItems: 'stretch',
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr', '1fr 1fr'),
+          gap: vp.mobile ? 48 : 80, alignItems: 'stretch',
         }}>
           {/* LEFT — sticky building */}
           <div style={{ position: 'sticky', top: 80, alignSelf: 'flex-start' }}>
@@ -279,7 +280,7 @@ function L_Rutas() {
 
             {/* KPIs */}
             <div style={{
-              marginTop: 56,
+              marginTop: vp.mobile ? 40 : 56,
               display: 'grid', gridTemplateColumns: '1fr 1fr',
               gap: 0,
               border: `1px solid rgba(201,169,97,0.15)`,

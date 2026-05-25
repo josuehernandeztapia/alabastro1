@@ -3,6 +3,7 @@
 function L_Recorrido() {
   const ref = React.useRef(null);
   const t = useInView(ref);
+  const vp = useViewport();
   const ease = Easing.easeOutCubic(Math.max(0, Math.min(1, (t - 0.1) / 0.4)));
   const reveal = (d, s = 0.4) => Easing.easeOutCubic(Math.max(0, Math.min(1, (t - d) / s)));
 
@@ -18,15 +19,15 @@ function L_Recorrido() {
     <section ref={ref} data-screen-label="Recorrido" style={{
       background: L_PALETTE.ivory,
       color: L_PALETTE.navy,
-      padding: '180px 96px 200px',
+      padding: `${vp.padY}px ${vp.padX}px ${vp.padY + 20}px`,
       position: 'relative',
     }}>
       <div style={{ maxWidth: 1600, margin: '0 auto' }}>
 
         {/* Header */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1.6fr',
-          gap: 80, alignItems: 'end', marginBottom: 64,
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 1.6fr'),
+          gap: vp.mobile ? 32 : 80, alignItems: 'end', marginBottom: vp.mobile ? 40 : 64,
           opacity: ease,
         }}>
           <div>
@@ -39,7 +40,7 @@ function L_Recorrido() {
               fontSize: 'clamp(48px, 5.5vw, 88px)',
               lineHeight: 1.0, letterSpacing: '-0.02em',
             }}>
-              El<br/>
+              El{' '}
               <em style={{ color: L_PALETTE.gold, fontStyle: 'italic' }}>recorrido.</em>
             </h2>
           </div>
@@ -50,7 +51,7 @@ function L_Recorrido() {
             maxWidth: 760,
           }}>
             Sendero del Alabastro es una calle privada en forma de circuito — con adoquín,
-            arbolada, terminada en mirador natural sobre la barranca. El predio se ubica
+            terminada en mirador natural sobre la barranca. El predio se ubica
             al final del circuito, donde el frente mira al norte sobre el cañón — zona
             sin posibilidad de construcción vecina que pueda obstruir la vista.
           </div>
@@ -77,7 +78,7 @@ function L_Recorrido() {
 
         {/* Caption + mini-data row under anchor */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr 1fr',
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1.5fr 1fr 1fr 1fr'),
           gap: 0,
           borderTop: `1px solid ${L_PALETTE.rule}`,
           borderBottom: `1px solid ${L_PALETTE.rule}`,
@@ -93,8 +94,8 @@ function L_Recorrido() {
               fontFamily: L_SERIF, fontStyle: 'italic',
               color: 'rgba(15,30,71,0.8)', fontSize: 19, lineHeight: 1.45,
             }}>
-              El predio mira al norte sobre la barranca — no hay
-              construcciones que limiten la vista, ni las habrá.
+              El predio mira al norte sobre la barranca — zona protegida por su
+              topografía, sin construcciones colindantes actuales que obstruyan la vista.
             </div>
           </div>
           {[
@@ -137,8 +138,8 @@ function L_Recorrido() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 18,
+            gridTemplateColumns: vp.cols('repeat(2, 1fr)', 'repeat(4, 1fr)'),
+            gap: vp.mobile ? 14 : 18,
           }}>
             {FRAMES.map((f, i) => (
               <div key={i} style={{

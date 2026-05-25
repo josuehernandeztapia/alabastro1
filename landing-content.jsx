@@ -4,13 +4,14 @@
 function L_Statement() {
   const ref = React.useRef(null);
   const t = useInView(ref);
+  const vp = useViewport();
   const ease = Easing.easeOutCubic(Math.max(0, Math.min(1, (t - 0.2) / 0.5)));
   const lineW = Easing.easeInOutCubic(Math.max(0, Math.min(1, (t - 0.4) / 0.4)));
 
   return (
     <section ref={ref} data-screen-label="02 Statement" style={{
       background: L_PALETTE.ink,
-      padding: '200px 96px',
+      padding: `${vp.padY + 20}px ${vp.padX}px`,
       color: L_PALETTE.ivory,
       position: 'relative',
     }}>
@@ -35,7 +36,7 @@ function L_Statement() {
           transform: `translateY(${(1 - ease) * 28}px)`,
         }}>
           Una propiedad.
-          <br/>
+          {' '}
           <em style={{ color: L_PALETTE.gold, fontStyle: 'italic' }}>
             Dos formas de generar valor.
           </em>
@@ -69,20 +70,21 @@ function L_Statement() {
 function L_Predio() {
   const ref = React.useRef(null);
   const t = useInView(ref);
+  const vp = useViewport();
   const reveal = (d, s = 0.4) => Easing.easeOutCubic(Math.max(0, Math.min(1, (t - d) / s)));
 
   return (
     <section ref={ref} id="predio" data-screen-label="03 Predio" style={{
       background: L_PALETTE.ivory,
       color: L_PALETTE.navy,
-      padding: '180px 96px 200px',
+      padding: `${vp.padY}px ${vp.padX}px ${vp.padY + 20}px`,
       position: 'relative',
     }}>
       <div style={{ maxWidth: 1600, margin: '0 auto' }}>
         {/* Section header */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 2fr',
-          gap: 80, alignItems: 'end', marginBottom: 80,
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 2fr'),
+          gap: vp.mobile ? 32 : 80, alignItems: 'end', marginBottom: vp.mobile ? 48 : 80,
         }}>
           <div style={{ opacity: reveal(0.15) }}>
             <div style={{
@@ -95,7 +97,7 @@ function L_Predio() {
               lineHeight: 1.0,
               letterSpacing: '-0.02em',
             }}>
-              El predio<br/>
+              El predio{' '}
               <em style={{ color: L_PALETTE.gold, fontStyle: 'italic' }}>que ves.</em>
             </h2>
           </div>
@@ -114,8 +116,8 @@ function L_Predio() {
 
         {/* Photo grid · row 1 — the 2 close-up shots of the predio */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1.4fr 1fr',
-          gap: 28, marginBottom: 28,
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1.4fr 1fr'),
+          gap: vp.mobile ? 24 : 28, marginBottom: 28,
         }}>
           <div style={{
             opacity: reveal(0.3),
@@ -172,8 +174,8 @@ function L_Predio() {
 
         {/* Photo grid · row 2 — the 3 vista shots that prove the N/NO panorama */}
         <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 20, marginBottom: 100,
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', 'repeat(2, 1fr)', 'repeat(3, 1fr)'),
+          gap: vp.mobile ? 20 : 20, marginBottom: vp.mobile ? 60 : 100,
         }}>
           {[
             { src: 'assets/vista-01-panoramica.jpeg', cap: 'Vista al cerro · noreste',    n: '03 / 05' },
@@ -210,7 +212,7 @@ function L_Predio() {
 
         {/* Ficha técnica — institutional */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr',
+          display: 'grid', gridTemplateColumns: vp.cols('repeat(2, 1fr)', 'repeat(4, 1fr)'),
           gap: 0,
           borderTop: `1px solid ${L_PALETTE.rule}`,
           borderBottom: `1px solid ${L_PALETTE.rule}`,
@@ -247,8 +249,8 @@ function L_Predio() {
 
         {/* Data block */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1fr',
-          gap: 80, marginTop: 80,
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 1fr'),
+          gap: vp.mobile ? 32 : 80, marginTop: vp.mobile ? 48 : 80,
           opacity: reveal(0.7),
         }}>
           <div>
@@ -288,6 +290,7 @@ function L_Predio() {
 // ── S4 — Mapa interactivo ───────────────────────────────────────────────────
 function L_Map() {
   const ref = React.useRef(null);
+  const vp = useViewport();
   const seen = useRevealOnce(ref);
   const t = useInView(ref);
   const ease = Easing.easeOutCubic(Math.max(0, Math.min(1, (t - 0.15) / 0.5)));
@@ -325,14 +328,14 @@ function L_Map() {
     <section ref={ref} data-screen-label="04 Mapa" style={{
       background: L_PALETTE.ink,
       color: L_PALETTE.ivory,
-      padding: '180px 96px 200px',
+      padding: `${vp.padY}px ${vp.padX}px ${vp.padY + 20}px`,
       position: 'relative',
     }}>
       <div style={{ maxWidth: 1600, margin: '0 auto' }}>
         {/* Section header */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1.6fr',
-          gap: 80, alignItems: 'end', marginBottom: 80,
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr 1.6fr'),
+          gap: vp.mobile ? 32 : 80, alignItems: 'end', marginBottom: vp.mobile ? 48 : 80,
         }}>
           <div style={{ opacity: ease }}>
             <div style={{
@@ -345,8 +348,8 @@ function L_Map() {
               lineHeight: 1.0, letterSpacing: '-0.02em',
               color: L_PALETTE.ivory,
             }}>
-              No es una zona<br/>
-              <em style={{ color: L_PALETTE.gold, fontStyle: 'italic' }}>en desarrollo.</em><br/>
+              No es una zona{' '}
+              <em style={{ color: L_PALETTE.gold, fontStyle: 'italic' }}>en desarrollo.</em>{' '}
               Es una zona <em style={{ color: L_PALETTE.gold, fontStyle: 'italic' }}>consolidada.</em>
             </h2>
           </div>
@@ -418,8 +421,8 @@ function L_Map() {
         <>
         {/* Map + sidebar */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1.4fr 1fr',
-          gap: 48, alignItems: 'flex-start',
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', '1fr', '1.4fr 1fr'),
+          gap: vp.mobile ? 32 : 48, alignItems: 'flex-start',
         }}>
           {/* MAP */}
           <div style={{

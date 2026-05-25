@@ -239,6 +239,7 @@ function L_Interlude({ reelKey, label, title, sub, accent = L_PALETTE.gold }) {
 function L_Compartir() {
   const ref = React.useRef(null);
   const t = useInView(ref);
+  const vp = useViewport();
   const ease = Easing.easeOutCubic(Math.max(0, Math.min(1, (t - 0.15) / 0.4)));
 
   const CHIPS = [
@@ -256,14 +257,14 @@ function L_Compartir() {
     <section ref={ref} data-screen-label="Comparte" style={{
       background: L_PALETTE.ink,
       color: L_PALETTE.ivory,
-      padding: '120px 96px',
+      padding: `${vp.mobile ? 80 : 120}px ${vp.padX}px`,
       borderTop: `1px solid rgba(201,169,97,0.18)`,
       borderBottom: `1px solid rgba(201,169,97,0.18)`,
     }}>
       <div style={{ maxWidth: 1600, margin: '0 auto' }}>
         <div style={{
-          display: 'grid', gridTemplateColumns: 'auto 1fr',
-          gap: 60, alignItems: 'center',
+          display: 'grid', gridTemplateColumns: vp.cols('1fr', 'auto 1fr'),
+          gap: vp.mobile ? 32 : 60, alignItems: 'center',
           opacity: ease,
         }}>
           <div>
@@ -287,12 +288,12 @@ function L_Compartir() {
               color: 'rgba(202,220,252,0.7)', fontSize: 16, lineHeight: 1.5,
               maxWidth: 320,
             }}>
-              Click cualquiera para abrirlo en pantalla completa.
+              Selecciona cualquier reel para reproducirlo.
             </div>
           </div>
 
           <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)',
+            display: 'grid', gridTemplateColumns: vp.cols('repeat(3, 1fr)', 'repeat(6, 1fr)'),
             gap: 14,
           }}>
             {CHIPS.map((c, i) => {
@@ -341,14 +342,15 @@ function L_Compartir() {
       {open && (
         <div onClick={() => setOpen(null)} style={{
           position: 'fixed', inset: 0, zIndex: 100,
-          background: 'rgba(7,14,39,0.95)',
-          backdropFilter: 'blur(20px)',
+          background: 'rgba(7,14,39,0.78)',
+          backdropFilter: 'blur(8px)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           padding: 40,
         }}>
           <div onClick={(e) => e.stopPropagation()} style={{
-            height: '90vh', aspectRatio: '9 / 16', maxWidth: '90vw',
+            height: '64vh', aspectRatio: '9 / 16', maxWidth: '40vw',
             position: 'relative',
+            boxShadow: '0 30px 80px rgba(0,0,0,0.6)',
           }}>
             {(() => {
               const Comp = window['Reel' + open.k];
