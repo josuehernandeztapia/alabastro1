@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alabastro1.com.mx/sitemap.xml

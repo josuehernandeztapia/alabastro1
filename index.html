@@ -1,0 +1,1520 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alabastro 1 — Predio shovel-ready en Milenio III, Querétaro</title>
+<meta name="description" content="Terreno de 447 m² con uso de suelo H3 en Milenio III, Querétaro. Paquete documental completo. Torre Médica de 5 consultorios + laboratorio, o 3 residencias verticales de lujo. $3,577,760 MXN — venta directa." />
+<meta property="og:title" content="Alabastro 1 — Predio shovel-ready en Milenio III" />
+<meta property="og:description" content="447 m² · H3 · 4 N.Of. · Anteproyecto incluido · $3,577,760 MXN" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/foto_terreno_torre_al_fondo.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0F1E47; --navy2:#1E3164; --ink:#070E27;
+  --ice:#CADCFC; --white:#FFFFFF; --paper:#FFFFFF;
+  --gold:#C9A961; --gold-dk:#A8884A; --gold-soft:rgba(201,169,97,0.18);
+  --cream:#FAFAF6; --cream2:#F5F1E8;
+  --gray:#5C6B82; --gray2:#8E99A6;
+  --teal:#0D9488; --teal2:#14B8A6;
+  --green:#10B981; --red:#B85042;
+  --rule:rgba(15,30,71,0.10);
+  --rule-gold:rgba(201,169,97,0.25);
+
+  /* Tipografía editorial */
+  --t-eyebrow: 11px;
+  --t-mega:    clamp(72px, 11vw, 168px);
+  --t-h1:      clamp(48px, 7vw, 92px);
+  --t-h2:      clamp(36px, 4.5vw, 60px);
+  --t-h3:      clamp(22px, 2.4vw, 28px);
+  --t-body:    17px;
+  --t-mono:    13px;
+}
+*{box-sizing:border-box; margin:0; padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color:var(--navy); background:var(--cream); line-height:1.55;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+.serif{font-family:Georgia, 'Times New Roman', serif;}
+.mono{font-family:'JetBrains Mono', Consolas, 'Courier New', monospace;}
+h1, h2, h3, h4 { font-family:Georgia, serif; line-height:1.05; letter-spacing:-0.02em; color:var(--navy); font-weight:400; }
+h1 em, h2 em, h3 em { color: var(--gold); font-style: italic; font-weight: 400; }
+a{color:inherit; text-decoration:none}
+img{max-width:100%; display:block}
+.container{max-width:1320px; margin:0 auto; padding:0 32px}
+
+/* PERSONA TINTING — when perspective is 'med', accent goes teal */
+body[data-perspective="med"] { --gold:#14B8A6; --gold-dk:#0D9488; --gold-soft:rgba(20,184,166,0.18); --rule-gold:rgba(20,184,166,0.3); }
+
+/* ---------------------------- */
+/* EDITORIAL PRIMITIVES         */
+/* ---------------------------- */
+.eyebrow {
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-weight: 600; font-size: var(--t-eyebrow);
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold); display: inline-block;
+}
+.footer-rule {
+  border-top: 1px solid var(--rule-gold); padding-top: 14px;
+  display: flex; justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--gold-dk);
+  letter-spacing: 0.3em; text-transform: uppercase;
+}
+.brand{display:flex; align-items:center; gap:12px;}
+.brand .dot{width:8px; height:8px; border-radius:50%; background:var(--gold); transition: background 0.4s;}
+.brand .mark{
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:800; letter-spacing:0.4em; font-size:13px; color:var(--navy);
+}
+
+/* ---------------------------- */
+/* PERSPECTIVE TOGGLE (sticky)  */
+/* ---------------------------- */
+.persona-bar {
+  position:sticky; top:0; z-index:60;
+  background:rgba(250,250,246,0.94); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--rule);
+  transition: background 0.4s;
+}
+body[data-perspective="med"] .persona-bar { background:rgba(7,14,39,0.92); border-color:rgba(20,184,166,0.2); }
+body[data-perspective="med"] .brand .mark { color:var(--cream); }
+.persona-bar .container{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 32px; gap:24px;
+}
+.persona-bar .toggle{
+  display:inline-flex; background:transparent; border:1px solid var(--rule-gold);
+  padding:3px; gap:0;
+}
+.persona-bar .toggle button{
+  border:0; background:transparent;
+  color:var(--gray); padding:9px 18px;
+  font-family:'JetBrains Mono', monospace; font-size:10px; font-weight:600;
+  letter-spacing:0.28em; text-transform:uppercase; cursor:pointer; transition:all 0.25s;
+}
+.persona-bar .toggle button.active{background:var(--gold); color:var(--navy);}
+body[data-perspective="med"] .persona-bar .toggle button{ color:var(--ice); }
+body[data-perspective="med"] .persona-bar .toggle button.active{ background:var(--gold); color:var(--ink); }
+.persona-bar .nav-cta{
+  background:var(--navy); color:var(--white); padding:11px 22px;
+  font-family:'JetBrains Mono', monospace; font-size:10px; font-weight:600; letter-spacing:0.28em;
+  text-transform:uppercase; transition:all 0.2s; border:1px solid var(--navy);
+}
+.persona-bar .nav-cta:hover{background:var(--gold); color:var(--navy); border-color:var(--gold)}
+body[data-perspective="med"] .persona-bar .nav-cta{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
+
+/* ---------------------------- */
+/* SECTION 1 · HERO INMERSIVO   */
+/* ---------------------------- */
+.hero{
+  background: var(--navy); color:var(--white);
+  position:relative; min-height:96vh;
+  display:flex; flex-direction:column; padding:0;
+  transition: background 0.6s;
+}
+body[data-perspective="med"] .hero { background: var(--ink); }
+.hero-frame { position:absolute; inset:30px; border:1px solid var(--rule-gold); pointer-events:none; z-index:2; transition: border-color 0.4s;}
+.hero::before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(circle at 75% 35%, var(--gold-soft), transparent 65%);
+  pointer-events:none; transition: background 0.6s;
+}
+.hero-brand-bar {
+  position:absolute; top:60px; left:62px; right:62px;
+  display:flex; justify-content:space-between; align-items:center;
+  z-index:3;
+}
+.hero-brand-bar .mark { color: var(--cream); }
+.hero-brand-bar .meta {
+  font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--gold);
+  letter-spacing:0.3em; text-transform:uppercase;
+}
+.hero-inner {
+  position:relative; z-index:3; padding:160px 62px 100px;
+  display:flex; flex-direction:column; gap:50px; flex:1;
+}
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace; font-weight:600;
+  font-size:12px; letter-spacing:0.4em; text-transform:uppercase; color:var(--gold);
+}
+.hero-title {
+  font-family:Georgia, serif; font-size:var(--t-mega); line-height:0.92;
+  letter-spacing:-0.035em; font-weight:400; color:var(--cream);
+}
+.hero-title em { color:var(--gold); font-style:italic; font-weight:400;}
+.hero-lede{
+  font-family:Georgia, serif; font-style:italic;
+  font-size:clamp(20px, 2.2vw, 28px); color:var(--ice);
+  max-width:880px; line-height:1.4;
+}
+.hero-meta {
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:36px;
+  margin-top:auto; padding-top:40px; border-top:1px solid var(--rule-gold);
+}
+.hero-meta .label {
+  font-family:'JetBrains Mono', monospace; font-weight:600; letter-spacing:0.3em;
+  font-size:10px; color:var(--gold); margin-bottom:10px; text-transform:uppercase;
+}
+.hero-meta .v {
+  font-family:Georgia, serif; font-size:30px; color:var(--cream); line-height:1.1;
+}
+.hero-meta .v em { color: var(--gold); font-style: italic; }
+.scroll-cue {
+  position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+  z-index:3; display:flex; flex-direction:column; align-items:center; gap:8px;
+  font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--gold);
+  letter-spacing:0.3em; text-transform:uppercase; opacity:0.7;
+  animation: scrollFloat 2.2s ease-in-out infinite;
+}
+.scroll-cue .line { width:1px; height:30px; background:var(--gold); }
+@keyframes scrollFloat { 0%, 100% { transform:translate(-50%, 0); opacity:0.65 } 50% { transform:translate(-50%, 8px); opacity:1 } }
+
+/* ---------------------------- */
+/* SECTION 2 · STATEMENT (sticky pin) */
+/* ---------------------------- */
+.statement {
+  background: var(--cream); padding:0; position:relative;
+  min-height:80vh;
+}
+.statement-inner {
+  position:sticky; top:0; height:100vh;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
+  text-align:center; padding:0 32px;
+}
+.statement-eyebrow {
+  font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--gold);
+  letter-spacing:0.4em; text-transform:uppercase; margin-bottom:36px;
+}
+.statement h2 {
+  font-family:Georgia, serif; font-size:clamp(48px, 8vw, 120px);
+  line-height:1.0; letter-spacing:-0.03em; max-width:1100px; color:var(--navy);
+}
+.statement h2 em { color:var(--gold); font-style:italic; }
+.statement .pin {
+  position:absolute; bottom:80px; left:50%; transform:translateX(-50%);
+  height:1px; background:var(--gold); width:60px; opacity:0.4;
+}
+
+/* ---------------------------- */
+/* SECTION 3 · EL PREDIO (split) */
+/* ---------------------------- */
+.predio { background: var(--navy); color: var(--white); padding:140px 0; }
+.predio .section-eyebrow { color:var(--gold); margin-bottom:16px; display:block; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.4em; text-transform:uppercase;}
+.predio h2 { font-family:Georgia, serif; font-size:var(--t-h2); color:var(--cream); margin-bottom:60px; line-height:1.0;}
+.predio h2 em { color:var(--gold); font-style:italic;}
+.predio-split {
+  display:grid; grid-template-columns:1.2fr 1fr; gap:60px; align-items:start;
+}
+.predio-fotos {display:flex; flex-direction:column; gap:24px;}
+.predio-fotos .img-frame {
+  border:1px solid var(--rule-gold);
+  position:relative; overflow:hidden;
+}
+.predio-fotos .img-frame img { width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; display:block; }
+.predio-fotos .caption {
+  margin-top:14px; display:flex; gap:14px; font-family:'JetBrains Mono', monospace;
+  font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold);
+}
+.predio-fotos .caption .desc { color:var(--ice); font-style:italic; font-family:Georgia; text-transform:none; letter-spacing:0; font-size:13px;}
+.predio-ficha {
+  background:rgba(255,255,255,0.03); border:1px solid var(--rule-gold);
+  padding:48px 40px; position:sticky; top:90px;
+}
+.predio-ficha .label {
+  font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--gold);
+  letter-spacing:0.35em; text-transform:uppercase; margin-bottom:30px;
+}
+.predio-ficha .row {
+  display:flex; justify-content:space-between; padding:16px 0;
+  border-bottom:1px dotted rgba(201,169,97,0.2); font-size:14px;
+}
+.predio-ficha .row:last-of-type{border-bottom:0;}
+.predio-ficha .row .k {
+  font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--ice);
+  letter-spacing:0.2em; text-transform:uppercase; flex-shrink:0; padding-right:20px;
+}
+.predio-ficha .row .v {
+  font-family:Georgia, serif; font-size:15px; color:var(--cream);
+  text-align:right; line-height:1.3;
+}
+.predio-ficha .row .v em { color:var(--gold); font-style:italic;}
+.predio-ficha .price-block {
+  margin-top:30px; padding-top:30px; border-top:1px solid var(--rule-gold);
+}
+.predio-ficha .price-block .label { color:var(--gold); margin-bottom:14px;}
+.predio-ficha .price-block .price {
+  font-family:Georgia, serif; font-size:48px; color:var(--cream); line-height:1; letter-spacing:-0.02em;
+}
+.predio-ficha .price-block .price em { color:var(--gold); font-style:italic; font-size:32px; }
+.predio-ficha .price-block .price-sub {
+  margin-top:10px; font-family:'JetBrains Mono', monospace; font-size:11px;
+  color:var(--ice); letter-spacing:0.2em; text-transform:uppercase;
+}
+
+/* ---------------------------- */
+/* SECTION 4 · MAPA INTERACTIVO */
+/* ---------------------------- */
+.mapa { background: var(--ink); color:var(--white); padding:140px 0; position:relative;}
+.mapa h2 { color:var(--cream); font-size:var(--t-h2); margin-bottom:24px; line-height:1.0;}
+.mapa h2 em { color:var(--gold); font-style:italic;}
+.mapa .section-eyebrow { color:var(--gold); margin-bottom:16px; display:block; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.4em; text-transform:uppercase;}
+.mapa .section-sub {
+  font-family:Georgia, serif; font-style:italic; font-size:21px;
+  color:var(--ice); max-width:760px; margin-bottom:60px;
+}
+.mapa-wrap{ border:1px solid var(--rule-gold); overflow:hidden; }
+.mapa-wrap img { width:100%; display:block;}
+.mapa-pois{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:0;
+  border-top:1px solid var(--rule-gold); border-left:1px solid var(--rule-gold);
+}
+.mapa-pois .poi{
+  padding:28px 26px; border-right:1px solid var(--rule-gold); border-bottom:1px solid var(--rule-gold);
+  background:rgba(255,255,255,0.02); transition: background 0.25s;
+}
+.mapa-pois .poi:hover{ background:rgba(201,169,97,0.06); }
+.mapa-pois .poi .d{ font-family:Georgia, serif; font-size:36px; color:var(--gold); line-height:1; margin-bottom:8px;}
+.mapa-pois .poi .n{
+  font-family:'JetBrains Mono', monospace; font-size:11px;
+  color:var(--ice); letter-spacing:0.2em; text-transform:uppercase; line-height:1.4;
+}
+
+/* ---------------------------- */
+/* SECTION 5 · DOS RUTAS (tabs) */
+/* ---------------------------- */
+.rutas { background: var(--cream); padding:140px 0; }
+.rutas h2 { font-size:var(--t-h2); margin-bottom:24px; }
+.rutas h2 em { color:var(--gold); font-style:italic; }
+.rutas .section-eyebrow { color:var(--gold); margin-bottom:16px; display:block; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.4em; text-transform:uppercase;}
+.rutas .section-sub {
+  font-family:Georgia, serif; font-style:italic; font-size:21px;
+  color:var(--gray); max-width:760px; margin-bottom:50px;
+}
+.rutas-tabs {
+  display:inline-flex; border:1px solid var(--rule); padding:4px; margin-bottom:40px;
+  background:var(--paper);
+}
+.rutas-tabs button {
+  font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:600;
+  letter-spacing:0.3em; text-transform:uppercase; cursor:pointer;
+  padding:14px 24px; border:0; background:transparent; color:var(--gray);
+  transition:all 0.25s;
+}
+.rutas-tabs button.active.a{ background:var(--teal); color:var(--white); }
+.rutas-tabs button.active.b{ background:var(--gold); color:var(--navy); }
+.rutas-content {
+  display:grid; grid-template-columns:1.1fr 1fr; gap:60px; align-items:start;
+}
+.rutas-panel { display:none;}
+.rutas-panel.active { display:grid; grid-template-columns:1.1fr 1fr; gap:60px; align-items:start; animation:fadeUp 0.5s ease-out;}
+@keyframes fadeUp { from { opacity:0; transform:translateY(10px);} to { opacity:1; transform:translateY(0);} }
+.rutas-info {}
+.rutas-info .id {
+  font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--gold);
+  letter-spacing:0.35em; text-transform:uppercase; margin-bottom:14px;
+}
+.rutas-info h3 {
+  font-family:Georgia, serif; font-size:var(--t-h2); line-height:1.0;
+  letter-spacing:-0.02em; margin-bottom:24px; color:var(--navy);
+}
+.rutas-info h3 em { color:var(--gold); font-style:italic;}
+.rutas-info .desc {
+  font-family:Georgia, serif; font-style:italic; font-size:18px;
+  color:var(--gray); line-height:1.55; margin-bottom:32px; max-width:600px;
+}
+.rutas-info .nums {
+  display:flex; gap:36px; margin:36px 0; flex-wrap:wrap;
+  border-top:1px solid var(--rule-gold); padding-top:28px;
+}
+.rutas-info .num{ font-family:Georgia, serif; font-size:44px; line-height:1; color:var(--navy);}
+.rutas-info .num span{
+  display:block; font-family:'JetBrains Mono', monospace; font-size:9px;
+  letter-spacing:0.3em; opacity:0.7; text-transform:uppercase; margin-top:8px;
+  color:var(--gray);
+}
+.rutas-info ul { list-style:none; }
+.rutas-info ul li {
+  padding:10px 0 10px 22px; position:relative; font-size:15px; line-height:1.55;
+  color:var(--navy2); border-bottom:1px dotted var(--rule);
+}
+.rutas-info ul li::before {
+  content:"·"; position:absolute; left:0; top:4px; font-weight:bold; font-size:24px;
+  line-height:1; color:var(--gold);
+}
+.rutas-visual {
+  background:var(--paper); border:1px solid var(--rule); padding:24px;
+  position:sticky; top:90px;
+}
+.rutas-visual img { width:100%; display:block;}
+.rutas-visual .visual-label {
+  margin-top:18px; font-family:'JetBrains Mono', monospace; font-size:10px;
+  color:var(--gold); letter-spacing:0.3em; text-transform:uppercase;
+}
+.rutas-visual .visual-sub {
+  margin-top:6px; font-family:Georgia, serif; font-style:italic; font-size:14px; color:var(--gray);
+}
+
+/* TIMELINE within Rutas section */
+.timeline {
+  margin-top:80px; padding-top:50px; border-top:1px solid var(--rule);
+}
+.timeline .t-eyebrow {
+  font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--gold);
+  letter-spacing:0.35em; text-transform:uppercase; margin-bottom:14px;
+}
+.timeline h3 { font-family:Georgia, serif; font-size:32px; margin-bottom:36px; color:var(--navy);}
+.timeline h3 em { color:var(--gold); font-style:italic;}
+.timeline-track {
+  position:relative; display:grid; grid-template-columns:repeat(5,1fr); gap:0;
+  margin-top:40px;
+}
+.timeline-track::before {
+  content:""; position:absolute; top:14px; left:8%; right:8%; height:1px;
+  background:var(--rule-gold);
+}
+.timeline-step {
+  text-align:center; padding:0 8px;
+}
+.timeline-step .dot {
+  width:18px; height:18px; border-radius:50%; background:var(--cream);
+  border:2px solid var(--gold); margin:0 auto 16px; position:relative; z-index:2;
+}
+.timeline-step.done .dot { background:var(--gold); }
+.timeline-step .when {
+  font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--gold);
+  letter-spacing:0.25em; text-transform:uppercase; margin-bottom:8px;
+}
+.timeline-step .what {
+  font-family:Georgia, serif; font-size:15px; color:var(--navy2); line-height:1.3;
+}
+
+/* ---------------------------- */
+/* SECTION 6 · EXPEDIENTE       */
+/* ---------------------------- */
+.expediente { background:var(--paper); padding:140px 0;}
+.expediente h2 { font-size:var(--t-h2); margin-bottom:24px;}
+.expediente h2 em { color:var(--gold); font-style:italic;}
+.expediente .section-eyebrow { color:var(--gold); margin-bottom:16px; display:block; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.4em; text-transform:uppercase;}
+.expediente .section-sub {
+  font-family:Georgia, serif; font-style:italic; font-size:21px;
+  color:var(--gray); max-width:760px; margin-bottom:60px;
+}
+.exp-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+  border-top:1px solid var(--rule); border-left:1px solid var(--rule);
+}
+.exp-row2 {
+  display:grid; grid-template-columns:repeat(2,1fr); gap:0;
+  border-left:1px solid var(--rule);
+  max-width:calc((100% / 3) * 2); margin-left:auto; margin-right:auto;
+}
+.exp-card {
+  padding:38px 32px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule);
+  background:var(--paper); transition:background 0.25s;
+}
+.exp-card:hover { background:var(--cream); }
+.exp-card .check {
+  display:inline-flex; width:34px; height:34px;
+  border:1.5px solid var(--green); color:var(--green);
+  align-items:center; justify-content:center;
+  font-weight:bold; font-size:14px; margin-bottom:20px;
+}
+.exp-card.teal .check{border-color:var(--teal); color:var(--teal);}
+.exp-card.gold .check{border-color:var(--gold); color:var(--gold);}
+.exp-card .cat-id {
+  font-family:'JetBrains Mono', monospace; font-size:10px;
+  color:var(--gold); letter-spacing:0.32em; margin-bottom:8px; text-transform:uppercase;
+}
+.exp-card .cat-title{
+  font-family:Georgia, serif; font-size:24px; color:var(--navy);
+  margin-bottom:18px; line-height:1.15; letter-spacing:-0.01em;
+}
+.exp-card .cat-title em { color:var(--gold); font-style:italic; }
+.exp-card.teal .cat-title em { color:var(--teal); }
+.exp-card ul{list-style:none;}
+.exp-card ul li{
+  padding:8px 0; font-size:14px; color:var(--navy2); line-height:1.55;
+  border-bottom:1px solid var(--rule);
+}
+.exp-card ul li:last-child{border-bottom:0}
+
+.pending-strip{
+  margin-top:50px; padding:24px 30px; background:transparent; border:1px solid #E7B381;
+  font-size:14px; color:var(--navy2); display:flex; gap:18px; align-items:flex-start; line-height:1.6;
+}
+.pending-strip strong{
+  color:var(--red); font-family:'JetBrains Mono', monospace; font-weight:600;
+  letter-spacing:0.28em; text-transform:uppercase; font-size:10px; flex-shrink:0; padding-top:3px;
+}
+
+/* ---------------------------- */
+/* SECTION 7 · MERCADO          */
+/* ---------------------------- */
+.mercado { background:var(--cream); padding:140px 0;}
+.mercado h2 { font-size:var(--t-h2); margin-bottom:24px;}
+.mercado h2 em { color:var(--gold); font-style:italic;}
+.mercado .section-eyebrow { color:var(--gold); margin-bottom:16px; display:block; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.4em; text-transform:uppercase;}
+.mercado .section-sub {
+  font-family:Georgia, serif; font-style:italic; font-size:21px;
+  color:var(--gray); max-width:820px; margin-bottom:60px;
+}
+
+/* Animated bar chart */
+.bar-chart {
+  background:var(--paper); border:1px solid var(--rule); padding:48px 40px;
+}
+.bar-row {
+  display:grid; grid-template-columns:240px 1fr 100px; gap:24px; align-items:center;
+  padding:14px 0; border-bottom:1px solid var(--rule);
+}
+.bar-row:last-child{border-bottom:0;}
+.bar-row .label {
+  font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--gray);
+  letter-spacing:0.15em; text-transform:uppercase; line-height:1.4;
+}
+.bar-row.highlight .label { color:var(--navy); font-weight:700; }
+.bar-row .track {
+  height:32px; background:var(--cream); position:relative; border-left:1px solid var(--rule);
+}
+.bar-row .fill {
+  height:100%; background:var(--ice); width:0;
+  transition:width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bar-row.highlight .fill { background:var(--gold); }
+.bar-row .value {
+  font-family:Georgia, serif; font-size:18px; color:var(--navy); text-align:right;
+}
+.bar-row.highlight .value { font-weight:700; color:var(--gold-dk); }
+
+.market-quote{
+  margin-top:32px; padding:28px 32px; background:var(--paper); border-left:3px solid var(--gold);
+  font-family:Georgia, serif; font-style:italic;
+  font-size:18px; color:var(--gray); line-height:1.6;
+}
+.market-quote strong {
+  display:block; margin-bottom:10px;
+  font-family:'JetBrains Mono', monospace; font-weight:600; font-size:10px; color:var(--navy);
+  letter-spacing:0.3em; text-transform:uppercase; font-style:normal;
+}
+.proof-row {
+  margin-top:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+}
+.proof-card {
+  padding:24px; background:var(--paper); border:1px solid var(--rule); position:relative;
+}
+.proof-card .quote {
+  font-family:Georgia, serif; font-style:italic; font-size:18px;
+  color:var(--navy); line-height:1.45; margin-bottom:14px;
+}
+.proof-card .source {
+  font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--gold);
+  letter-spacing:0.3em; text-transform:uppercase;
+}
+
+/* ---------------------------- */
+/* SECTION 8 · REELS GALLERY    */
+/* ---------------------------- */
+.reels { background:var(--ink); color:var(--white); padding:140px 0;}
+.reels h2 { color:var(--cream); font-size:var(--t-h2); margin-bottom:24px; line-height:1.0;}
+.reels h2 em { color:var(--gold); font-style:italic;}
+.reels .section-eyebrow { color:var(--gold); margin-bottom:16px; display:block; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.4em; text-transform:uppercase;}
+.reels .section-sub { font-family:Georgia, serif; font-style:italic; font-size:21px; color:var(--ice); max-width:760px; margin-bottom:60px;}
+.reels-grid {
+  display:grid; grid-template-columns:repeat(6,1fr); gap:18px;
+}
+.reel-card {
+  cursor:pointer; transition:transform 0.25s;
+  display:block; text-align:left;
+  background:transparent; border:0; padding:0;
+  font: inherit; color:inherit; width:100%;
+}
+.reel-card:hover { transform:translateY(-6px); }
+.reel-card .thumb {
+  aspect-ratio:9/16; overflow:hidden; border:1px solid var(--rule-gold);
+  position:relative; background:var(--navy);
+}
+.reel-card .thumb img,
+.reel-card .thumb video {
+  width:100%; height:100%; object-fit:cover; display:block;
+}
+.reel-card .info { margin-top:14px;}
+.reel-card .info .id {
+  font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--gold);
+  letter-spacing:0.3em; text-transform:uppercase; margin-bottom:6px;
+}
+.reel-card .info .name {
+  font-family:Georgia, serif; font-style:italic; font-size:16px; color:var(--cream); line-height:1.2;
+}
+
+/* ---------------------------- */
+/* SECTION 9 · FAQ              */
+/* ---------------------------- */
+.faqs { background:var(--cream); padding:140px 0;}
+.faqs h2 { font-size:var(--t-h2); margin-bottom:24px;}
+.faqs h2 em { color:var(--gold); font-style:italic;}
+.faqs .section-eyebrow { color:var(--gold); margin-bottom:16px; display:block; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.4em; text-transform:uppercase;}
+.faqs .container { max-width:920px; }
+.faq{background:var(--paper); border:1px solid var(--rule); overflow:hidden; margin-top:40px;}
+.faq details{border-bottom:1px solid var(--rule);}
+.faq details:last-child{border-bottom:0}
+.faq summary{
+  padding:28px 30px; cursor:pointer; font-family:Georgia, serif; font-size:21px;
+  list-style:none; position:relative; line-height:1.3; color:var(--navy);
+  transition: background 0.2s;
+}
+.faq summary:hover { background:var(--cream); }
+.faq summary::after{
+  content:"+"; position:absolute; right:30px; top:50%; transform:translateY(-50%);
+  font-size:26px; color:var(--gold); font-family:Helvetica; transition:transform 0.2s;
+}
+.faq details[open] summary::after{content:"−";}
+.faq details > div{padding:0 30px 28px; color:var(--gray); font-size:15px; line-height:1.7;}
+
+.dossier-cta {
+  margin-top:40px; padding:36px 40px;
+  background:var(--navy); color:var(--white); display:flex; gap:30px; align-items:center; justify-content:space-between;
+}
+.dossier-cta .dc-text {flex:1;}
+.dossier-cta .dc-label {
+  font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--gold);
+  letter-spacing:0.35em; text-transform:uppercase; margin-bottom:10px;
+}
+.dossier-cta .dc-title {
+  font-family:Georgia, serif; font-size:24px; line-height:1.2; color:var(--cream);
+}
+.dossier-cta .dc-title em { color:var(--gold); font-style:italic;}
+.dossier-cta .btn {
+  background:var(--gold); color:var(--navy); padding:18px 30px;
+  font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:600;
+  letter-spacing:0.3em; text-transform:uppercase; border:1px solid var(--gold);
+  transition:all 0.2s;
+}
+.dossier-cta .btn:hover { background:transparent; color:var(--gold); }
+
+/* ---------------------------- */
+/* SECTION 10 · CIERRE / CTA    */
+/* ---------------------------- */
+.cierre {
+  background:var(--navy); color:var(--white); padding:160px 0; position:relative;
+}
+.cierre::before{
+  content:""; position:absolute; inset:0;
+  background:radial-gradient(circle at 30% 50%, var(--gold-soft), transparent 60%);
+  pointer-events:none;
+}
+.cierre .container { position:relative; z-index:2; }
+.cierre .section-eyebrow{color:var(--gold)}
+.cierre h2 {color:var(--white); font-size:clamp(48px, 7vw, 92px); margin-bottom:30px; max-width:1100px; line-height:1.0;}
+.cierre h2 em {color:var(--gold); font-style:italic;}
+.cierre p {font-family:Georgia, serif; font-style:italic; font-size:22px; color:var(--ice); max-width:780px; margin-bottom:50px; line-height:1.5;}
+.cta-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:0; max-width:980px;
+  border-top:1px solid var(--rule-gold); border-left:1px solid var(--rule-gold);
+}
+.cta-link {
+  padding:36px 32px; border-right:1px solid var(--rule-gold); border-bottom:1px solid var(--rule-gold);
+  display:block; transition:background 0.25s; background:rgba(255,255,255,0.02);
+}
+.cta-link:hover { background:var(--gold-soft);}
+.cta-link .label {
+  font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--gold);
+  letter-spacing:0.35em; text-transform:uppercase; margin-bottom:14px;
+}
+.cta-link .what {
+  font-family:Georgia, serif; font-size:24px; color:var(--cream); line-height:1.2; margin-bottom:12px;
+}
+.cta-link .where {
+  font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--ice);
+}
+
+/* ---------------------------- */
+/* FOOTER                       */
+/* ---------------------------- */
+footer{
+  background:var(--ink); color:#9AAAC9; padding:60px 0 40px;
+}
+footer .container{display:flex; flex-direction:column; gap:14px; align-items:flex-start;}
+footer .brand .mark { color: var(--cream); }
+footer .info { margin-top:18px; font-size:13px; line-height:1.7;}
+footer .info strong{
+  font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--gold);
+  letter-spacing:0.28em; text-transform:uppercase; margin-right:10px;
+}
+footer .legal{
+  font-family:'JetBrains Mono', monospace; font-size:10px; color:rgba(255,255,255,0.3);
+  margin-top:28px; padding-top:18px; border-top:1px solid var(--rule-gold);
+  letter-spacing:0.22em; text-transform:uppercase; width:100%;
+}
+
+/* ---------------------------- */
+/* FLOATING BUTTONS             */
+/* ---------------------------- */
+.wa-float{
+  position:fixed; bottom:28px; right:28px; z-index:100;
+  width:60px; height:60px; border-radius:50%;
+  background:#25D366; color:white;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 12px 30px rgba(37,211,102,0.45);
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+.wa-float:hover{transform:scale(1.1); box-shadow:0 16px 36px rgba(37,211,102,0.6)}
+.wa-float svg{width:32px; height:32px; fill:white}
+
+/* Sticky CTA Mobile */
+.mobile-cta {
+  display:none; position:fixed; bottom:0; left:0; right:0; z-index:99;
+  background:var(--navy); padding:14px 18px;
+  border-top:1px solid var(--gold);
+}
+.mobile-cta a {
+  display:block; text-align:center; padding:14px;
+  background:var(--gold); color:var(--navy);
+  font-family:'JetBrains Mono', monospace; font-weight:600; font-size:12px;
+  letter-spacing:0.3em; text-transform:uppercase;
+}
+
+/* ---------------------------- */
+/* REEL MODAL LIGHTBOX          */
+/* ---------------------------- */
+.reel-modal {
+  position:fixed; inset:0; z-index:200; display:none;
+  background:rgba(7,14,39,0.92); backdrop-filter:blur(8px);
+  align-items:center; justify-content:center;
+  padding:40px 20px; opacity:0; transition:opacity 0.3s ease;
+}
+.reel-modal.open { display:flex; opacity:1; }
+.reel-modal-content {
+  position:relative; width:100%; max-width:480px;
+  aspect-ratio:9/16; max-height:calc(100vh - 80px);
+  background:var(--navy); overflow:hidden;
+  border:1px solid var(--rule-gold); box-shadow:0 30px 80px rgba(0,0,0,0.6);
+  display:flex; flex-direction:column;
+}
+.reel-modal-content .modal-header {
+  padding:14px 18px; display:flex; justify-content:space-between; align-items:center;
+  border-bottom:1px solid var(--rule-gold); background:var(--ink); flex-shrink:0;
+}
+.reel-modal-content .modal-id {
+  font-family:'JetBrains Mono', monospace; font-size:10px; color:var(--gold);
+  letter-spacing:0.3em; text-transform:uppercase;
+}
+.reel-modal-content .modal-close {
+  background:transparent; border:1px solid var(--rule-gold); width:32px; height:32px;
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+  color:var(--cream); font-size:18px; font-family:Georgia, serif;
+  transition:background 0.2s;
+}
+.reel-modal-content .modal-close:hover { background:var(--gold); color:var(--navy); border-color:var(--gold); }
+.reel-modal-content .modal-body {
+  flex:1; overflow:hidden; position:relative; background:#000;
+  display:flex; align-items:center; justify-content:center;
+}
+.reel-modal-content iframe {
+  width:100%; height:100%; border:0; display:block;
+}
+.reel-modal-content .modal-placeholder {
+  text-align:center; padding:40px 30px;
+}
+.reel-modal-content .modal-placeholder .icon {
+  width:60px; height:60px; border-radius:50%; background:var(--gold);
+  display:inline-flex; align-items:center; justify-content:center; margin-bottom:24px;
+  color:var(--navy); font-size:24px;
+}
+.reel-modal-content .modal-placeholder .title {
+  font-family:Georgia, serif; font-style:italic; font-size:28px; color:var(--cream);
+  margin-bottom:14px;
+}
+.reel-modal-content .modal-placeholder .desc {
+  font-size:13px; color:var(--ice); line-height:1.5;
+  font-family:'JetBrains Mono', monospace; letter-spacing:0.15em; text-transform:uppercase;
+}
+.reel-modal-content .modal-footer {
+  padding:14px 18px; border-top:1px solid var(--rule-gold); background:var(--ink);
+  display:flex; justify-content:space-between; gap:12px; flex-shrink:0;
+}
+.reel-modal-content .modal-footer .nav-btn {
+  background:transparent; border:1px solid var(--rule-gold); color:var(--ice);
+  padding:8px 14px; font-family:'JetBrains Mono', monospace; font-size:10px;
+  letter-spacing:0.2em; text-transform:uppercase; cursor:pointer;
+  transition:all 0.2s;
+}
+.reel-modal-content .modal-footer .nav-btn:hover { background:var(--gold); color:var(--navy); border-color:var(--gold); }
+.reel-modal-content .modal-footer .nav-btn:disabled { opacity:0.3; cursor:not-allowed; }
+
+@media (max-width:880px) {
+  .reel-modal { padding:0; }
+  .reel-modal-content { width:100%; height:100vh; max-height:100vh; aspect-ratio:auto; border:0; }
+}
+
+/* ---------------------------- */
+/* REVEAL (IntersectionObserver) */
+/* ---------------------------- */
+.reveal { opacity:0; transform:translateY(20px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  .reveal { opacity:1; transform:none; }
+  .scroll-cue { animation:none; }
+  .bar-row .fill { transition:none; }
+}
+
+/* ---------------------------- */
+/* MOBILE                       */
+/* ---------------------------- */
+@media (max-width:880px){
+  .container { padding:0 22px; }
+  .hero{ min-height:auto; }
+  .hero-inner{ padding:130px 32px 80px; }
+  .hero-brand-bar{ left:32px; right:32px; top:30px;}
+  .hero-frame{ inset:14px;}
+  .hero-meta{ grid-template-columns:repeat(2,1fr); gap:24px;}
+  .hero-meta .v { font-size:22px;}
+  .statement-inner { padding:0 22px;}
+  .statement h2 { font-size:48px;}
+  .predio-split { grid-template-columns:1fr; }
+  .predio-ficha { position:static; }
+  .mapa-pois { grid-template-columns:repeat(2,1fr); }
+  .rutas-tabs button { padding:11px 14px; }
+  .rutas-panel.active { grid-template-columns:1fr; }
+  .rutas-visual { position:static; }
+  .timeline-track { grid-template-columns:1fr; gap:18px; }
+  .timeline-track::before { display:none; }
+  .timeline-step { display:grid; grid-template-columns:60px 1fr; gap:18px; text-align:left; padding:14px 0; border-bottom:1px solid var(--rule); }
+  .exp-grid { grid-template-columns:1fr; }
+  .exp-row2 { grid-template-columns:1fr; max-width:100%;}
+  .bar-row { grid-template-columns:1fr; gap:8px; padding:18px 0;}
+  .bar-row .label { font-size:10px;}
+  .bar-row .value { text-align:left; font-size:16px;}
+  .proof-row { grid-template-columns:1fr;}
+  .reels-grid { grid-template-columns:repeat(2,1fr); }
+  .cta-grid { grid-template-columns:1fr; max-width:100%;}
+  .dossier-cta { flex-direction:column; align-items:flex-start; gap:18px; padding:24px;}
+  .mobile-cta { display:block; }
+  .wa-float { bottom:80px; right:18px; }
+  body { padding-bottom:78px; }
+}
+</style>
+</head>
+<body>
+
+<!-- PERSONA BAR (sticky) -->
+<nav class="persona-bar">
+  <div class="container">
+    <a href="#" class="brand" aria-label="Alabastro 1">
+      <svg viewBox="0 0 240 240" width="28" height="28" aria-hidden="true">
+        <rect x="4" y="4" width="232" height="232" rx="3" fill="#0F1E47"/>
+        <rect x="4" y="4" width="232" height="232" rx="3" fill="none" stroke="currentColor" stroke-width="3" style="color:var(--gold)"/>
+        <polygon points="78,196 98,196 130,72 120,72" fill="#F5F1E8"/>
+        <polygon points="142,196 162,196 130,72 120,72" fill="#F5F1E8"/>
+        <polygon points="115,72 125,72 120,52" fill="#F5F1E8"/>
+        <rect x="92" y="144" width="56" height="10" fill="currentColor" style="color:var(--gold)"/>
+      </svg>
+      <span class="mark">ALABASTRO · 1</span>
+    </a>
+    <div class="toggle" role="tablist" aria-label="Perspectiva">
+      <button id="p-resi" class="active" data-p="resi">Residencial</button>
+      <button id="p-med" data-p="med">Torre Médica</button>
+    </div>
+    <a href="#contacto" class="nav-cta">Hablemos →</a>
+  </div>
+</nav>
+
+<!-- SECTION 1 · HERO INMERSIVO -->
+<header class="hero" id="hero">
+  <div class="hero-frame"></div>
+  <div class="hero-brand-bar">
+    <div class="brand">
+      <span class="dot"></span>
+      <span class="mark">ALABASTRO · 1</span>
+    </div>
+    <div class="meta">Milenio III · Querétaro · Mayo 2026</div>
+  </div>
+
+  <div class="hero-inner">
+    <div>
+      <span class="hero-eyebrow">Predio shovel-ready · 447 m² · H3 con 4 N.Of.</span>
+    </div>
+    <div>
+      <h1 class="hero-title">Una propiedad,<br/>dos <em>rutas claras.</em></h1>
+      <p class="hero-lede" id="hero-lede" style="margin-top:36px;">
+        Terreno boutique en el corazón de Milenio III con paquete documental completo —
+        3 residencias verticales de lujo de 274 m² c/u con vistas panorámicas N/NO y rooftop.
+        Venta directa con propietario, sin intermediarios.
+      </p>
+    </div>
+    <div class="hero-meta">
+      <div>
+        <div class="label">Superficie</div>
+        <div class="v">447 m²</div>
+      </div>
+      <div>
+        <div class="label">Uso de suelo</div>
+        <div class="v"><em>H3</em> · 4 N.Of.</div>
+      </div>
+      <div>
+        <div class="label">Paquete documental</div>
+        <div class="v">Completo</div>
+      </div>
+      <div>
+        <div class="label">Precio</div>
+        <div class="v">$3,577,760 MXN</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>Recorrer</span>
+    <div class="line"></div>
+  </div>
+</header>
+
+<!-- SECTION 2 · STATEMENT (sticky pin) -->
+<section class="statement" id="statement">
+  <div class="statement-inner">
+    <div class="statement-eyebrow">02 · Tesis</div>
+    <h2>Una propiedad.<br/>Dos formas de <em>generar valor.</em></h2>
+    <div class="pin"></div>
+  </div>
+</section>
+
+<!-- SECTION 3 · EL PREDIO (split) -->
+<section class="predio" id="predio">
+  <div class="container reveal">
+    <span class="section-eyebrow">03 · El predio</span>
+    <h2>Cómo se ve <em>hoy.</em></h2>
+    <div class="predio-split">
+      <div class="predio-fotos">
+        <div>
+          <div class="img-frame">
+            <img src="assets/foto_terreno_principal.jpg" alt="Vista interior del predio · adoquín original · palmeras" loading="lazy">
+          </div>
+          <div class="caption">
+            <span>01 · Vista interior</span>
+            <span class="desc">Adoquín original · palmeras · cielo abierto al norte</span>
+          </div>
+        </div>
+        <div>
+          <div class="img-frame">
+            <img src="assets/foto_terreno_torre_al_fondo.jpg" alt="Vista lateral del predio con torre vertical al fondo" loading="lazy">
+          </div>
+          <div class="caption">
+            <span>02 · Vista lateral</span>
+            <span class="desc">Torre vertical al fondo · densificación de la zona</span>
+          </div>
+        </div>
+      </div>
+      <aside class="predio-ficha">
+        <div class="label">Ficha del expediente</div>
+        <div class="row"><span class="k">Superficie</span><span class="v">447.22 m²</span></div>
+        <div class="row"><span class="k">Frente</span><span class="v">Sur · Sendero del Alabastro</span></div>
+        <div class="row"><span class="k">Lote</span><span class="v">14 · Mz V · Sec. 1 · Fase A</span></div>
+        <div class="row"><span class="k">Coordenadas</span><span class="v" style="font-family:'JetBrains Mono'; font-size:12px;">20°35'57.9"N · 100°21'50.9"W</span></div>
+        <div class="row"><span class="k">Clave catastral</span><span class="v" style="font-family:'JetBrains Mono'; font-size:12px;">140100116081070</span></div>
+        <div class="row"><span class="k">Folio Real</span><span class="v" style="font-family:'JetBrains Mono'; font-size:12px;">360920</span></div>
+        <div class="row"><span class="k">Escritura</span><span class="v">Pública <em>9,668</em></span></div>
+        <div class="row"><span class="k">Topografía</span><span class="v">Pendiente pronunciada · vista N/NO</span></div>
+        <div class="row"><span class="k">Cimentación</span><span class="v">Manto rocoso a 5 m</span></div>
+        <div class="price-block">
+          <div class="label">Precio único</div>
+          <div class="price">$3,577,760 <em>MXN</em></div>
+          <div class="price-sub">$8,000 por m² · venta directa con propietario</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 · MAPA INTERACTIVO -->
+<section class="mapa" id="mapa">
+  <div class="container reveal">
+    <span class="section-eyebrow">04 · Microubicación</span>
+    <h2>Adyacente al corredor <em>médico.</em></h2>
+    <p class="section-sub">
+      Centro de Milenio III · 1–2 cuadras del corredor médico Camino Real de Carretas ·
+      500 m de Calzada de los Arcos.
+    </p>
+    <div class="mapa-wrap">
+      <img src="assets/map_location.png" alt="Mapa de microubicación con corredor médico" loading="lazy">
+    </div>
+    <div class="mapa-pois">
+      <div class="poi"><div class="d">500 m</div><div class="n">Calzada de los Arcos</div></div>
+      <div class="poi"><div class="d">1 km</div><div class="n">Av. Bernardo Quintana</div></div>
+      <div class="poi"><div class="d">200 m</div><div class="n">Corredor médico</div></div>
+      <div class="poi"><div class="d">300 m</div><div class="n">Laboratorios clínicos</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 · DOS RUTAS (tabs) -->
+<section class="rutas" id="rutas">
+  <div class="container reveal">
+    <span class="section-eyebrow">05 · Dos rutas de inversión</span>
+    <h2>Track <em>A</em> · Track <em>B</em></h2>
+    <p class="section-sub">Mismo activo, dos tesis de valor segmentadas por perfil de comprador.</p>
+
+    <div class="rutas-tabs">
+      <button class="active a" data-tab="a">Track A · Torre Médica</button>
+      <button class="b" data-tab="b">Track B · Residencias</button>
+    </div>
+
+    <!-- Track A panel -->
+    <div class="rutas-panel active" data-panel="a">
+      <div class="rutas-info">
+        <div class="id">TRACK · A · 9% YIELD</div>
+        <h3>Torre <em>Médica</em><br/>Boutique</h3>
+        <p class="desc">5 consultorios + 1 laboratorio clínico, limitados por norma de estacionamiento (7 cajones). Yield bruto estimado 9% sobre inversión total.</p>
+        <div class="nums">
+          <div class="num">5+1<span>consult. + lab</span></div>
+          <div class="num">9%<span>yield bruto</span></div>
+          <div class="num">~$22M<span>inversión total</span></div>
+        </div>
+        <ul>
+          <li>3 torres médicas operando a 200–700 m (Momentum I, III, V)</li>
+          <li>Renta consultorio 45 m²: ~$25,000/mes promedio</li>
+          <li>4 N.Of. emitidos: hasta 4 accesos independientes</li>
+          <li>Laboratorios institucionales buscando expansión (Corregidora, IML)</li>
+          <li>Compatibilidad explícita en dictamen de uso de suelo</li>
+        </ul>
+      </div>
+      <div class="rutas-visual">
+        <img src="assets/diagram_typology.png" alt="Diagrama tipología Torre Médica">
+        <div class="visual-label">DIAG · 01 · TIPOLOGÍA</div>
+        <div class="visual-sub">Misma estructura, dos modelos de uso · COS 0.6 · CUS 2.4 · 4 niveles</div>
+      </div>
+    </div>
+
+    <!-- Track B panel -->
+    <div class="rutas-panel" data-panel="b" style="display:none">
+      <div class="rutas-info">
+        <div class="id">TRACK · B · 17-30% MARGEN</div>
+        <h3>Residencias<br/><em>Verticales</em></h3>
+        <p class="desc">3 unidades verticales de lujo de 274 m² c/u, con vistas panorámicas N/NO y rooftop. Margen de desarrollo 17-30% sobre costo total.</p>
+        <div class="nums">
+          <div class="num">3<span>unidades únicas</span></div>
+          <div class="num">274 m²<span>privativa c/u</span></div>
+          <div class="num">17-30%<span>margen</span></div>
+        </div>
+        <ul>
+          <li>Anteproyecto listo: planos ML-ARQ, MLA, cortes, fachadas</li>
+          <li>Vistas panorámicas N/NO desde rooftop</li>
+          <li>Ticket por unidad: $11–13 M MXN según acabados</li>
+          <li>Esquema preventa 35% / 40% / 25% en 9 meses</li>
+          <li>Una de las 10 zonas con mayor plusvalía en Querétaro 2025</li>
+        </ul>
+      </div>
+      <div class="rutas-visual">
+        <img src="assets/plano_plantas_niveles.png" alt="Plantas arquitectónicas">
+        <div class="visual-label">DIAG · 02 · PLANTAS</div>
+        <div class="visual-sub">Niveles 1 y 2 · distribución de las 3 unidades</div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline reveal">
+      <div class="t-eyebrow">Timeline · cómo se ejecuta</div>
+      <h3>Del LOI a la <em>operación.</em></h3>
+      <div class="timeline-track">
+        <div class="timeline-step done">
+          <div class="dot"></div>
+          <div class="when">DÍA 0</div>
+          <div class="what">Firma LOI<br/>+ exclusividad 30-45 días</div>
+        </div>
+        <div class="timeline-step done">
+          <div class="dot"></div>
+          <div class="when">DÍA 45</div>
+          <div class="what">Cierre notarial<br/>+ entrega expediente</div>
+        </div>
+        <div class="timeline-step">
+          <div class="dot"></div>
+          <div class="when">DÍA 60</div>
+          <div class="what">Licencia de construcción<br/>+ régimen condominio</div>
+        </div>
+        <div class="timeline-step">
+          <div class="dot"></div>
+          <div class="when">DÍA 240</div>
+          <div class="what">Inicio de obra<br/>+ preventa abierta</div>
+        </div>
+        <div class="timeline-step">
+          <div class="dot"></div>
+          <div class="when">MES 14</div>
+          <div class="what">Operación / Entrega<br/>(según track)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6 · EXPEDIENTE -->
+<section class="expediente" id="expediente">
+  <div class="container reveal">
+    <span class="section-eyebrow">06 · Con qué contamos</span>
+    <h2>El <em>expediente</em><br/>del activo.</h2>
+    <p class="section-sub">Documentación, trámites, estudios y proyecto: lo que recibe el comprador con la propiedad.</p>
+
+    <div class="exp-grid">
+      <div class="exp-card">
+        <span class="check">✓</span>
+        <div class="cat-id">CAT · 01</div>
+        <div class="cat-title">Documentación <em>legal</em></div>
+        <ul>
+          <li>Escritura pública 9,668 inscrita en RPP</li>
+          <li>Folio Real 360920 · sin gravámenes</li>
+          <li>Predial al corriente</li>
+        </ul>
+      </div>
+      <div class="exp-card">
+        <span class="check">✓</span>
+        <div class="cat-id">CAT · 02</div>
+        <div class="cat-title">Trámites <em>municipales</em></div>
+        <ul>
+          <li>Dictamen de Uso de Suelo H3 (Tipo B)</li>
+          <li>Alineamiento municipal</li>
+          <li>Número Oficial 1, 1A, 1B y 1C</li>
+        </ul>
+      </div>
+      <div class="exp-card teal">
+        <span class="check">✓</span>
+        <div class="cat-id">CAT · 03</div>
+        <div class="cat-title">Factibilidades de <em style="color:var(--teal);">servicios</em></div>
+        <ul>
+          <li>CFE (energía eléctrica)</li>
+          <li>CEA (agua y drenaje)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-row2">
+      <div class="exp-card teal">
+        <span class="check">✓</span>
+        <div class="cat-id">CAT · 04</div>
+        <div class="cat-title">Estudios <em style="color:var(--teal);">técnicos</em></div>
+        <ul>
+          <li>Mecánica de suelos · manto rocoso a 5 m</li>
+          <li>Levantamiento topográfico planimétrico</li>
+        </ul>
+      </div>
+      <div class="exp-card gold">
+        <span class="check">✓</span>
+        <div class="cat-id">CAT · 05</div>
+        <div class="cat-title">Anteproyecto <em style="color:var(--gold);">arquitectónico</em></div>
+        <ul>
+          <li>Planos ML-ARQ + MLA</li>
+          <li>Cuadro de áreas detallado</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pending-strip">
+      <strong>Pendiente</strong>
+      <span>Licencia de construcción · Declaratoria régimen en condominio · Dictamen previo Protección Civil · Proyecto ejecutivo (a cargo del arquitecto del comprador).</span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7 · MERCADO -->
+<section class="mercado" id="mercado">
+  <div class="container reveal">
+    <span class="section-eyebrow">07 · Estudio de mercado</span>
+    <h2>Precio vs. <em>comparables.</em></h2>
+    <p class="section-sub">Alabastro 1 se ofrece a $8,000/m² · alineado con la banda media de Milenio III, con el paquete documental completo incluido.</p>
+
+    <div class="bar-chart" id="bar-chart">
+      <div class="bar-row" data-pct="50">
+        <div class="label">Bulk 3 lotes juntos<br/>(compra mayoreo)</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="value">$5,500</div>
+      </div>
+      <div class="bar-row" data-pct="67">
+        <div class="label">Fase A baja<br/>(220-495 m² · sin trámites)</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="value">$7,392</div>
+      </div>
+      <div class="bar-row highlight" data-pct="73">
+        <div class="label">ALABASTRO 1<br/>(con expediente completo)</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="value">$8,000</div>
+      </div>
+      <div class="bar-row" data-pct="75">
+        <div class="label">Mediana Milenio III<br/>(feb 2026)</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="value">$8,247</div>
+      </div>
+      <div class="bar-row" data-pct="79">
+        <div class="label">Fase A alta<br/>(220-495 m²)</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="value">$8,630</div>
+      </div>
+      <div class="bar-row" data-pct="100">
+        <div class="label">Fase B Sec. 11 alta<br/>(premium)</div>
+        <div class="track"><div class="fill"></div></div>
+        <div class="value">$10,968</div>
+      </div>
+    </div>
+
+    <p class="market-quote">
+      <strong>Lectura</strong>
+      Alabastro 1 se ofrece por debajo de la mediana del fraccionamiento ($8,247/m²) aún incluyendo el paquete completo de trámites (dictamen, 4 N.Of., factibilidades, mecánica, topografía, anteproyecto). Diseñado para venta directa con propietario y cierre rápido.
+    </p>
+
+    <div class="proof-row">
+      <div class="proof-card">
+        <div class="quote">"Mediana de $8,247/m² en Milenio III · feb 2026"</div>
+        <div class="source">Fuente · Doorvel</div>
+      </div>
+      <div class="proof-card">
+        <div class="quote">"Renta consultorio 70-75 m² $27,000-32,500/mes"</div>
+        <div class="source">Fuente · Lamudi + Inmuebles24</div>
+      </div>
+      <div class="proof-card">
+        <div class="quote">"Una de las 10 zonas con mayor plusvalía"</div>
+        <div class="source">Fuente · Variant Realty 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8 · REELS GALLERY -->
+<section class="reels" id="reels">
+  <div class="container reveal">
+    <span class="section-eyebrow">08 · Galería de reels</span>
+    <h2>Seis <em>ángulos</em><br/>de la misma historia.</h2>
+    <p class="section-sub">
+      Reels verticales 9:16 · 20-22 segundos cada uno. Cada uno cuenta la misma historia
+      desde un ángulo distinto. Comparte el que más te resuene.
+    </p>
+
+    <div class="reels-grid">
+      <button type="button" class="reel-card" data-reel="a" data-title="Dos Rutas" data-duration="22 s">
+        <div class="thumb"><img src="assets/reels/reel-a-poster.svg" alt="Reel A · Dos Rutas"></div>
+        <div class="info"><div class="id">REEL · A · 22 s</div><div class="name">Dos Rutas</div></div>
+      </button>
+      <button type="button" class="reel-card" data-reel="b" data-title="Datos en Movimiento" data-duration="20 s">
+        <div class="thumb"><img src="assets/reels/reel-b-poster.svg" alt="Reel B · Datos en Movimiento"></div>
+        <div class="info"><div class="id">REEL · B · 20 s</div><div class="name">Datos en Movimiento</div></div>
+      </button>
+      <button type="button" class="reel-card" data-reel="c" data-title="Mapa Cinemático" data-duration="22 s">
+        <div class="thumb"><img src="assets/reels/reel-c-poster.svg" alt="Reel C · Mapa Cinemático"></div>
+        <div class="info"><div class="id">REEL · C · 22 s</div><div class="name">Mapa Cinemático</div></div>
+      </button>
+      <button type="button" class="reel-card" data-reel="d" data-title="Isotipo" data-duration="20 s">
+        <div class="thumb"><img src="assets/reels/reel-d-poster.svg" alt="Reel D · Isotipo"></div>
+        <div class="info"><div class="id">REEL · D · 20 s</div><div class="name">Isotipo</div></div>
+      </button>
+      <button type="button" class="reel-card" data-reel="e" data-title="Hoy / Mañana" data-duration="22 s">
+        <div class="thumb"><img src="assets/reels/reel-e-poster.svg" alt="Reel E · Hoy / Mañana"></div>
+        <div class="info"><div class="id">REEL · E · 22 s</div><div class="name">Hoy / Mañana</div></div>
+      </button>
+      <button type="button" class="reel-card" data-reel="f" data-title="El Expediente" data-duration="22 s">
+        <div class="thumb"><img src="assets/reels/reel-f-poster.svg" alt="Reel F · El Expediente"></div>
+        <div class="info"><div class="id">REEL · F · 22 s</div><div class="name">El Expediente</div></div>
+      </button>
+    </div>
+
+    <!-- Modal lightbox -->
+    <div class="reel-modal" id="reel-modal" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="reel-modal-content">
+        <div class="modal-header">
+          <div class="modal-id" id="modal-id">REEL · A · 22 s</div>
+          <button type="button" class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
+        </div>
+        <div class="modal-body" id="modal-body">
+          <!-- Content injected on open -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="nav-btn" id="modal-prev">← Anterior</button>
+          <button type="button" class="nav-btn" id="modal-next">Siguiente →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9 · FAQ -->
+<section class="faqs" id="faq">
+  <div class="container reveal">
+    <span class="section-eyebrow">09 · Preguntas frecuentes</span>
+    <h2>Lo que un comprador <em>serio</em> quiere saber.</h2>
+    <div class="faq">
+      <details>
+        <summary>¿Hay gravámenes sobre el predio?</summary>
+        <div>La escritura pública 9,668 está inscrita en el Registro Público de la Propiedad y del Comercio de Querétaro bajo el Folio Real 360920. Sin gravámenes. El Certificado de Libertad de Gravamen vigente se entrega al cierre.</div>
+      </details>
+      <details>
+        <summary>¿Por qué el dictamen menciona "consultorios y laboratorios"?</summary>
+        <div>El uso de suelo H3 (Habitacional ≤300 hab/ha) en Querétaro es compatible con servicios médicos según la Tabla de Compatibilidad de Usos de Suelo del Municipio. El dictamen Tipo B vigente para Alabastro 1 lo señala explícitamente. No requiere cambio de uso.</div>
+      </details>
+      <details>
+        <summary>¿Qué incluye el anteproyecto arquitectónico y para qué sirve?</summary>
+        <div>Incluye planos ML-ARQ (plantas, fachadas, cortes esquemáticos), planos MLA 01-05 con avances de partido, cuadro de áreas y propuesta tipológica para 3 unidades verticales. Es <strong>anteproyecto, no proyecto ejecutivo</strong>: valida la viabilidad del partido espacial sobre el predio específico y se entrega como base de trabajo. El proyecto ejecutivo lo desarrolla el arquitecto del comprador según su modelo operativo. Ahorra 1-2 meses de diseño conceptual y ~$100-150k MXN del trabajo de anteproyecto ya hecho.</div>
+      </details>
+      <details>
+        <summary>¿Es reconvertible a uso médico el anteproyecto residencial?</summary>
+        <div>Sí, como base. El uso de suelo H3 vigente permite explícitamente consultorios y laboratorios. El partido arquitectónico (sótano + 3 niveles + rooftop, 1,045 m² construibles) sirve para ambos usos. La reconversión a torre médica requiere replanteo en el proyecto ejecutivo: circulaciones pacientes/staff, baños públicos, salidas de emergencia y especificaciones de instalaciones médicas. Esto lo desarrolla el arquitecto del comprador.</div>
+      </details>
+      <details>
+        <summary>¿Por qué solo 5 consultorios + lab si el predio tiene 1,045 m² construibles?</summary>
+        <div>El partido permite 1,045 m² construibles, pero el límite real para uso médico viene del estacionamiento: el predio admite máximo 7 cajones físicos, y la norma de Querétaro requiere típicamente 1 cajón por cada 30-50 m² de uso médico. Por eso el área útil de consultorios queda en ~210-320 m² (5 consultorios × 45 m² + 1 lab de 65 m²). Para residencial las 3 unidades sí caben porque la norma es 2 cajones/vivienda.</div>
+      </details>
+      <details>
+        <summary>¿Cómo se realiza el cierre?</summary>
+        <div>Firma de Carta de Intención con calendario de exclusividad 30-45 días → Revisión del paquete documental → Cierre notarial con escritura traslativa. Entrega de paquete documental físico y digital al cierre.</div>
+      </details>
+    </div>
+
+    <div class="dossier-cta">
+      <div class="dc-text">
+        <div class="dc-label">Solicita el expediente</div>
+        <div class="dc-title">Acceso al <em>paquete documental completo</em> bajo NDA.</div>
+      </div>
+      <a href="mailto:josuehernandeztapia@gmail.com?subject=Alabastro%201%20-%20Solicitud%20de%20expediente%20bajo%20NDA" class="btn">Solicitar →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10 · CIERRE / CTA -->
+<section class="cierre" id="contacto">
+  <div class="container reveal">
+    <span class="section-eyebrow">10 · Conversemos</span>
+    <h2>Una <em>propiedad.</em><br/>Tres formas de empezar.</h2>
+    <p>Te envío el deck completo, el expediente documental y un recorrido por el predio y el corredor médico vecino. Sin intermediarios.</p>
+
+    <div class="cta-grid">
+      <a href="https://api.whatsapp.com/send?phone=521XXXXXXXXXX&text=Hola%2C%20me%20interesa%20Alabastro%201" class="cta-link" target="_blank">
+        <div class="label">CTA · 01 · INMEDIATO</div>
+        <div class="what">WhatsApp directo</div>
+        <div class="where">+52 · respuesta en horas hábiles</div>
+      </a>
+      <a href="mailto:josuehernandeztapia@gmail.com?subject=Alabastro%201%20-%20Solicitud%20de%20paquete%20completo" class="cta-link">
+        <div class="label">CTA · 02 · DOCUMENTAL</div>
+        <div class="what">Solicitar paquete</div>
+        <div class="where">josuehernandeztapia@gmail.com</div>
+      </a>
+      <a href="mailto:josuehernandeztapia@gmail.com?subject=Alabastro%201%20-%20Agendar%20visita" class="cta-link">
+        <div class="label">CTA · 03 · IN SITU</div>
+        <div class="what">Agendar visita</div>
+        <div class="where">Recorrido predio + corredor médico</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="brand">
+      <svg viewBox="0 0 240 240" width="42" height="42" aria-hidden="true">
+        <rect x="4" y="4" width="232" height="232" rx="3" fill="none" stroke="#C9A961" stroke-width="3"/>
+        <polygon points="78,196 98,196 130,72 120,72" fill="#FFFFFF"/>
+        <polygon points="142,196 162,196 130,72 120,72" fill="#FFFFFF"/>
+        <polygon points="115,72 125,72 120,52" fill="#FFFFFF"/>
+        <rect x="92" y="144" width="56" height="10" fill="#C9A961"/>
+      </svg>
+      <span class="mark" style="font-size:16px; letter-spacing:0.4em;">ALABASTRO · 1</span>
+    </div>
+    <div class="info">
+      <div><strong>Ubicación</strong> Sendero del Alabastro 1, Lote 14, Mz V, Sección 1, Fase A · Fracc. Milenio III · Querétaro · CP 76060</div>
+      <div><strong>Catastral</strong> 140100116081070 · <strong>Folio Real</strong> 360920 · <strong>Escritura</strong> Pública 9,668</div>
+    </div>
+    <div class="legal">© 2026 · Documento informativo · No constituye oferta vinculante · Datos sujetos a verificación con el vendedor</div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a href="https://api.whatsapp.com/send?phone=521XXXXXXXXXX&text=Hola%2C%20me%20interesa%20Alabastro%201" class="wa-float" aria-label="WhatsApp directo" target="_blank">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .395C7.164.395 0 7.559 0 16.395c0 2.812.733 5.551 2.131 7.97L0 32l7.879-2.066c2.341 1.276 4.973 1.945 7.65 1.945h.005c8.836 0 16-7.164 16-16C31.534 7.443 24.836.395 16 .395zm9.339 22.582c-.395 1.105-2.342 2.131-3.225 2.255-.819.116-1.851.164-2.985-.187a25.13 25.13 0 0 1-2.717-1.011c-4.776-2.063-7.892-6.873-8.131-7.197-.239-.323-1.943-2.586-1.943-4.932 0-2.347 1.232-3.5 1.667-3.978.435-.479.949-.598 1.265-.598h.91c.293 0 .685-.111 1.073.819.395.954 1.345 3.301 1.464 3.541.119.239.198.518.04.84-.158.323-.237.526-.475.808-.237.282-.498.629-.712.846-.237.237-.484.494-.208.967.276.474 1.226 2.024 2.633 3.279 1.808 1.612 3.331 2.111 3.804 2.348.473.237.749.198 1.027-.119.276-.317 1.18-1.376 1.494-1.851.313-.473.626-.394 1.061-.237.435.158 2.769 1.306 3.244 1.543.475.238.79.355.91.554.119.198.119 1.149-.277 2.255z"/></svg>
+</a>
+
+<!-- Mobile sticky CTA -->
+<div class="mobile-cta">
+  <a href="#contacto">Hablemos →</a>
+</div>
+
+<script>
+/* ============================
+   PERSONA TOGGLE + URL STATE
+   ============================ */
+const COPY = {
+  resi: {
+    lede: "Terreno boutique en el corazón de Milenio III con paquete documental completo — 3 residencias verticales de lujo de 274 m² c/u con vistas panorámicas N/NO y rooftop. Venta directa con propietario, sin intermediarios."
+  },
+  med: {
+    lede: "Terreno boutique en el corazón de Milenio III con paquete documental completo — Torre Médica de 5 consultorios + laboratorio clínico (limitado por 7 cajones según norma), 200 m del corredor médico consolidado. Venta directa con propietario."
+  }
+};
+
+function setPerspective(p, pushState=true) {
+  document.body.setAttribute('data-perspective', p);
+  document.getElementById('hero-lede').textContent = COPY[p].lede;
+  document.querySelectorAll('.persona-bar .toggle button').forEach(b => {
+    b.classList.toggle('active', b.dataset.p === p);
+  });
+  // Auto-switch rutas tab to match perspective
+  const targetTab = p === 'med' ? 'a' : 'b';
+  switchRutasTab(targetTab);
+  // URL state
+  if (pushState) {
+    const url = new URL(location.href);
+    url.searchParams.set('perspectiva', p);
+    history.replaceState({}, '', url);
+  }
+}
+
+document.querySelectorAll('.persona-bar .toggle button').forEach(btn => {
+  btn.addEventListener('click', () => setPerspective(btn.dataset.p));
+});
+
+// Init from URL
+const urlParams = new URLSearchParams(location.search);
+const initialP = urlParams.get('perspectiva') || 'resi';
+setPerspective(initialP, false);
+
+/* ============================
+   RUTAS TABS
+   ============================ */
+function switchRutasTab(tab) {
+  document.querySelectorAll('.rutas-tabs button').forEach(b => {
+    b.classList.toggle('active', b.dataset.tab === tab);
+  });
+  document.querySelectorAll('.rutas-panel').forEach(p => {
+    const isActive = p.dataset.panel === tab;
+    p.classList.toggle('active', isActive);
+    p.style.display = isActive ? 'grid' : 'none';
+  });
+}
+document.querySelectorAll('.rutas-tabs button').forEach(btn => {
+  btn.addEventListener('click', () => switchRutasTab(btn.dataset.tab));
+});
+
+/* ============================
+   INTERSECTION REVEAL
+   ============================ */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ============================
+   ANIMATED BAR CHART
+   ============================ */
+const chartObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.bar-row').forEach((row, i) => {
+        const fill = row.querySelector('.fill');
+        const pct = row.dataset.pct;
+        setTimeout(() => { fill.style.width = pct + '%'; }, i * 120);
+      });
+      chartObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const chartEl = document.getElementById('bar-chart');
+if (chartEl) chartObserver.observe(chartEl);
+
+/* ============================
+   REEL MODAL LIGHTBOX
+   ============================ */
+const REEL_DATA = {
+  a: { letter:'A', title:'Dos Rutas', duration:'22 s', desc:'Split-screen con duelo de números entre Track A y B.' },
+  b: { letter:'B', title:'Datos en Movimiento', duration:'20 s', desc:'Kinetic typography con comparables de mercado.' },
+  c: { letter:'C', title:'Mapa Cinemático', duration:'22 s', desc:'Ubicación primero · pin pulsante hacia corredor médico.' },
+  d: { letter:'D', title:'Isotipo', duration:'20 s', desc:'Brand-first · la barra dorada del logo guía las transiciones.' },
+  e: { letter:'E', title:'Hoy / Mañana', duration:'22 s', desc:'Photo essay · fotos reales más esquemático del proyecto.' },
+  f: { letter:'F', title:'El Expediente', duration:'22 s', desc:'Proof-driven · documentos físicos sellándose y apilándose.' },
+};
+const REEL_ORDER = ['a','b','c','d','e','f'];
+
+const modal      = document.getElementById('reel-modal');
+const modalBody  = document.getElementById('modal-body');
+const modalId    = document.getElementById('modal-id');
+const modalClose = document.getElementById('modal-close');
+const modalPrev  = document.getElementById('modal-prev');
+const modalNext  = document.getElementById('modal-next');
+
+let currentReel = null;
+
+function openReelModal(letter) {
+  const data = REEL_DATA[letter];
+  if (!data) return;
+  currentReel = letter;
+  modalId.textContent = `REEL · ${data.letter} · ${data.duration}`;
+  // MP4 inline if available, else iframe lazy of standalone, else poster placeholder
+  modalBody.innerHTML = `
+    <video
+      src="assets/reels/reel-${letter}.mp4"
+      poster="assets/reels/reel-${letter}-poster.svg"
+      autoplay loop muted playsinline controls
+      style="width:100%; height:100%; object-fit:contain; background:#000;"
+      onerror="this.outerHTML = '<div class=&quot;modal-placeholder&quot;><div class=&quot;icon&quot;>▶</div><div class=&quot;title&quot;><em>${data.title}</em></div><div class=&quot;desc&quot;>REEL · ${data.letter} · ${data.duration}<br/><br/>${data.desc}<br/><br/>Video MP4 próximamente · disponible en Claude Design'+'</div></div>';"
+    ></video>`;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  // Update prev/next state
+  const idx = REEL_ORDER.indexOf(letter);
+  modalPrev.disabled = idx === 0;
+  modalNext.disabled = idx === REEL_ORDER.length - 1;
+}
+
+function closeReelModal() {
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  modalBody.innerHTML = '';
+  document.body.style.overflow = '';
+  currentReel = null;
+}
+
+function navigateReel(delta) {
+  const idx = REEL_ORDER.indexOf(currentReel);
+  const next = idx + delta;
+  if (next >= 0 && next < REEL_ORDER.length) openReelModal(REEL_ORDER[next]);
+}
+
+// Click reel cards
+document.querySelectorAll('.reel-card').forEach(btn => {
+  btn.addEventListener('click', () => openReelModal(btn.dataset.reel));
+});
+
+// Close handlers
+modalClose.addEventListener('click', closeReelModal);
+modal.addEventListener('click', (e) => { if (e.target === modal) closeReelModal(); });
+modalPrev.addEventListener('click', () => navigateReel(-1));
+modalNext.addEventListener('click', () => navigateReel(1));
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (!modal.classList.contains('open')) return;
+  if (e.key === 'Escape') closeReelModal();
+  else if (e.key === 'ArrowLeft') navigateReel(-1);
+  else if (e.key === 'ArrowRight') navigateReel(1);
+});
+
+/* ============================
+   STATEMENT SCROLL OPACITY
+   ============================ */
+const statementSection = document.getElementById('statement');
+const statementInner = statementSection?.querySelector('.statement-inner');
+if (statementInner) {
+  window.addEventListener('scroll', () => {
+    const rect = statementSection.getBoundingClientRect();
+    const progress = Math.max(0, Math.min(1, -rect.top / (rect.height - window.innerHeight)));
+    statementInner.style.opacity = 1 - Math.abs(progress - 0.5) * 1.4;
+  }, { passive: true });
+}
+</script>
+</body>
+</html>
