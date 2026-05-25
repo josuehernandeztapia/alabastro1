@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alabastro 1 — Predio shovel-ready · Milenio III, Querétaro</title>
+<meta name="description" content="Terreno 447 m² con uso de suelo H3 en Milenio III, Querétaro. Paquete documental completo. Para Torre Médica Boutique o 3 Residencias Verticales de Lujo. Venta directa con propietario · $3,577,760 MXN." />
+<meta property="og:title" content="Alabastro 1 — Milenio III, Querétaro" />
+<meta property="og:description" content="447 m² con dictamen H3 y paquete completo de trámites. Dos rutas: Torre Médica o Residencias Verticales de Lujo." />
+<meta property="og:type" content="website" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #070E27; }
+  body {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #F5F1E8;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: #C9A961; color: #0F1E47; }
+  /* smooth anchor scroll */
+  html { scroll-behavior: smooth; }
+  /* Hide scrollbars on the embedded Stage components */
+  section [style*="position: absolute"] { box-sizing: border-box; }
+  /* Buttons reset */
+  button { font-family: inherit; }
+  /* Loader */
+  #boot {
+    position: fixed; inset: 0; z-index: 9999;
+    background: #070E27;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 600ms ease;
+  }
+  #boot.hidden { opacity: 0; pointer-events: none; }
+  #boot .b {
+    text-align: center;
+    color: #C9A961;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.4em;
+    font-size: 13px;
+  }
+  #boot .b .one {
+    font-family: Georgia, serif; font-style: italic;
+    font-size: 64px; color: #C9A961;
+    letter-spacing: 0;
+    display: block; margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div id="boot">
+  <div class="b">
+    ALABASTRO
+    <span class="one">1.</span>
+  </div>
+</div>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- Animation runtime + shared brand helpers -->
+<script type="text/babel" src="animations.jsx"></script>
+<script type="text/babel" src="shared.jsx"></script>
+
+<!-- Reels (used in S8 gallery, embedded live) -->
+<script type="text/babel" src="reel-a.jsx"></script>
+<script type="text/babel" src="reel-b.jsx"></script>
+<script type="text/babel" src="reel-c.jsx"></script>
+<script type="text/babel" src="reel-d.jsx"></script>
+<script type="text/babel" src="reel-e.jsx"></script>
+<script type="text/babel" src="reel-f.jsx"></script>
+
+<!-- Landing sections -->
+<script type="text/babel" src="landing-app.jsx"></script>
+<script type="text/babel" src="landing-content.jsx"></script>
+<script type="text/babel" src="landing-poligono.jsx"></script>
+<script type="text/babel" src="landing-recorrido.jsx"></script>
+<script type="text/babel" src="landing-rutas.jsx"></script>
+<script type="text/babel" src="landing-expediente.jsx"></script>
+<script type="text/babel" src="landing-planos.jsx"></script>
+<script type="text/babel" src="landing-interludes.jsx"></script>
+<script type="text/babel" src="landing-tail.jsx"></script>
+
+<!-- Root mount -->
+<script type="text/babel" src="landing-main.jsx"></script>
+
+<script>
+  // Hide the boot splash once Babel has had time to compile + mount
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const b = document.getElementById('boot');
+      if (b) b.classList.add('hidden');
+      setTimeout(() => b && b.remove(), 700);
+    }, 1200);
+  });
+</script>
+</body>
+</html>

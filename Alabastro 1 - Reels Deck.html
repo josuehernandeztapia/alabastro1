@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Alabastro 1 — Reels Hero · Deck</title>
+<style>
+:root {
+  --navy: #0F1E47;
+  --navy2: #1E3164;
+  --ink:  #070E27;
+  --ice:  #CADCFC;
+  --gold: #C9A961;
+  --goldDk: #A8884A;
+  --cream:  #F5F1E8;
+  --teal:   #14B8A6;
+  --paper:  #FFFFFF;
+
+  --type-eyebrow: 22px;
+  --type-title:   84px;
+  --type-h2:      54px;
+  --type-body:    26px;
+  --type-small:   22px;
+  --type-scene:   22px;
+  --type-mono:    20px;
+
+  --pad-x: 90px;
+  --pad-top: 80px;
+  --pad-bottom: 70px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #1a1a1a; overflow: hidden; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: var(--cream); }
+
+deck-stage {
+  position: fixed; inset: 0;
+}
+
+deck-stage > section {
+  background: var(--navy);
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+/* common */
+.serif { font-family: Georgia, 'Times New Roman', serif; }
+.mono  { font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace; }
+
+.eyebrow {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: var(--type-eyebrow);
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.frame {
+  position: absolute;
+  inset: 50px;
+  border: 1px solid rgba(201,169,97,0.3);
+  pointer-events: none;
+}
+.brand {
+  position: absolute; top: 70px; left: 90px;
+  display: flex; align-items: center; gap: 16px;
+  font-weight: 800; letter-spacing: 0.4em; font-size: 16px;
+  color: var(--cream);
+}
+.brand .dot {
+  width: 12px; height: 12px; border-radius: 50%; background: var(--gold);
+}
+.page-num {
+  position: absolute; top: 78px; right: 90px;
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 16px; color: var(--gold);
+  letter-spacing: 0.32em;
+}
+.footer-rule {
+  position: absolute; left: 90px; right: 90px; bottom: 60px;
+  border-top: 1px solid rgba(201,169,97,0.25);
+  padding-top: 14px;
+  display: flex; justify-content: space-between;
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 16px;
+  color: rgba(201,169,97,0.7);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* COVER */
+.cover-inner {
+  position: absolute; left: var(--pad-x); right: var(--pad-x); top: var(--pad-top); bottom: var(--pad-bottom);
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.cover h1 {
+  font-family: Georgia, serif;
+  font-size: 200px;
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  color: var(--cream);
+}
+.cover h1 em {
+  color: var(--gold); font-style: italic;
+}
+.cover .lede {
+  font-family: Georgia, serif; font-style: italic;
+  font-size: 38px; line-height: 1.35;
+  color: var(--ice);
+  max-width: 1300px;
+  margin-top: 40px;
+}
+.cover .meta {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px;
+  font-size: 22px; line-height: 1.5;
+  color: var(--ice);
+}
+.cover .meta .label {
+  font-weight: 800; letter-spacing: 0.35em; font-size: 14px;
+  color: var(--gold); margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+/* INDEX */
+.index-grid {
+  position: absolute;
+  left: var(--pad-x); right: var(--pad-x); top: 240px; bottom: 130px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px;
+}
+.index-card {
+  border: 1px solid rgba(201,169,97,0.25);
+  padding: 36px 36px;
+  display: flex; flex-direction: column;
+  background: rgba(255,255,255,0.025);
+}
+.index-card .id {
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 18px; color: var(--gold);
+  letter-spacing: 0.3em;
+}
+.index-card .title {
+  font-family: Georgia, serif;
+  font-size: 44px; line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  margin: 18px 0 14px;
+}
+.index-card .title em { color: var(--gold); font-style: italic; }
+.index-card .desc {
+  font-size: 19px; line-height: 1.5;
+  color: rgba(202,220,252,0.85);
+  flex: 1;
+}
+.index-card .duration {
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 16px; color: var(--gold);
+  letter-spacing: 0.28em;
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(201,169,97,0.18);
+}
+
+/* REEL PAGE */
+.reel {
+  position: absolute;
+  left: var(--pad-x); right: var(--pad-x);
+  top: 160px; bottom: 120px;
+  display: flex; flex-direction: column;
+}
+.reel-id {
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 22px; color: var(--gold);
+  letter-spacing: 0.35em;
+}
+.reel-title {
+  font-family: Georgia, serif;
+  font-size: 96px; line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  margin-top: 10px;
+}
+.reel-title em { color: var(--gold); font-style: italic; }
+.reel-sub {
+  font-family: Georgia, serif; font-style: italic;
+  font-size: 28px; line-height: 1.45;
+  color: var(--ice);
+  margin-top: 22px;
+  max-width: 1500px;
+}
+.scene-row {
+  flex: 1;
+  display: grid;
+  gap: 28px;
+  margin-top: 56px;
+  align-items: stretch;
+}
+.scene-row.n6 { grid-template-columns: repeat(6, 1fr); }
+.scene-row.n5 { grid-template-columns: repeat(5, 1fr); max-width: 1640px; }
+.scene-row.n4 { grid-template-columns: repeat(4, 1fr); max-width: 1380px; }
+.scene-row.n7 { grid-template-columns: repeat(7, 1fr); gap: 18px; }
+.scene {
+  display: flex; flex-direction: column;
+}
+.scene .thumb {
+  aspect-ratio: 9 / 16;
+  width: 100%;
+  background: var(--ink);
+  overflow: hidden;
+  border: 1px solid rgba(201,169,97,0.2);
+  margin-bottom: 14px;
+}
+.scene .thumb img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.scene .ts {
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 15px; color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 4px;
+}
+.scene .lbl {
+  font-family: Georgia, serif;
+  font-size: 21px; line-height: 1.2;
+  color: var(--cream);
+}
+
+/* OUTRO */
+.outro {
+  position: absolute;
+  left: var(--pad-x); right: var(--pad-x);
+  top: 160px; bottom: 120px;
+}
+.outro h2 {
+  font-family: Georgia, serif;
+  font-size: 90px; line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+}
+.outro h2 em { color: var(--gold); font-style: italic; }
+.outro-grid {
+  margin-top: 60px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+}
+.outro-block .label {
+  font-family: Helvetica, Arial, sans-serif; font-weight: 800;
+  font-size: 18px; color: var(--gold);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.outro-block h3 {
+  font-family: Georgia, serif; font-size: 36px;
+  margin-bottom: 14px;
+}
+.outro-block p {
+  font-size: 22px; line-height: 1.55;
+  color: var(--ice);
+  margin-bottom: 22px;
+  max-width: 720px;
+}
+.outro-block .palette {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  margin-top: 14px;
+}
+.outro-block .palette .swatch {
+  aspect-ratio: 1 / 1;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 16px;
+}
+.outro-block .palette .swatch .h {
+  font-weight: 800; letter-spacing: 0.18em; font-size: 18px;
+  text-transform: uppercase;
+}
+.outro-block .palette .swatch .hex {
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 14px; opacity: 0.85;
+  margin-top: 4px;
+}
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+<!-- 01 COVER -->
+<section data-label="01 Cover">
+  <div class="frame"></div>
+  <div class="cover-inner">
+    <div>
+      <div class="brand"><span class="dot"></span>ALABASTRO 1</div>
+      <div class="eyebrow" style="margin-top: 28px;">Reels Hero · 6 variaciones · 9:16</div>
+    </div>
+    <div>
+      <h1>Reels Hero,<br/>seis <em>aproximaciones.</em></h1>
+      <p class="lede">
+        Storyboard de seis reels verticales (20–22 s) para el video hero del listing —
+        cada uno con un ángulo distinto sobre la misma historia: una propiedad shovel-ready
+        en Milenio III, dos rutas de inversión, paquete completo de trámites.
+      </p>
+    </div>
+    <div class="meta">
+      <div>
+        <div class="label">Proyecto</div>
+        Alabastro 1 · 447 m² · Milenio III, Querétaro
+      </div>
+      <div>
+        <div class="label">Formato</div>
+        1080 × 1920 vertical · 20–22 s · ES-MX
+      </div>
+      <div>
+        <div class="label">Distribución</div>
+        Reels · WhatsApp · LinkedIn · landing
+      </div>
+      <div>
+        <div class="label">Versión</div>
+        Mayo 2026 · v1.0
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 INDEX -->
+<section data-label="02 Índice">
+  <div class="frame"></div>
+  <div class="brand"><span class="dot"></span>ALABASTRO 1</div>
+  <div class="page-num">02 / 09</div>
+
+  <div style="position: absolute; left: 90px; top: 150px; right: 90px;">
+    <div class="eyebrow">Las seis variaciones</div>
+    <h2 class="serif" style="font-size: 90px; line-height: 0.95; margin-top: 22px; color: var(--cream); letter-spacing: -0.02em;">
+      Mismo predio,<br/><em style="color: var(--gold); font-style: italic;">seis ángulos.</em>
+    </h2>
+  </div>
+
+  <div class="index-grid">
+    <div class="index-card">
+      <div class="id">REEL · A · 22 s</div>
+      <div class="title">Dos <em>Rutas</em></div>
+      <div class="desc">Split-screen con duelo de números. Tono editorial y decisivo.</div>
+      <div class="duration">6 ESCENAS · ES</div>
+    </div>
+    <div class="index-card">
+      <div class="id">REEL · B · 20 s</div>
+      <div class="title">Datos en <em>Movimiento</em></div>
+      <div class="desc">Kinetic typography institucional. Tabla comparativa de precio vs. mercado.</div>
+      <div class="duration">6 ESCENAS · ES</div>
+    </div>
+    <div class="index-card">
+      <div class="id">REEL · C · 22 s</div>
+      <div class="title">Mapa <em>Cinemático</em></div>
+      <div class="desc">Ubicación-first. Pin pulsante y líneas hacia el corredor médico.</div>
+      <div class="duration">5 ESCENAS · ES</div>
+    </div>
+    <div class="index-card">
+      <div class="id">REEL · D · 20 s</div>
+      <div class="title"><em>Isotipo</em></div>
+      <div class="desc">Brand-first. La barra dorada del logo conduce todas las transiciones.</div>
+      <div class="duration">6 ESCENAS · ES</div>
+    </div>
+    <div class="index-card">
+      <div class="id">REEL · E · 22 s</div>
+      <div class="title">Hoy / <em>Mañana</em></div>
+      <div class="desc">Photo essay editorial. Fotos reales + esquemático del proyecto.</div>
+      <div class="duration">7 ESCENAS · ES</div>
+    </div>
+    <div class="index-card">
+      <div class="id">REEL · F · 22 s</div>
+      <div class="title">El <em>Expediente</em></div>
+      <div class="desc">Documentos físicos sellándose y apilándose. Proof-driven.</div>
+      <div class="duration">4 ESCENAS · ES</div>
+    </div>
+  </div>
+
+  <div class="footer-rule">
+    <div>ALABASTRO 1 · STORYBOARD DE REELS</div>
+    <div>v1.0</div>
+  </div>
+</section>
+
+<!-- 03 REEL A -->
+<section data-label="03 Reel A · Dos Rutas">
+  <div class="frame"></div>
+  <div class="brand"><span class="dot"></span>ALABASTRO 1</div>
+  <div class="page-num">03 / 09</div>
+
+  <div class="reel">
+    <div class="reel-id">REEL · A · 22 s · 6 escenas</div>
+    <div class="reel-title">Dos <em>Rutas.</em></div>
+    <div class="reel-sub">
+      Split-screen con duelo de números. Para audiencias que ya conocen el predio
+      y quieren entender el contraste entre las dos rutas.
+    </div>
+
+    <div class="scene-row n6">
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/A_01_titulo.png" alt=""/></div>
+        <div class="ts">00 · 0:00 → 0:04</div>
+        <div class="lbl">Apertura de marca</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/A_02_predio_kpis.png" alt=""/></div>
+        <div class="ts">01 · 0:04 → 0:07.5</div>
+        <div class="lbl">Foto del predio · 447 m²</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/A_03_split_dos_rutas.png" alt=""/></div>
+        <div class="ts">02 · 0:07.5 → 0:11</div>
+        <div class="lbl">Split reveal · dos tracks</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/A_04_numeros_faceoff.png" alt=""/></div>
+        <div class="ts">03 · 0:11 → 0:15</div>
+        <div class="lbl">Cifras en duelo</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/A_05_una_propiedad.png" alt=""/></div>
+        <div class="ts">04 · 0:15 → 0:18.5</div>
+        <div class="lbl">Statement central</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/A_06_precio_cta.png" alt=""/></div>
+        <div class="ts">05 · 0:18.5 → 0:22</div>
+        <div class="lbl">Precio + CTA</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-rule">
+    <div>REEL A · DOS RUTAS</div>
+    <div>22 SEGUNDOS</div>
+  </div>
+</section>
+
+<!-- 04 REEL B -->
+<section data-label="04 Reel B · Datos en Movimiento">
+  <div class="frame"></div>
+  <div class="brand"><span class="dot"></span>ALABASTRO 1</div>
+  <div class="page-num">04 / 09</div>
+
+  <div class="reel">
+    <div class="reel-id">REEL · B · 20 s · 6 escenas</div>
+    <div class="reel-title">Datos en <em>Movimiento.</em></div>
+    <div class="reel-sub">
+      Kinetic typography institucional. Para audiencias que viven en hojas de cálculo:
+      comparables, tabla de mercado, métricas.
+    </div>
+
+    <div class="scene-row n6">
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/B_01_447m2.png" alt=""/></div>
+        <div class="ts">00 · 0:00 → 0:03.5</div>
+        <div class="lbl">447 m² gigante</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/B_02_paquete_completo.png" alt=""/></div>
+        <div class="ts">01 · 0:03.5 → 0:07.5</div>
+        <div class="lbl">Paquete completo · 6 categorías</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/B_03_4_n_oficiales.png" alt=""/></div>
+        <div class="ts">02 · 0:07.5 → 0:11.5</div>
+        <div class="lbl">Cuatro Números Oficiales</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/B_04_precio_vs_mercado.png" alt=""/></div>
+        <div class="ts">03 · 0:11.5 → 0:15.5</div>
+        <div class="lbl">Precio vs. mercado</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/B_05_dos_tesis.png" alt=""/></div>
+        <div class="ts">04 · 0:15.5 → 0:18</div>
+        <div class="lbl">Dos tesis · pills</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/B_06_cta.png" alt=""/></div>
+        <div class="ts">05 · 0:18 → 0:20</div>
+        <div class="lbl">Cierre + URL</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-rule">
+    <div>REEL B · DATOS EN MOVIMIENTO</div>
+    <div>20 SEGUNDOS</div>
+  </div>
+</section>
+
+<!-- 05 REEL C -->
+<section data-label="05 Reel C · Mapa Cinemático">
+  <div class="frame"></div>
+  <div class="brand"><span class="dot"></span>ALABASTRO 1</div>
+  <div class="page-num">05 / 09</div>
+
+  <div class="reel">
+    <div class="reel-id">REEL · C · 22 s · 5 escenas</div>
+    <div class="reel-title">Mapa <em>Cinemático.</em></div>
+    <div class="reel-sub">
+      Ubicación primero. Mapa estilizado de Milenio III con pin pulsante y líneas
+      doradas hacia los landmarks del corredor médico.
+    </div>
+
+    <div class="scene-row n5">
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/C_01_aqui.png" alt=""/></div>
+        <div class="ts">00 · 0:00 → 0:04</div>
+        <div class="lbl">"Aquí" · mapa abierto</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/C_02_corredor_medico.png" alt=""/></div>
+        <div class="ts">01 · 0:04 → 0:09.5</div>
+        <div class="lbl">Corredor médico</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/C_03_predio_447.png" alt=""/></div>
+        <div class="ts">02 · 0:09.5 → 0:13.5</div>
+        <div class="lbl">Foto del predio + stats</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/C_04_dos_rutas.png" alt=""/></div>
+        <div class="ts">03 · 0:13.5 → 0:17.5</div>
+        <div class="lbl">Dos rutas · cards</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/C_05_cta.png" alt=""/></div>
+        <div class="ts">04 · 0:17.5 → 0:22</div>
+        <div class="lbl">Cierre con eco de mapa</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-rule">
+    <div>REEL C · MAPA CINEMÁTICO</div>
+    <div>22 SEGUNDOS</div>
+  </div>
+</section>
+
+<!-- 06 REEL D -->
+<section data-label="06 Reel D · Isotipo">
+  <div class="frame"></div>
+  <div class="brand"><span class="dot"></span>ALABASTRO 1</div>
+  <div class="page-num">06 / 09</div>
+
+  <div class="reel">
+    <div class="reel-id">REEL · D · 20 s · 6 escenas</div>
+    <div class="reel-title"><em>Isotipo.</em></div>
+    <div class="reel-sub">
+      Brand-first y abstracto. La barra dorada que cruza la A del logo es el motor
+      visual: se extrae del isotipo y conduce todas las transiciones.
+    </div>
+
+    <div class="scene-row n6">
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/D_01_isotipo.png" alt=""/></div>
+        <div class="ts">00 · 0:00 → 0:03.5</div>
+        <div class="lbl">Isotipo se materializa</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/D_02_bar_divider.png" alt=""/></div>
+        <div class="ts">01 · 0:03.5 → 0:07</div>
+        <div class="lbl">Barra desciende · 447 m²</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/D_03_bar_vertical.png" alt=""/></div>
+        <div class="ts">02 · 0:07 → 0:10.5</div>
+        <div class="lbl">Barra vertical · tracks</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/D_04_cascade_numeros.png" alt=""/></div>
+        <div class="ts">03 · 0:10.5 → 0:13.5</div>
+        <div class="lbl">Flash + cascada</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/D_05_reensamble.png" alt=""/></div>
+        <div class="ts">04 · 0:13.5 → 0:17</div>
+        <div class="lbl">La A se reensambla</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/D_06_precio.png" alt=""/></div>
+        <div class="ts">05 · 0:17 → 0:20</div>
+        <div class="lbl">Precio + URL</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-rule">
+    <div>REEL D · ISOTIPO</div>
+    <div>20 SEGUNDOS</div>
+  </div>
+</section>
+
+<!-- 07 REEL E -->
+<section data-label="07 Reel E · Hoy / Mañana">
+  <div class="frame"></div>
+  <div class="brand"><span class="dot"></span>ALABASTRO 1</div>
+  <div class="page-num">07 / 09</div>
+
+  <div class="reel">
+    <div class="reel-id">REEL · E · 22 s · 7 escenas</div>
+    <div class="reel-title">Hoy / <em>Mañana.</em></div>
+    <div class="reel-sub">
+      Photo essay editorial en dos capítulos. Capítulo 01: el predio que existe hoy
+      (3 fotos reales). Capítulo 02: el edificio que puede construirse.
+    </div>
+
+    <div class="scene-row n7">
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/E_01_hoy.png" alt=""/></div>
+        <div class="ts">00 · 0:00 → 0:03</div>
+        <div class="lbl">"Hoy." · Cap. 01</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/E_02_predio_interior.png" alt=""/></div>
+        <div class="ts">01 · 0:03 → 0:06.3</div>
+        <div class="lbl">Vista interior</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/E_03_pendiente_NNO.png" alt=""/></div>
+        <div class="ts">02 · 0:06.3 → 0:09.4</div>
+        <div class="lbl">Pendiente · N/NO</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/E_04_microubicacion.png" alt=""/></div>
+        <div class="ts">03 · 0:09.4 → 0:12.5</div>
+        <div class="lbl">Microubicación</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/E_05_manana.png" alt=""/></div>
+        <div class="ts">04 · 0:12.5 → 0:15</div>
+        <div class="lbl">Flash · "Mañana."</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/E_06_anteproyecto.png" alt=""/></div>
+        <div class="ts">05 · 0:15 → 0:19</div>
+        <div class="lbl">Esquemático</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/E_07_cta.png" alt=""/></div>
+        <div class="ts">06 · 0:19 → 0:22</div>
+        <div class="lbl">Sign-off</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-rule">
+    <div>REEL E · HOY / MAÑANA</div>
+    <div>22 SEGUNDOS</div>
+  </div>
+</section>
+
+<!-- 08 REEL F -->
+<section data-label="08 Reel F · El Expediente">
+  <div class="frame"></div>
+  <div class="brand"><span class="dot"></span>ALABASTRO 1</div>
+  <div class="page-num">08 / 09</div>
+
+  <div class="reel">
+    <div class="reel-id">REEL · F · 22 s · 4 escenas</div>
+    <div class="reel-title">El <em>Expediente.</em></div>
+    <div class="reel-sub">
+      Documentos físicos como protagonistas. Cada trámite se materializa como tarjeta
+      con sello dorado, agrupados en 6 categorías. Proof-driven, institucional.
+    </div>
+
+    <div class="scene-row n4">
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/F_01_expediente.png" alt=""/></div>
+        <div class="ts">00 · 0:00 → 0:03</div>
+        <div class="lbl">"El Expediente"</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/F_02_stack_paquete.png" alt=""/></div>
+        <div class="ts">01 · 0:03 → 0:15.5</div>
+        <div class="lbl">Sellos · stack · 6 cats</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/F_03_pendientes.png" alt=""/></div>
+        <div class="ts">02 · 0:15.5 → 0:18.5</div>
+        <div class="lbl">Pendientes para obra</div>
+      </div>
+      <div class="scene">
+        <div class="thumb"><img src="frames-small/F_04_cta.png" alt=""/></div>
+        <div class="ts">03 · 0:18.5 → 0:22</div>
+        <div class="lbl">Sign-off institucional</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-rule">
+    <div>REEL F · EL EXPEDIENTE</div>
+    <div>22 SEGUNDOS</div>
+  </div>
+</section>
+
+<!-- 09 OUTRO -->
+<section data-label="09 Producción + paleta">
+  <div class="frame"></div>
+  <div class="brand"><span class="dot"></span>ALABASTRO 1</div>
+  <div class="page-num">09 / 09</div>
+
+  <div class="outro">
+    <div class="eyebrow">Notas de producción</div>
+    <h2 style="margin-top: 22px;">Producción <em>recomendada.</em></h2>
+
+    <div class="outro-grid">
+      <div class="outro-block">
+        <div class="label">Stack sugerido</div>
+        <h3>DIY con stack AI · $80–200 USD</h3>
+        <p>
+          Veo 3.1 para aerials cinemáticos · Runway Gen-4.5 para image-to-video ·
+          ElevenLabs (voz Diego, español-MX) · Epidemic Sound para track épico-corporativo.
+          8–12 hrs propias. Permite iterar variantes baratas.
+        </p>
+        <h3 style="margin-top: 20px;">Editor freelance · $300–800 USD</h3>
+        <p>
+          Mejor consistencia y post. Fiverr / Upwork con experiencia en motion-design + AI.
+          3–5 días de entrega.
+        </p>
+      </div>
+
+      <div class="outro-block">
+        <div class="label">Versiones a entregar</div>
+        <h3>9:16 vertical &nbsp; · &nbsp; 16:9 landscape &nbsp; · &nbsp; 1:1 cuadrado</h3>
+        <p>
+          Vertical para Reels/Stories/TikTok/WhatsApp. Landscape para landing hero,
+          YouTube, LinkedIn. Cuadrado para feed (versión corta ~15 s).
+        </p>
+
+        <div class="label" style="margin-top: 36px;">Paleta de marca · v1.0</div>
+        <div class="palette">
+          <div class="swatch" style="background: #0F1E47; color: #F5F1E8;">
+            <div class="h">Navy</div>
+            <div class="hex">#0F1E47</div>
+          </div>
+          <div class="swatch" style="background: #C9A961; color: #0F1E47;">
+            <div class="h">Gold</div>
+            <div class="hex">#C9A961</div>
+          </div>
+          <div class="swatch" style="background: #F5F1E8; color: #0F1E47;">
+            <div class="h">Ivory</div>
+            <div class="hex">#F5F1E8</div>
+          </div>
+          <div class="swatch" style="background: #14B8A6; color: #0F1E47;">
+            <div class="h">Teal (A)</div>
+            <div class="hex">#14B8A6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-rule">
+    <div>ALABASTRO 1 · STORYBOARD DE REELS</div>
+    <div>v1.0 · MAYO 2026</div>
+  </div>
+</section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+</body>
+</html>

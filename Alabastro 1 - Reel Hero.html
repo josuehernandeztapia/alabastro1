@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alabastro 1 — Reel Hero · 3 variaciones</title>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #070E27; overflow: hidden; }
+  body { font-family: Helvetica, Arial, sans-serif; }
+  #root { position: fixed; inset: 0; }
+  /* Hide button defaults */
+  button { font: inherit; color: inherit; }
+  button:focus { outline: 2px solid rgba(201,169,97,0.5); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<template id="__bundler_thumbnail" data-bg-color="#0F1E47">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect x="20" y="20" width="1160" height="760" fill="none" stroke="#C9A961" stroke-width="2" stroke-opacity="0.4"/>
+    <circle cx="120" cy="100" r="10" fill="#C9A961"/>
+    <text x="150" y="106" font-family="Helvetica, Arial, sans-serif" font-weight="800" font-size="22" letter-spacing="8" fill="#F5F1E8">ALABASTRO 1</text>
+    <text x="600" y="420" text-anchor="middle" font-family="Georgia, serif" font-size="180" fill="#F5F1E8">Alabastro</text>
+    <text x="600" y="580" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="200" fill="#C9A961">1</text>
+    <text x="600" y="700" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" letter-spacing="10" fill="#CADCFC">REELS HERO · 6 VARIACIONES</text>
+  </svg>
+</template>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="animations.jsx"></script>
+<script type="text/babel" src="shared.jsx"></script>
+<script type="text/babel" src="reel-a.jsx"></script>
+<script type="text/babel" src="reel-b.jsx"></script>
+<script type="text/babel" src="reel-c.jsx"></script>
+<script type="text/babel" src="reel-d.jsx"></script>
+<script type="text/babel" src="reel-e.jsx"></script>
+<script type="text/babel" src="reel-f.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+</body>
+</html>

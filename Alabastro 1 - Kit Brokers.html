@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Alabastro 1 — Kit para Brokers</title>
+<style>
+:root {
+  --navy: #0F1E47;
+  --navy2: #1E3164;
+  --ink:  #070E27;
+  --ivory:#F5F1E8;
+  --paper:#FBF8F1;
+  --ice:  #CADCFC;
+  --gold: #C9A961;
+  --goldDk:#A8884A;
+  --rule: rgba(15,30,71,0.12);
+  --teal: #14B8A6;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--ivory); color: var(--navy); }
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--gold); color: var(--ink); }
+.serif { font-family: Georgia, 'Times New Roman', serif; }
+.mono { font-family: 'JetBrains Mono', Menlo, Consolas, monospace; }
+
+/* HEADER */
+header.brand-bar {
+  background: var(--ink); color: var(--ivory);
+  padding: 28px 56px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+header.brand-bar .brand {
+  display: flex; align-items: center; gap: 14px;
+  font-weight: 800; letter-spacing: 0.4em; font-size: 13px;
+}
+header.brand-bar .brand .dot {
+  width: 10px; height: 10px; border-radius: 50%; background: var(--gold);
+}
+header.brand-bar .kit-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.32em; color: var(--gold);
+  text-transform: uppercase;
+}
+
+/* HERO */
+.hero {
+  padding: 80px 56px 60px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+.hero .eyebrow {
+  font-weight: 800; color: var(--gold);
+  font-size: 12px; letter-spacing: 0.45em; text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.hero h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(48px, 6vw, 96px);
+  line-height: 1.0; letter-spacing: -0.025em;
+  max-width: 1100px;
+  font-weight: 400;
+}
+.hero h1 em { color: var(--gold); font-style: italic; }
+.hero .lede {
+  font-family: Georgia, serif; font-style: italic;
+  margin-top: 28px;
+  font-size: 22px; line-height: 1.5;
+  color: rgba(15,30,71,0.75);
+  max-width: 880px;
+}
+.hero .meta {
+  margin-top: 48px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  border-top: 1px solid var(--rule);
+  padding-top: 36px;
+}
+.hero .meta div .label {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 800; font-size: 11px; color: var(--gold);
+  letter-spacing: 0.35em; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.hero .meta div .v {
+  font-family: Georgia, serif; font-size: 28px; letter-spacing: -0.01em;
+  color: var(--navy);
+}
+
+/* SECTION GENERIC */
+section.kit {
+  padding: 80px 56px;
+  border-bottom: 1px solid var(--rule);
+}
+section.kit .head {
+  display: grid; grid-template-columns: 1fr 1.6fr;
+  gap: 60px; align-items: end;
+  margin-bottom: 48px;
+}
+section.kit .head .num {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--gold); font-size: 12px; letter-spacing: 0.4em;
+  margin-bottom: 16px;
+}
+section.kit .head h2 {
+  font-family: Georgia, serif; font-weight: 400;
+  font-size: clamp(36px, 4.5vw, 64px);
+  line-height: 1.0; letter-spacing: -0.02em;
+}
+section.kit .head h2 em { color: var(--gold); font-style: italic; }
+section.kit .head .lede {
+  font-family: Georgia, serif; font-style: italic;
+  font-size: 18px; line-height: 1.5;
+  color: rgba(15,30,71,0.7);
+  max-width: 640px;
+}
+
+/* TEMPLATE CARDS */
+.tpl-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.tpl {
+  background: #FFFFFF;
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--navy);
+  padding: 28px 28px 24px;
+  display: flex; flex-direction: column;
+  transition: all 240ms;
+  position: relative;
+}
+.tpl:hover {
+  border-top-color: var(--gold);
+  box-shadow: 0 20px 40px rgba(15,30,71,0.10);
+}
+.tpl .label-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--gold); letter-spacing: 0.22em;
+}
+.tpl .h {
+  margin-top: 18px;
+  font-family: Georgia, serif; font-size: 26px; line-height: 1.2;
+  color: var(--navy); letter-spacing: -0.01em;
+}
+.tpl .sub {
+  margin-top: 6px;
+  font-family: Helvetica, Arial, sans-serif; font-size: 13px;
+  color: rgba(15,30,71,0.55); letter-spacing: 0.04em;
+}
+.tpl .msg {
+  margin-top: 22px;
+  padding: 20px 22px;
+  background: #F0EDE4;
+  border-left: 2px solid var(--gold);
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 14px; line-height: 1.65;
+  color: var(--navy);
+  white-space: pre-wrap;
+  flex: 1;
+}
+.tpl .msg .ph {
+  background: rgba(201,169,97,0.22);
+  padding: 1px 6px; border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--goldDk);
+}
+.tpl .actions {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase;
+}
+.tpl button.copy {
+  background: transparent; border: none; cursor: pointer;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  color: var(--gold); letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 0; transition: all 220ms;
+}
+.tpl button.copy:hover { color: var(--navy); }
+.tpl button.copy.copied { color: var(--teal); }
+.tpl .count {
+  color: rgba(15,30,71,0.45);
+}
+
+/* SOCIAL CARDS / VISUAL ASSETS */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+.shareable {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--ink);
+  cursor: pointer;
+  transition: transform 240ms;
+}
+.shareable:hover { transform: translateY(-4px); }
+.shareable img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.shareable .label {
+  position: absolute; left: 14px; bottom: 14px; right: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; color: var(--gold);
+  letter-spacing: 0.25em; text-transform: uppercase;
+}
+.shareable .dl {
+  position: absolute; top: 12px; right: 12px;
+  background: rgba(7,14,39,0.7);
+  border: 1px solid rgba(201,169,97,0.5);
+  color: var(--gold);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em;
+  padding: 6px 10px; text-decoration: none;
+  backdrop-filter: blur(4px);
+}
+
+/* ONE-PAGER PREVIEW */
+.onepager-wrap {
+  display: grid; grid-template-columns: 1.4fr 1fr;
+  gap: 48px;
+  align-items: flex-start;
+}
+.onepager {
+  aspect-ratio: 210 / 297;
+  background: #FFFFFF;
+  border: 1px solid var(--rule);
+  box-shadow: 0 30px 60px rgba(15,30,71,0.12);
+  padding: 8% 8%;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  display: flex; flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.onepager .gold-frame {
+  position: absolute; inset: 4%;
+  border: 1px solid rgba(201,169,97,0.4);
+  pointer-events: none;
+}
+.onepager .inner { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; }
+.onepager .brand-row {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 800; letter-spacing: 0.4em; font-size: 10px;
+  color: var(--navy);
+}
+.onepager .brand-row .dot {
+  width: 7px; height: 7px; background: var(--gold); border-radius: 50%;
+}
+.onepager h2 {
+  margin-top: auto;
+  font-family: Georgia, serif; font-weight: 400;
+  font-size: 42px; line-height: 0.98;
+  letter-spacing: -0.025em;
+  color: var(--navy);
+}
+.onepager h2 em { color: var(--gold); font-style: italic; }
+.onepager .tagline {
+  margin-top: 14px;
+  font-family: Georgia, serif; font-style: italic;
+  font-size: 14px; color: rgba(15,30,71,0.7);
+  line-height: 1.45;
+}
+.onepager .kpis {
+  margin-top: 28px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.onepager .kpis div {
+  padding: 14px 10px 14px 0;
+  border-right: 1px solid var(--rule);
+}
+.onepager .kpis div:last-child { border-right: none; }
+.onepager .kpis .v {
+  font-family: Georgia, serif; font-size: 22px;
+  letter-spacing: -0.01em; color: var(--navy);
+  line-height: 1.0;
+}
+.onepager .kpis .l {
+  margin-top: 6px;
+  font-weight: 800; font-size: 8px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: rgba(15,30,71,0.55);
+}
+.onepager ul {
+  margin-top: 20px; padding-left: 0; list-style: none;
+}
+.onepager ul li {
+  display: flex; gap: 10px;
+  padding: 4px 0;
+  font-size: 11px; color: var(--navy);
+  line-height: 1.4;
+}
+.onepager ul li::before {
+  content: "✓"; color: var(--gold); font-weight: 700;
+}
+.onepager .footer {
+  margin-top: auto; padding-top: 20px;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  border-top: 1px solid var(--rule);
+}
+.onepager .footer .url {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--gold);
+  letter-spacing: 0.18em;
+}
+.onepager .footer .price {
+  font-family: Georgia, serif; font-size: 20px;
+  letter-spacing: -0.01em; color: var(--navy);
+}
+
+.onepager-cta {
+  padding: 28px 32px;
+  background: var(--navy); color: var(--ivory);
+}
+.onepager-cta h3 {
+  font-family: Georgia, serif; font-size: 28px; line-height: 1.05;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+}
+.onepager-cta h3 em { color: var(--gold); font-style: italic; }
+.onepager-cta p {
+  margin-top: 14px;
+  font-family: Georgia, serif; font-style: italic;
+  font-size: 15px; line-height: 1.55;
+  color: var(--ice);
+}
+.onepager-cta a.button {
+  margin-top: 22px; display: inline-block;
+  padding: 14px 24px;
+  background: var(--gold); color: var(--navy);
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 700; font-size: 11px;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  text-decoration: none; border-radius: 999px;
+}
+
+/* COMMERCIAL TERMS BLOCK */
+.terms {
+  margin: 56px 0 24px;
+  padding: 32px 36px;
+  background: var(--ivory);
+  border-left: 2px solid var(--gold);
+}
+.terms .h {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 800; font-size: 11px; color: var(--gold);
+  letter-spacing: 0.4em; text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.terms ul {
+  margin: 0; padding-left: 0; list-style: none;
+}
+.terms ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: 32px 1fr;
+  gap: 14px;
+  font-family: Georgia, serif; font-size: 16px;
+  line-height: 1.5;
+  color: var(--navy);
+}
+.terms ul li:last-child { border-bottom: none; }
+.terms ul li .n {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; color: var(--gold);
+  letter-spacing: 0.18em;
+  align-self: start;
+}
+
+/* FOOTER */
+footer.kit-foot {
+  background: var(--ink); color: rgba(245,241,232,0.6);
+  padding: 36px 56px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.18em;
+  display: flex; justify-content: space-between; align-items: center;
+}
+footer.kit-foot a {
+  color: var(--gold); text-decoration: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero, section.kit { padding-left: 32px; padding-right: 32px; }
+  .hero .meta { grid-template-columns: 1fr 1fr; }
+  section.kit .head { grid-template-columns: 1fr; gap: 24px; }
+  .tpl-grid { grid-template-columns: 1fr; }
+  .onepager-wrap { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="brand-bar">
+  <div class="brand"><span class="dot"></span> ALABASTRO 1</div>
+  <div class="kit-tag">Kit · Brokers · v1.0</div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Material confidencial · uso autorizado para brokers</div>
+  <h1>Kit para <em>brokers.</em></h1>
+  <p class="lede">
+    Todo lo que necesitas para presentar Alabastro 1 a tu cliente sin perder
+    el control del lead. Templates de WhatsApp listos para enviar, una hoja-resumen
+    institucional para descargar, y un set de imágenes para WhatsApp / Instagram /
+    LinkedIn. La landing pública sirve como dossier — el lead vive contigo.
+  </p>
+
+  <div class="meta">
+    <div>
+      <div class="label">Predio</div>
+      <div class="v">447 m² · H3</div>
+    </div>
+    <div>
+      <div class="label">Precio</div>
+      <div class="v">$3,577,760 MXN</div>
+    </div>
+    <div>
+      <div class="label">$ / m²</div>
+      <div class="v">$8,000</div>
+    </div>
+    <div>
+      <div class="label">Ubicación</div>
+      <div class="v">Milenio III · QRO</div>
+    </div>
+  </div>
+</section>
+
+<!-- 01 · WhatsApp Templates -->
+<section class="kit">
+  <div class="head">
+    <div>
+      <div class="num">I.</div>
+      <h2>Mensajes <em>para WhatsApp.</em></h2>
+    </div>
+    <div class="lede">
+      Tres plantillas según el momento del lead — copia, edita los espacios
+      <span class="mono" style="color:var(--gold)">[en corchetes]</span> con los datos
+      de tu cliente, pega en WhatsApp y envía.
+    </div>
+  </div>
+
+  <div class="tpl-grid">
+    <div class="tpl">
+      <div class="label-row">
+        <span>TPL · 01</span>
+        <span>FRÍO</span>
+      </div>
+      <div class="h">Primer contacto</div>
+      <div class="sub">Cliente que no ha visto el activo</div>
+      <div class="msg" id="tpl1">Hola <span class="ph">[nombre]</span>, te mando un terreno boutique que tengo en cartera:
+
+· 447 m² en Milenio III, Querétaro
+· Uso de suelo H3 — vivienda o consultorios
+· Paquete completo de trámites realizados
+· Precio $3,577,760 MXN ($8,000/m²)
+
+Funciona tanto para Torre Médica Boutique como 3 Residencias Verticales. Entras directo a proyecto ejecutivo, sin pelearte con trámites.
+
+Te dejo el dossier completo aquí:
+<span class="ph">[LINK LANDING]</span>
+
+Si te interesa, agendamos llamada.</div>
+      <div class="actions">
+        <button class="copy" data-target="tpl1">↗ Copiar</button>
+        <span class="count">~400 caracteres</span>
+      </div>
+    </div>
+
+    <div class="tpl">
+      <div class="label-row">
+        <span>TPL · 02</span>
+        <span>FOLLOW-UP</span>
+      </div>
+      <div class="h">Cliente interesado</div>
+      <div class="sub">Ya pidió más información</div>
+      <div class="msg" id="tpl2"><span class="ph">[nombre]</span>, te dejo aquí el dossier institucional completo de Alabastro 1:
+
+<span class="ph">[LINK LANDING]</span>
+
+Incluye:
+· Mapa de microubicación con corredor médico
+· Anteproyecto arquitectónico (5 láminas)
+· Expediente de trámites realizados
+· Estudio de mercado vs comparables Milenio III
+· Pro-forma residencial y médica
+· Polígono con colindancias
+
+Cualquier pregunta, te leo por aquí.</div>
+      <div class="actions">
+        <button class="copy" data-target="tpl2">↗ Copiar</button>
+        <span class="count">~350 caracteres</span>
+      </div>
+    </div>
+
+    <div class="tpl">
+      <div class="label-row">
+        <span>TPL · 03</span>
+        <span>NDA / VISITA</span>
+      </div>
+      <div class="h">Cliente serio</div>
+      <div class="sub">Listo para due diligence</div>
+      <div class="msg" id="tpl3"><span class="ph">[nombre]</span>, para avanzar al detalle profundo (escrituras, factibilidades, mecánica de suelos completa) firmamos NDA y se entrega el paquete documental físico.
+
+Te propongo dos opciones:
+
+1. Visita al predio + recorrido por el corredor médico (Milenio III, Querétaro) esta semana
+2. Llamada para revisar pro-forma y estructura de cierre
+
+Mi línea: <span class="ph">[tu WhatsApp]</span>
+Coordinamos.</div>
+      <div class="actions">
+        <button class="copy" data-target="tpl3">↗ Copiar</button>
+        <span class="count">~320 caracteres</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · One-pager -->
+<section class="kit">
+  <div class="head">
+    <div>
+      <div class="num">II.</div>
+      <h2>Hoja-resumen <em>imprimible.</em></h2>
+    </div>
+    <div class="lede">
+      Una sola página A4 con el highlight institucional. Para imprimir y entregar
+      en mano, o adjuntar al primer email del cliente. Versión completa abre en
+      pestaña nueva y guardas como PDF con Cmd+P / Ctrl+P.
+    </div>
+  </div>
+
+  <div class="onepager-wrap">
+    <!-- Preview -->
+    <div class="onepager">
+      <div class="gold-frame"></div>
+      <div class="inner">
+        <div class="brand-row"><span class="dot"></span> ALABASTRO 1</div>
+
+        <h2 style="margin-top: 32px;">
+          Predio shovel-ready<br/>
+          en <em>Milenio III.</em>
+        </h2>
+        <div class="tagline">
+          447 m² con uso de suelo H3 · dos rutas de inversión paralelas ·
+          paquete documental completo · venta vía broker registrado.
+        </div>
+
+        <div class="kpis">
+          <div><div class="v">447</div><div class="l">m² ÚTILES</div></div>
+          <div><div class="v">H3</div><div class="l">USO DE SUELO</div></div>
+          <div><div class="v">1+3</div><div class="l">N. OFICIALES</div></div>
+          <div><div class="v">5 m</div><div class="l">MANTO ROCOSO</div></div>
+        </div>
+
+        <ul>
+          <li>Torre Médica Boutique · 5 consultorios + lab · a 200 m del corredor</li>
+          <li>Residencias Verticales · 3 unidades de 274 m² · vista N/NO protegida</li>
+          <li>1,045 m² construibles · 4 niveles · 14 m altura</li>
+          <li>Anteproyecto MLA completo (planos, fachadas, secciones)</li>
+          <li>Bajo la mediana del fraccionamiento ($8,529/m² Spot2.mx)</li>
+          <li>200 m al corredor médico · 500 m a Calzada de los Arcos</li>
+        </ul>
+
+        <div class="footer">
+          <div class="url">alabastro1.com.mx</div>
+          <div class="price">$3,577,760 MXN</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA side -->
+    <div class="onepager-cta">
+      <h3>Listo para<br/><em>enviar al cliente.</em></h3>
+      <p>
+        La hoja-resumen está pensada para acompañar tu primer contacto.
+        Imprime, manda por PDF o úsala como guion verbal.
+      </p>
+
+      <a href="Alabastro 1 - Kit Brokers-print.html" target="_blank"
+         class="button">Abrir para imprimir →</a>
+
+      <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(201,169,97,0.25);">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.32em; color: var(--gold); text-transform: uppercase; margin-bottom: 8px;">FORMATO</div>
+        <div style="font-family: Georgia, serif; font-style: italic; color: var(--ice); font-size: 14px; line-height: 1.55;">
+          A4 vertical · 1 página · imprimible a color o monocromo · diseñada para escala 1:1 sin recortes.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · Visual assets -->
+<section class="kit">
+  <div class="head">
+    <div>
+      <div class="num">III.</div>
+      <h2>Imágenes <em>para compartir.</em></h2>
+    </div>
+    <div class="lede">
+      Set de tarjetas verticales 1080×1920 listas para Stories, WhatsApp Status,
+      LinkedIn, Reels covers. Click derecho → "Guardar imagen como…" para
+      descargar el archivo original.
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="shareable">
+      <img src="frames/A_01_titulo.png" alt="Tarjeta titular"/>
+      <a class="dl" href="frames/A_01_titulo.png" download>↓ PNG</a>
+      <div class="label">01 · Titular</div>
+    </div>
+    <div class="shareable">
+      <img src="frames/A_03_split_dos_rutas.png" alt="Dos rutas"/>
+      <a class="dl" href="frames/A_03_split_dos_rutas.png" download>↓ PNG</a>
+      <div class="label">02 · Dos rutas</div>
+    </div>
+    <div class="shareable">
+      <img src="frames/B_02_paquete_completo.png" alt="Paquete completo"/>
+      <a class="dl" href="frames/B_02_paquete_completo.png" download>↓ PNG</a>
+      <div class="label">03 · Paquete completo</div>
+    </div>
+    <div class="shareable">
+      <img src="frames/B_04_precio_vs_mercado.png" alt="Precio vs mercado"/>
+      <a class="dl" href="frames/B_04_precio_vs_mercado.png" download>↓ PNG</a>
+      <div class="label">04 · Precio vs mercado</div>
+    </div>
+    <div class="shareable">
+      <img src="frames/C_02_corredor_medico.png" alt="Corredor médico"/>
+      <a class="dl" href="frames/C_02_corredor_medico.png" download>↓ PNG</a>
+      <div class="label">05 · Corredor médico</div>
+    </div>
+    <div class="shareable">
+      <img src="frames/F_02_stack_paquete.png" alt="Expediente"/>
+      <a class="dl" href="frames/F_02_stack_paquete.png" download>↓ PNG</a>
+      <div class="label">06 · Expediente</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · Terms commerciales -->
+<section class="kit">
+  <div class="head">
+    <div>
+      <div class="num">IV.</div>
+      <h2>Esquema <em>comercial.</em></h2>
+    </div>
+    <div class="lede">
+      Reglas de juego para co-broke. Acordemos los términos antes de que
+      presentes Alabastro 1 a tu cliente — protegemos tu atribución y
+      el lead corre limpio.
+    </div>
+  </div>
+
+  <div class="terms">
+    <div class="h">CINCO PUNTOS · CO-BROKE</div>
+    <ul>
+      <li><span class="n">01</span><span><strong>Registro previo del lead.</strong> Antes de presentar el activo al cliente, envía nombre completo + WhatsApp/email del prospecto al propietario. Registramos en bitácora con timestamp y fecha de exclusividad (45 días).</span></li>
+      <li><span class="n">02</span><span><strong>Comisión directa con el broker.</strong> La comisión se negocia entre el propietario y el broker registrado por escrito antes de cualquier presentación de oferta. Si tu cliente trae su propio broker, ese reparto es asunto interno entre ambos — el propietario solo negocia con el broker que registró el lead.</span></li>
+      <li><span class="n">03</span><span><strong>Acompañamiento al cierre.</strong> El broker acompaña a su cliente durante visita al predio, due diligence técnica y notarial. La relación cliente-broker se mantiene durante todo el proceso.</span></li>
+      <li><span class="n">04</span><span><strong>Contacto con propietario via broker.</strong> Una vez registrado el lead, las comunicaciones entre comprador y propietario pasan idealmente por ti — no contacto directo no autorizado.</span></li>
+      <li><span class="n">05</span><span><strong>Documentación bajo NDA.</strong> El paquete técnico completo (escrituras, factibilidades, mecánica, planos ejecutivos) se libera al cliente del broker bajo NDA firmado por ambas partes.</span></li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 36px; padding: 28px 32px; background: var(--navy); color: var(--ivory);">
+    <div style="font-family: Helvetica, Arial, sans-serif; font-weight: 800; font-size: 11px; color: var(--gold); letter-spacing: 0.4em; text-transform: uppercase; margin-bottom: 14px;">CONTACTO MATRIZ</div>
+    <div style="font-family: Georgia, serif; font-size: 26px; letter-spacing: -0.01em;">
+      Juan Josué Hernández Tapia
+    </div>
+    <div style="margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ice); letter-spacing: 0.04em; line-height: 1.8;">
+      Email · josuehernandeztapia@gmail.com<br/>
+      WhatsApp · disponible al primer contacto
+    </div>
+  </div>
+</section>
+
+<footer class="kit-foot">
+  <div>© 2026 · ALABASTRO 1 · MATERIAL CONFIDENCIAL · DISTRIBUCIÓN AUTORIZADA A BROKERS REGISTRADOS</div>
+  <a href="Alabastro 1 - Landing.html">↗ Ver landing</a>
+</footer>
+
+<script>
+// Copy template to clipboard
+document.querySelectorAll('button.copy').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const target = document.getElementById(btn.dataset.target);
+    // Get text without the placeholder spans' styling — preserve [text]
+    const text = target.innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+      const orig = btn.innerHTML;
+      btn.classList.add('copied');
+      btn.innerHTML = '✓ Copiado';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = orig;
+      }, 2000);
+    } catch (e) {
+      // Fallback: select text
+      const range = document.createRange();
+      range.selectNodeContents(target);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+  });
+});
+</script>
+
+</body>
+</html>

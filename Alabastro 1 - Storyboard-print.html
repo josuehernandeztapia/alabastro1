@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Alabastro 1 — Storyboard de Reels</title>
+<style>
+  :root {
+    --navy: #0F1E47;
+    --navy2: #1E3164;
+    --ink:  #070E27;
+    --ice:  #CADCFC;
+    --gold: #C9A961;
+    --goldDk: #A8884A;
+    --cream:  #F5F1E8;
+    --bg:     #FAFAF6;
+    --teal:   #14B8A6;
+    --paper:  #FFFFFF;
+    --rule:   rgba(15,30,71,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--navy); }
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 12px auto;
+    padding: 18mm 16mm;
+    background: var(--paper);
+    box-shadow: 0 8px 28px rgba(15,30,71,0.10);
+    page-break-after: always;
+    position: relative;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* TYPE */
+  .eyebrow {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 800;
+    font-size: 9pt;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 48pt;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  h1 em { color: var(--gold); font-style: italic; }
+  h2 {
+    font-family: Georgia, serif;
+    font-weight: 400;
+    font-size: 26pt;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 6mm;
+  }
+  h2 .num {
+    color: var(--gold); font-style: italic; margin-right: 12px;
+  }
+  h3 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 11pt;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--navy);
+  }
+  .mono { font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace; }
+
+  .footer {
+    position: absolute;
+    bottom: 8mm; left: 16mm; right: 16mm;
+    display: flex; justify-content: space-between;
+    border-top: 1px solid var(--rule);
+    padding-top: 6px;
+    font-size: 8.5pt;
+    color: rgba(15,30,71,0.65);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .footer .right { color: var(--goldDk); font-weight: 700; }
+
+  /* COVER */
+  .cover {
+    background: var(--navy);
+    color: var(--cream);
+  }
+  .cover .frame {
+    position: absolute; inset: 12mm;
+    border: 1px solid rgba(201,169,97,0.4);
+  }
+  .cover .inner {
+    position: relative;
+    height: 261mm;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .cover .brand {
+    display: flex; align-items: center; gap: 14px;
+    font-weight: 800; letter-spacing: 0.32em; font-size: 11pt;
+    color: var(--cream);
+  }
+  .cover .brand .dot {
+    width: 10px; height: 10px; border-radius: 50%; background: var(--gold);
+  }
+  .cover h1 {
+    font-size: 90pt; color: var(--cream); margin-bottom: 16px;
+  }
+  .cover .one {
+    font-family: Georgia, serif; font-style: italic;
+    font-size: 120pt; color: var(--gold); line-height: 0.9;
+  }
+  .cover .subtitle {
+    font-family: Georgia, serif; font-style: italic;
+    color: var(--ice); font-size: 18pt; margin-top: 8mm;
+    line-height: 1.4;
+  }
+  .cover .meta {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8mm 16mm;
+    font-size: 10pt;
+    color: var(--ice);
+  }
+  .cover .meta .label {
+    font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase;
+    font-size: 8.5pt; color: var(--gold); margin-bottom: 3px;
+  }
+
+  /* INDEX */
+  .index-list {
+    display: flex; flex-direction: column;
+    gap: 6mm;
+    margin-top: 8mm;
+  }
+  .index-list .row {
+    display: grid;
+    grid-template-columns: 18mm 1fr 36mm 22mm;
+    gap: 6mm;
+    align-items: baseline;
+    padding: 4mm 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .index-list .row .id {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 11pt;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+  }
+  .index-list .row .title {
+    font-family: Georgia, serif;
+    font-size: 20pt;
+    letter-spacing: -0.01em;
+  }
+  .index-list .row .desc {
+    font-size: 10pt;
+    color: rgba(15,30,71,0.7);
+  }
+  .index-list .row .dur {
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 11pt;
+    color: var(--navy);
+    text-align: right;
+    letter-spacing: 0.08em;
+  }
+
+  /* REEL PAGE */
+  .reel-header {
+    display: grid; grid-template-columns: 1fr auto; gap: 8mm;
+    align-items: end;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 8mm;
+    margin-bottom: 8mm;
+  }
+  .reel-header .meta {
+    font-size: 9pt; color: rgba(15,30,71,0.65);
+    line-height: 1.6; letter-spacing: 0.04em;
+  }
+  .reel-header .meta strong {
+    color: var(--gold); letter-spacing: 0.3em; text-transform: uppercase; font-size: 8.5pt;
+  }
+
+  .scenes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6mm 5mm;
+  }
+  .scenes.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .scene {
+    display: flex; flex-direction: column;
+    page-break-inside: avoid;
+  }
+  .scene .thumb {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    background: var(--ink);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 4mm;
+    border: 1px solid rgba(15,30,71,0.18);
+  }
+  .scene .thumb img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .scene .scene-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: 'JetBrains Mono', Consolas, monospace;
+    font-size: 9pt;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    margin-bottom: 3mm;
+  }
+  .scene .scene-meta .ts {
+    background: var(--navy); color: var(--cream); padding: 2px 8px;
+    border-radius: 999px; font-size: 8.5pt; letter-spacing: 0.1em;
+  }
+  .scene h3 {
+    font-family: Georgia, serif;
+    text-transform: none;
+    letter-spacing: -0.005em;
+    font-size: 13pt;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 2.5mm;
+  }
+  .scene .desc {
+    font-size: 9pt;
+    color: rgba(15,30,71,0.75);
+    line-height: 1.55;
+  }
+  .scene .vo {
+    margin-top: 3mm;
+    padding: 3mm 4mm;
+    border-left: 2px solid var(--gold);
+    background: rgba(201,169,97,0.07);
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 9pt;
+    color: var(--navy);
+    line-height: 1.45;
+  }
+  .scene .vo::before {
+    content: 'VO  ·  ';
+    font-family: Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    color: var(--gold);
+    font-size: 8pt;
+    letter-spacing: 0.3em;
+  }
+
+  /* OUTRO PAGE */
+  .outro h2 { margin-bottom: 6mm; }
+  .outro .block { margin-bottom: 8mm; }
+  .outro ul { padding-left: 6mm; }
+  .outro li {
+    font-size: 10pt; line-height: 1.6;
+    margin-bottom: 2mm;
+  }
+  .outro li strong { color: var(--navy); }
+
+  .palette {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 4mm;
+    margin-top: 6mm;
+  }
+  .palette .swatch {
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--rule);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 4mm;
+    color: var(--paper);
+  }
+  .palette .swatch .h {
+    font-weight: 800; font-size: 11pt; letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .palette .swatch .hex {
+    font-family: monospace; font-size: 9pt; opacity: 0.8;
+  }
+
+  /* PRINT */
+  @page { size: A4 portrait; margin: 0; }
+  @media print {
+    html, body { background: var(--paper); }
+    .page {
+      margin: 0; box-shadow: none;
+      width: 210mm; min-height: 297mm;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="page cover">
+  <div class="frame"></div>
+  <div class="inner">
+    <div>
+      <div class="brand"><span class="dot"></span>ALABASTRO 1</div>
+    </div>
+    <div>
+      <div class="eyebrow" style="color: var(--gold); margin-bottom: 12mm;">Storyboard · Reels Hero · 9:16</div>
+      <h1>Storyboard</h1>
+      <div class="one">de Reels</div>
+      <p class="subtitle">
+        Seis variaciones para el video hero del listing — 9:16, 20–22s cada una,
+        listas para producir con stack AI o editor freelance.
+      </p>
+    </div>
+    <div class="meta">
+      <div>
+        <div class="label">Proyecto</div>
+        Alabastro 1 · Predio shovel-ready · 447 m² · Milenio III, Querétaro
+      </div>
+      <div>
+        <div class="label">Versión</div>
+        Mayo 2026 · v1.0
+      </div>
+      <div>
+        <div class="label">Formato</div>
+        1080 × 1920 (vertical) · 20–22 s · español MX
+      </div>
+      <div>
+        <div class="label">Uso</div>
+        Instagram Reels · WhatsApp · LinkedIn · landing hero
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDEX -->
+<section class="page">
+  <div class="eyebrow" style="margin-bottom: 4mm;">Índice de Variaciones</div>
+  <h1>Seis <em>aproximaciones</em>.</h1>
+  <p style="margin-top: 6mm; font-size: 11pt; color: rgba(15,30,71,0.75); max-width: 150mm; line-height: 1.55;">
+    Cada reel cuenta la misma historia desde un ángulo distinto: una propiedad shovel-ready en Milenio III, con dos
+    rutas de inversión (Torre Médica Boutique o Residencias Verticales) y paquete completo de trámites realizados.
+    El objetivo no es elegir el "ganador" — es identificar qué partes resuenan más para mezclarlas en la pieza final.
+  </p>
+
+  <div class="index-list">
+    <div class="row">
+      <div class="id">REEL · A</div>
+      <div>
+        <div class="title">Dos Rutas</div>
+        <div class="desc">Split-screen · narrativa de las dos tesis enfrentadas con números contrastados.</div>
+      </div>
+      <div class="desc"><strong>6 escenas</strong></div>
+      <div class="dur">22s</div>
+    </div>
+    <div class="row">
+      <div class="id">REEL · B</div>
+      <div>
+        <div class="title">Datos en Movimiento</div>
+        <div class="desc">Kinetic typography · tabla comparativa de precio vs. mercado · tono institucional.</div>
+      </div>
+      <div class="desc"><strong>6 escenas</strong></div>
+      <div class="dur">20s</div>
+    </div>
+    <div class="row">
+      <div class="id">REEL · C</div>
+      <div>
+        <div class="title">Mapa Cinemático</div>
+        <div class="desc">Ubicación primero — pin dorado pulsante, líneas hacia el corredor médico.</div>
+      </div>
+      <div class="desc"><strong>5 escenas</strong></div>
+      <div class="dur">22s</div>
+    </div>
+    <div class="row">
+      <div class="id">REEL · D</div>
+      <div>
+        <div class="title">Isotipo</div>
+        <div class="desc">Brand-first · la barra dorada del logo es el motor de las transiciones.</div>
+      </div>
+      <div class="desc"><strong>6 escenas</strong></div>
+      <div class="dur">20s</div>
+    </div>
+    <div class="row">
+      <div class="id">REEL · E</div>
+      <div>
+        <div class="title">Hoy / Mañana</div>
+        <div class="desc">Photo essay · fotos reales del predio y esquemático del proyecto.</div>
+      </div>
+      <div class="desc"><strong>7 escenas</strong></div>
+      <div class="dur">22s</div>
+    </div>
+    <div class="row">
+      <div class="id">REEL · F</div>
+      <div>
+        <div class="title">El Expediente</div>
+        <div class="desc">Documentos físicos sellándose y apilándose — proof-driven.</div>
+      </div>
+      <div class="desc"><strong>4 escenas</strong></div>
+      <div class="dur">22s</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Alabastro 1 · Storyboard de Reels · v1.0</div>
+    <div class="right">Página 02 / 09</div>
+  </div>
+</section>
+
+<!-- REEL A -->
+<section class="page">
+  <div class="reel-header">
+    <div>
+      <div class="eyebrow">Reel · A · 22 s</div>
+      <h2><span class="num">A.</span>Dos Rutas</h2>
+      <p style="font-size: 10pt; color: rgba(15,30,71,0.7); max-width: 130mm; line-height: 1.5;">
+        Split-screen con duelo de números. Para audiencias que ya conocen el predio y quieren entender
+        el contraste entre las dos rutas. Tono: editorial, decisivo.
+      </p>
+    </div>
+    <div class="meta">
+      <strong>Stack sugerido</strong><br/>
+      Veo 3.1 · Runway · ElevenLabs<br/>
+      Música: épico-corporativo
+    </div>
+  </div>
+
+  <div class="scenes">
+    <div class="scene">
+      <div class="thumb"><img src="frames/A_01_titulo.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 01</span><span class="ts">0:00 → 0:04</span></div>
+      <h3>Apertura de marca</h3>
+      <p class="desc">Eyebrow "Milenio III · Querétaro" + hairline dorada + "Alabastro 1" (Georgia, gold "1").</p>
+      <div class="vo">Cuatrocientos cuarenta y siete metros cuadrados, en el corazón de Milenio III.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/A_02_predio_kpis.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 02</span><span class="ts">0:04 → 0:07.5</span></div>
+      <h3>Foto del predio · 447 m²</h3>
+      <p class="desc">Full-bleed con vista a la torre vertical operando atrás. Stats encadenados.</p>
+      <div class="vo">Uso de suelo H3. Cuatro accesos oficiales. Escritura limpia.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/A_03_split_dos_rutas.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 03</span><span class="ts">0:07.5 → 0:11</span></div>
+      <h3>Split reveal — dos tracks</h3>
+      <p class="desc">Mitad teal (Torre Médica) baja desde arriba, mitad dorado (Residencias) sube. Disco central "ó".</p>
+      <div class="vo">Una propiedad… dos rutas claras de inversión.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/A_04_numeros_faceoff.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 04</span><span class="ts">0:11 → 0:15</span></div>
+      <h3>Las cifras en duelo</h3>
+      <p class="desc">Columna izquierda teal (yield 9%, 5+lab, $32k renta) vs. columna derecha gold (margen 30%, 3 unidades, 274 m²).</p>
+      <div class="vo">Yield bruto nueve por ciento. Margen de desarrollo hasta el treinta.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/A_05_una_propiedad.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 05</span><span class="ts">0:15 → 0:18.5</span></div>
+      <h3>Statement central</h3>
+      <p class="desc">"Una propiedad. Dos formas de generar valor." — tipografía Georgia + italic dorado.</p>
+      <div class="vo">Una propiedad. Dos formas de generar valor.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/A_06_precio_cta.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 06</span><span class="ts">0:18.5 → 0:22</span></div>
+      <h3>Precio + CTA</h3>
+      <p class="desc">$3,577,760 MXN · paquete completo · lock-up de marca · alabastro1.com.mx.</p>
+      <div class="vo">Venta directa con propietario. Alabastro uno punto com.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Reel A · Dos Rutas · 22 s</div>
+    <div class="right">Página 03 / 09</div>
+  </div>
+</section>
+
+<!-- REEL B -->
+<section class="page">
+  <div class="reel-header">
+    <div>
+      <div class="eyebrow">Reel · B · 20 s</div>
+      <h2><span class="num">B.</span>Datos en Movimiento</h2>
+      <p style="font-size: 10pt; color: rgba(15,30,71,0.7); max-width: 130mm; line-height: 1.5;">
+        Kinetic typography institucional. Para audiencias que viven en hojas de cálculo: comparables,
+        tabla de mercado, métricas. Tono: analítico.
+      </p>
+    </div>
+    <div class="meta">
+      <strong>Stack sugerido</strong><br/>
+      After Effects (kinetic)<br/>
+      Música: minimalista corporativo
+    </div>
+  </div>
+
+  <div class="scenes">
+    <div class="scene">
+      <div class="thumb"><img src="frames/B_01_447m2.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 01</span><span class="ts">0:00 → 0:03.5</span></div>
+      <h3>447 m² gigante</h3>
+      <p class="desc">Contador animado 0 → 447 sobre fondo de hairlines horizontales tipo reporte institucional.</p>
+      <div class="vo">Cuatrocientos cuarenta y siete metros cuadrados.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/B_02_paquete_completo.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 02</span><span class="ts">0:03.5 → 0:07.5</span></div>
+      <h3>Paquete completo · 6 categorías</h3>
+      <p class="desc">"Paquete completo." con kinetic list de las seis categorías (docs legal, trámites muni, factibilidades, estudios, arquitectura, predio).</p>
+      <div class="vo">Paquete completo. Seis categorías listas para proyecto ejecutivo.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/B_03_4_n_oficiales.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 03</span><span class="ts">0:07.5 → 0:11.5</span></div>
+      <h3>Cuatro Números Oficiales</h3>
+      <p class="desc">Grid 2×2 con badges 1, 1A, 1B, 1C. Habilitan 4 accesos independientes.</p>
+      <div class="vo">Cuatro accesos independientes. Cinco consultorios más laboratorio. O tres residencias.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/B_04_precio_vs_mercado.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 04</span><span class="ts">0:11.5 → 0:15.5</span></div>
+      <h3>Precio vs. mercado</h3>
+      <p class="desc">Tabla comparativa $5,500 → $10,968 con highlight dorado en $8,000 (Alabastro 1).</p>
+      <div class="vo">Bajo la mediana de Milenio III — con el paquete de trámites incluido.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/B_05_dos_tesis.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 05</span><span class="ts">0:15.5 → 0:18</span></div>
+      <h3>Dos tesis · pills</h3>
+      <p class="desc">Track A teal (Torre Médica, yield 9%) sobre Track B gold (Residencias, margen 17-30%).</p>
+      <div class="vo">Dos tesis. Un mismo predio.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/B_06_cta.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 06</span><span class="ts">0:18 → 0:20</span></div>
+      <h3>Cierre</h3>
+      <p class="desc">"Alabastro 1 · venta directa con propietario" + URL en pill mono dorada.</p>
+      <div class="vo">Venta directa. Alabastro uno punto com punto m equis.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Reel B · Datos en Movimiento · 20 s</div>
+    <div class="right">Página 04 / 09</div>
+  </div>
+</section>
+
+<!-- REEL C -->
+<section class="page">
+  <div class="reel-header">
+    <div>
+      <div class="eyebrow">Reel · C · 22 s</div>
+      <h2><span class="num">C.</span>Mapa Cinemático</h2>
+      <p style="font-size: 10pt; color: rgba(15,30,71,0.7); max-width: 130mm; line-height: 1.5;">
+        Ubicación-first. Mapa estilizado de Milenio III con pin pulsante y líneas hacia los landmarks.
+        Para audiencias que necesitan entender la microzona antes que las cifras.
+      </p>
+    </div>
+    <div class="meta">
+      <strong>Stack sugerido</strong><br/>
+      After Effects 2D + Runway B-roll<br/>
+      Música: ambient cinematográfico
+    </div>
+  </div>
+
+  <div class="scenes">
+    <div class="scene">
+      <div class="thumb"><img src="frames/C_01_aqui.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 01</span><span class="ts">0:00 → 0:04</span></div>
+      <h3>"Aquí" · mapa abierto</h3>
+      <p class="desc">Pin dorado pulsante sobre cuadrícula. Zoom lento al predio.</p>
+      <div class="vo">Aquí. Una microzona ya consolidada en Querétaro.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/C_02_corredor_medico.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 02</span><span class="ts">0:04 → 0:09.5</span></div>
+      <h3>Corredor médico · líneas trazándose</h3>
+      <p class="desc">Líneas doradas dibujándose desde el pin hacia Momentum I/III/V + Lab Corregidora.</p>
+      <div class="vo">Tres torres médicas ya operando. Doscientos metros del predio.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/C_03_predio_447.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 03</span><span class="ts">0:09.5 → 0:13.5</span></div>
+      <h3>Foto del predio + stats</h3>
+      <p class="desc">Full-bleed con stats inferiores: 14m altura, 4 niveles, vista N/NO, roca a 5m.</p>
+      <div class="vo">Cuatrocientos cuarenta y siete metros cuadrados en una esquina premium.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/C_04_dos_rutas.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 04</span><span class="ts">0:13.5 → 0:17.5</span></div>
+      <h3>Dos rutas · cards</h3>
+      <p class="desc">Card Track A (teal) + card Track B (gold) con resúmenes operativos.</p>
+      <div class="vo">Una propiedad, dos modelos.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/C_05_cta.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 05</span><span class="ts">0:17.5 → 0:22</span></div>
+      <h3>Cierre con eco del mapa</h3>
+      <p class="desc">Mapa atenuado de fondo · "Alabastro 1" + precio + URL.</p>
+      <div class="vo">Venta directa con propietario. Sin intermediarios.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Reel C · Mapa Cinemático · 22 s</div>
+    <div class="right">Página 05 / 09</div>
+  </div>
+</section>
+
+<!-- REEL D -->
+<section class="page">
+  <div class="reel-header">
+    <div>
+      <div class="eyebrow">Reel · D · 20 s</div>
+      <h2><span class="num">D.</span>Isotipo</h2>
+      <p style="font-size: 10pt; color: rgba(15,30,71,0.7); max-width: 130mm; line-height: 1.5;">
+        Brand-first y abstracto. La barra dorada que cruza la A del logo es el motor visual: se extrae
+        del isotipo y conduce todas las transiciones. Ideal cuando ya hay reconocimiento de marca.
+      </p>
+    </div>
+    <div class="meta">
+      <strong>Stack sugerido</strong><br/>
+      100% After Effects motion design<br/>
+      Música: sonido de marca · 30-90 Hz bajos
+    </div>
+  </div>
+
+  <div class="scenes">
+    <div class="scene">
+      <div class="thumb"><img src="frames/D_01_isotipo.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 01</span><span class="ts">0:00 → 0:03.5</span></div>
+      <h3>Isotipo se materializa</h3>
+      <p class="desc">La barra dorada entra desde fuera del frame. La A se materializa a su alrededor.</p>
+      <div class="vo">Alabastro 1.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/D_02_bar_divider.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 02</span><span class="ts">0:03.5 → 0:07</span></div>
+      <h3>Barra desciende · 447 m²</h3>
+      <p class="desc">La barra dorada se "extrae" de la A y desciende, ensanchándose como divisor para 447 m².</p>
+      <div class="vo">Cuatrocientos cuarenta y siete metros cuadrados. Uso H3.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/D_03_bar_vertical.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 03</span><span class="ts">0:07 → 0:10.5</span></div>
+      <h3>Barra vertical · divide tracks</h3>
+      <p class="desc">La barra rota 90° y separa Track A teal (Torre Médica · Yield 9%) de Track B gold (Residencias · Margen 30%).</p>
+      <div class="vo">Torre médica boutique, o residencias verticales.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/D_04_cascade_numeros.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 04</span><span class="ts">0:10.5 → 0:13.5</span></div>
+      <h3>Flash · cascada de cifras</h3>
+      <p class="desc">La barra explota en flash dorado de transición. Caen los KPIs: 9% · 30% · LISTO (paquete).</p>
+      <div class="vo">Yield nueve por ciento. Margen treinta. Paquete completo.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/D_05_reensamble.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 05</span><span class="ts">0:13.5 → 0:17</span></div>
+      <h3>La A se reensambla</h3>
+      <p class="desc">La barra regresa al centro, la A se vuelve a formar. Statement: "Una propiedad. Dos formas de generar valor."</p>
+      <div class="vo">Una propiedad. Dos formas de generar valor.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/D_06_precio.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 06</span><span class="ts">0:17 → 0:20</span></div>
+      <h3>Precio + URL</h3>
+      <p class="desc">A persiste de fondo en 40% opacity · "$3,577,760 MXN" · URL en pill.</p>
+      <div class="vo">Tres punto cinco ocho millones. Venta directa.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Reel D · Isotipo · 20 s</div>
+    <div class="right">Página 06 / 09</div>
+  </div>
+</section>
+
+<!-- REEL E -->
+<section class="page">
+  <div class="reel-header">
+    <div>
+      <div class="eyebrow">Reel · E · 22 s</div>
+      <h2><span class="num">E.</span>Hoy / Mañana</h2>
+      <p style="font-size: 10pt; color: rgba(15,30,71,0.7); max-width: 130mm; line-height: 1.5;">
+        Photo essay editorial en dos capítulos. Capítulo 01: el predio que existe hoy (3 fotos reales).
+        Capítulo 02: el edificio que puede construirse (esquemático). Tono: emocional, narrativo.
+      </p>
+    </div>
+    <div class="meta">
+      <strong>Stack sugerido</strong><br/>
+      Premiere/DaVinci · ken burns + cortes<br/>
+      Música: cinematográfica épica
+    </div>
+  </div>
+
+  <div class="scenes">
+    <div class="scene">
+      <div class="thumb"><img src="frames/E_01_hoy.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 01</span><span class="ts">0:00 → 0:03</span></div>
+      <h3>Capítulo 01 · "Hoy."</h3>
+      <p class="desc">Tipografía monumental. Capítulo 01 — el predio que ves.</p>
+      <div class="vo">Hoy: el predio que ves.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/E_02_predio_interior.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 02</span><span class="ts">0:03 → 0:06.3</span></div>
+      <h3>Vista interior · adoquín</h3>
+      <p class="desc">Ken burns sobre foto principal del predio. "447 m²" en gold sobre la imagen.</p>
+      <div class="vo">Cuatrocientos cuarenta y siete metros cuadrados.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/E_03_pendiente_NNO.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 03</span><span class="ts">0:06.3 → 0:09.4</span></div>
+      <h3>Pendiente · N/NO</h3>
+      <p class="desc">Otra ángulo del predio mostrando la pendiente natural y vista panorámica.</p>
+      <div class="vo">Pendiente natural. Vista panorámica al norte.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/E_04_microubicacion.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 04</span><span class="ts">0:09.4 → 0:12.5</span></div>
+      <h3>Microubicación</h3>
+      <p class="desc">Foto con torre vertical operando atrás · "500 m" gold + contexto urbano.</p>
+      <div class="vo">A quinientos metros de Calzada de los Arcos.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/E_05_manana.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 05</span><span class="ts">0:12.5 → 0:15</span></div>
+      <h3>Flash · "Mañana."</h3>
+      <p class="desc">Flash dorado de transición. Capítulo 02 — lo que puede ser.</p>
+      <div class="vo">Mañana: lo que puede ser.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/E_06_anteproyecto.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 06</span><span class="ts">0:15 → 0:19</span></div>
+      <h3>Esquemático · construcción</h3>
+      <p class="desc">Edificio se construye nivel por nivel (sótano → PB → 3 niveles → rooftop). 1,045 m² construibles.</p>
+      <div class="vo">Mil cuarenta y cinco metros construibles. Cuatro niveles. Hasta catorce metros de altura.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/E_07_cta.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 07</span><span class="ts">0:19 → 0:22</span></div>
+      <h3>Sign-off</h3>
+      <p class="desc">"Alabastro 1" + paquete completo + precio + URL.</p>
+      <div class="vo">Alabastro 1. Listo para ejecutivo.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Reel E · Hoy / Mañana · 22 s</div>
+    <div class="right">Página 07 / 09</div>
+  </div>
+</section>
+
+<!-- REEL F -->
+<section class="page">
+  <div class="reel-header">
+    <div>
+      <div class="eyebrow">Reel · F · 22 s</div>
+      <h2><span class="num">F.</span>El Expediente</h2>
+      <p style="font-size: 10pt; color: rgba(15,30,71,0.7); max-width: 130mm; line-height: 1.5;">
+        Documentos físicos como protagonistas. Cada trámite se materializa como tarjeta con sello dorado de aprobación,
+        agrupados en 6 categorías. Visualiza "shovel-ready" como un dossier real. Para audiencias institucionales.
+      </p>
+    </div>
+    <div class="meta">
+      <strong>Stack sugerido</strong><br/>
+      After Effects + sound design "papel/sellos"<br/>
+      Música: leve, deja respirar SFX
+    </div>
+  </div>
+
+  <div class="scenes cols-2">
+    <div class="scene">
+      <div class="thumb"><img src="frames/F_01_expediente.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 01</span><span class="ts">0:00 → 0:03</span></div>
+      <h3>"El Expediente"</h3>
+      <p class="desc">Apertura tipográfica monumental. Subtítulo introduciendo paquete completo.</p>
+      <div class="vo">El expediente. Once de catorce trámites realizados.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/F_02_stack_paquete.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 02</span><span class="ts">0:03 → 0:15.5</span></div>
+      <h3>Documentos sellándose + stack</h3>
+      <p class="desc">Panel izquierdo con checklist de 6 categorías marcándose. Documentos vuelan al centro, se sellan "OK", caen al stack inferior.</p>
+      <div class="vo">Documentación legal. Trámites municipales. Factibilidades. Estudios técnicos. Arquitectura. Estado del predio.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/F_03_pendientes.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 03</span><span class="ts">0:15.5 → 0:18.5</span></div>
+      <h3>Pendientes para obra</h3>
+      <p class="desc">3 tarjetas chicas con sello bronce "PEND". Aproximadamente $165k pendientes a cargo del comprador.</p>
+      <div class="vo">Licencia, condominio, protección civil. Pendientes a cargo del comprador.</div>
+    </div>
+    <div class="scene">
+      <div class="thumb"><img src="frames/F_04_cta.png" alt=""/></div>
+      <div class="scene-meta"><span>Escena 04</span><span class="ts">0:18.5 → 0:22</span></div>
+      <h3>Sign-off institucional</h3>
+      <p class="desc">"Paquete completo · listo para ejecutivo" + precio + URL.</p>
+      <div class="vo">Alabastro 1. Listo para ejecutivo.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div>Reel F · El Expediente · 22 s</div>
+    <div class="right">Página 08 / 09</div>
+  </div>
+</section>
+
+<!-- OUTRO · Notas de producción + paleta -->
+<section class="page outro">
+  <div class="eyebrow">Notas de producción</div>
+  <h1 style="margin-top: 4mm;">Producción <em>recomendada</em>.</h1>
+
+  <div class="block" style="margin-top: 10mm;">
+    <h3 style="margin-bottom: 4mm;">Stack AI vs. freelance</h3>
+    <ul>
+      <li><strong>DIY con stack AI</strong> · ~$80-200 USD · 8-12 hrs propias. Veo 3.1 para drone/aerials · Runway Gen-4.5 para image-to-video · ElevenLabs (voz Diego, español-MX) · Epidemic Sound. Permite iterar variantes baratas.</li>
+      <li><strong>Editor freelance</strong> · $300-800 USD · 3-5 días. Mejor consistencia y post. Buscar en Fiverr/Upwork con experiencia en motion-design + AI.</li>
+      <li><strong>NO se recomienda</strong> · video tradicional con dron real + edición pro ($1,500-3,000 USD): no escala bien para 6 variantes.</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h3 style="margin-bottom: 4mm;">Versiones a entregar</h3>
+    <ul>
+      <li><strong>9:16 vertical</strong> · 1080×1920 · IG Reels, Stories, TikTok, WhatsApp · 20-22 s</li>
+      <li><strong>16:9 landscape</strong> · 1920×1080 · landing hero, YouTube, LinkedIn · misma duración, recompuesto</li>
+      <li><strong>1:1 cuadrado</strong> · 1080×1080 · IG feed, LinkedIn feed · ~15s (recorte de las escenas más fuertes)</li>
+      <li><strong>Frame estático</strong> · 1080×1920 · imagen previa de WhatsApp (1 por reel)</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h3 style="margin-bottom: 4mm;">Paleta y tipografía (brand v1.0)</h3>
+    <div class="palette">
+      <div class="swatch" style="background: #0F1E47;">
+        <div class="h">Navy</div>
+        <div class="hex">#0F1E47</div>
+      </div>
+      <div class="swatch" style="background: #C9A961; color: #0F1E47;">
+        <div class="h">Gold</div>
+        <div class="hex">#C9A961</div>
+      </div>
+      <div class="swatch" style="background: #F5F1E8; color: #0F1E47;">
+        <div class="h">Ivory</div>
+        <div class="hex">#F5F1E8</div>
+      </div>
+      <div class="swatch" style="background: #14B8A6;">
+        <div class="h">Teal (Track A)</div>
+        <div class="hex">#14B8A6</div>
+      </div>
+    </div>
+    <p style="margin-top: 6mm; font-size: 10pt; color: rgba(15,30,71,0.75); line-height: 1.55;">
+      Tipografía: <strong>Georgia</strong> para títulos y citas editoriales. <strong>Helvetica/Arial Bold</strong>
+      para eyebrows y motion graphics. <strong>Monospace</strong> (Consolas/Menlo) para metadata, timecodes,
+      coordenadas. Regla 60/30/10: navy estructura, blanco/ivory respiro, dorado acento.
+    </p>
+  </div>
+
+  <div class="footer">
+    <div>Alabastro 1 · Storyboard de Reels · v1.0 · Mayo 2026</div>
+    <div class="right">Página 09 / 09</div>
+  </div>
+</section>
+
+<script>
+window.addEventListener('load', () => {
+  Promise.all([
+    document.fonts ? document.fonts.ready : Promise.resolve(),
+    ...Array.from(document.images).map(img =>
+      img.complete ? Promise.resolve() : new Promise(res => { img.onload = img.onerror = res; })
+    ),
+  ]).then(() => setTimeout(() => window.print(), 500));
+});
+</script>
+
+</body>
+</html>
