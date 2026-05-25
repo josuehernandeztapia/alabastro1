@@ -1,19 +1,23 @@
 // landing-interludes.jsx — Reel-based full-bleed interludes + "Comparte" strip
 // Reels embed live, autoplay, and the reel's own ambient design takes over the viewport.
 
-// ── L_VideoInterlude — full-viewport MP4 walking-tour interlude ─────────────
-function L_VideoInterlude({ src, label, title, sub, tag, accent = L_PALETTE.gold }) {
+// ── L_VideoInterlude — mobile-aware MP4 walking-tour interlude ──────────────
+// Mobile: poster + click-to-play overlay. Desktop: full-bleed autoplay video.
+function L_VideoInterlude({ src, label, title, sub, tag, poster = 'assets/hero-01-predio-torre.jpeg', accent = L_PALETTE.gold }) {
   const ref = React.useRef(null);
   const videoRef = React.useRef(null);
+  const overlayVideoRef = React.useRef(null);
+  const vp = useViewport();
   const seen = useRevealOnce(ref, { threshold: 0.15 });
   const t = useInView(ref);
   const ease = Easing.easeOutCubic(Math.max(0, Math.min(1, (t - 0.2) / 0.4)));
   const [playing, setPlaying] = React.useState(true);
   const [muted, setMuted] = React.useState(true);
+  const [overlayOpen, setOverlayOpen] = React.useState(false);
 
-  // Auto pause when leaves viewport
+  // Desktop only: auto pause when leaves viewport
   React.useEffect(() => {
-    if (!seen || !videoRef.current) return;
+    if (vp.mobile || !seen || !videoRef.current) return;
     const v = videoRef.current;
     const obs = new IntersectionObserver((entries) => {
       const visible = entries[0].isIntersecting;
@@ -25,7 +29,7 @@ function L_VideoInterlude({ src, label, title, sub, tag, accent = L_PALETTE.gold
     }, { threshold: 0.3 });
     obs.observe(ref.current);
     return () => obs.disconnect();
-  }, [seen, playing]);
+  }, [seen, playing, vp.mobile]);
 
   const togglePlay = () => {
     if (!videoRef.current) return;
@@ -49,6 +53,122 @@ function L_VideoInterlude({ src, label, title, sub, tag, accent = L_PALETTE.gold
     else if (v.webkitRequestFullscreen) v.webkitRequestFullscreen();
   };
 
+  const mobileBtn = {
+    ...btnStyle,
+    width: 52, height: 52,
+  };
+
+  // ── MOBILE: click-to-play poster card ─────────────────────────────────────
+  if (vp.mobile) {
+    return (
+      <>
+        <section ref={ref} data-screen-label="Recorrido en sitio" style={{
+          position: 'relative',
+          background: L_PALETTE.ink,
+          padding: '60px 20px 80px',
+          overflow: 'hidden',
+        }}>
+          <div style={{
+            opacity: ease,
+            marginBottom: 24,
+          }}>
+            <div style={{
+              fontFamily: L_MONO, color: accent, fontSize: 11,
+              letterSpacing: '0.4em', textTransform: 'uppercase',
+              marginBottom: 6,
+            }}>Recorrido · 2026</div>
+            <div style={{
+              fontFamily: L_SERIF, fontStyle: 'italic',
+              color: L_PALETTE.ice, fontSize: 18, lineHeight: 1.45,
+            }}>
+              Lo que ves al final del circuito.
+            </div>
+          </div>
+
+          {/* Poster card — click to open fullscreen video */}
+          <button onClick={() => setOverlayOpen(true)}
+            style={{
+              display: 'block',
+              width: '100%',
+              aspectRatio: '9 / 16',
+              maxHeight: '70vh',
+              position: 'relative',
+              padding: 0, border: 'none',
+              background: '#0A1538',
+              cursor: 'pointer',
+              overflow: 'hidden',
+              borderRadius: 0,
+            }}>
+            <img src={poster} alt="Recorrido"
+              style={{
+                width: '100%', height: '100%',
+                objectFit: 'cover',
+                filter: 'brightness(0.55) saturate(0.85)',
+              }}/>
+            <div style={{
+              position: 'absolute', inset: 0,
+              background: 'linear-gradient(180deg, rgba(7,14,39,0.3) 0%, transparent 40%, rgba(7,14,39,0.7) 100%)',
+            }}/>
+            {/* Big play button */}
+            <div style={{
+              position: 'absolute', top: '50%', left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: 88, height: 88,
+              background: 'rgba(7,14,39,0.75)',
+              border: `1.5px solid ${accent}`,
+              borderRadius: '50%',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              backdropFilter: 'blur(10px)',
+              boxShadow: `0 8px 24px rgba(0,0,0,0.4)`,
+            }}>
+              <svg width="32" height="32" viewBox="0 0 32 32">
+                <path d="M 10 6 L 25 16 L 10 26 Z" fill={accent}/>
+              </svg>
+            </div>
+            <div style={{
+              position: 'absolute', bottom: 24, left: 0, right: 0,
+              textAlign: 'center',
+              fontFamily: L_MONO, color: accent, fontSize: 11,
+              letterSpacing: '0.32em', textTransform: 'uppercase',
+            }}>Ver recorrido · 0:30</div>
+          </button>
+        </section>
+
+        {/* Fullscreen overlay with video */}
+        {overlayOpen && (
+          <div onClick={() => setOverlayOpen(false)} style={{
+            position: 'fixed', inset: 0, zIndex: 200,
+            background: 'rgba(7,14,39,0.96)',
+            backdropFilter: 'blur(20px)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            padding: 20,
+          }}>
+            <video ref={overlayVideoRef}
+              src={src}
+              autoPlay loop playsInline controls
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                width: '100%', maxHeight: '85vh',
+                objectFit: 'contain',
+                background: '#000',
+              }}/>
+            <button onClick={() => setOverlayOpen(false)} style={{
+              position: 'absolute', top: 20, right: 20,
+              background: 'rgba(7,14,39,0.85)',
+              border: `1px solid ${accent}`,
+              color: accent,
+              padding: '10px 16px',
+              fontFamily: L_SANS, fontWeight: 700, fontSize: 11,
+              letterSpacing: '0.32em', textTransform: 'uppercase',
+              cursor: 'pointer', borderRadius: 999,
+            }}>Cerrar ✕</button>
+          </div>
+        )}
+      </>
+    );
+  }
+
+  // ── DESKTOP / TABLET: full-bleed autoplay video ──────────────────────────
   return (
     <section ref={ref} data-screen-label="Recorrido en sitio" style={{
       position: 'relative',
@@ -168,69 +288,104 @@ const btnStyle = {
   transition: 'all 200ms',
 };
 
-// ── L_Interlude — full-viewport reel with optional headline overlay ─────────
+// ── L_Interlude — reel interlude (mobile-aware) ────────────────────────────
 function L_Interlude({ reelKey, label, title, sub, accent = L_PALETTE.gold }) {
   const ref = React.useRef(null);
   const seen = useRevealOnce(ref, { threshold: 0.15 });
   const ReelComp = window['Reel' + reelKey];
   const t = useInView(ref);
+  const vp = useViewport();
   const ease = Easing.easeOutCubic(Math.max(0, Math.min(1, (t - 0.2) / 0.4)));
 
   return (
     <section ref={ref} data-screen-label={`Interlude ${reelKey}`} style={{
       position: 'relative',
-      height: '100vh',
-      minHeight: 700,
+      minHeight: vp.mobile ? 'auto' : 700,
+      height: vp.mobile ? 'auto' : '100vh',
       background: L_PALETTE.ink,
       overflow: 'hidden',
+      padding: vp.mobile ? '60px 20px 80px' : 0,
     }}>
-      {/* The reel takes the full viewport */}
-      <div style={{
-        position: 'absolute', inset: 0,
-        // Slight darken so text overlay reads
-      }}>
-        {seen && ReelComp && <ReelComp autoplay={true} hideChrome={true}/>}
-      </div>
+      {vp.mobile ? (
+        <>
+          {/* Mobile: text first, then reel below in proper 9:16 frame */}
+          <div style={{ opacity: ease, marginBottom: 24 }}>
+            <div style={{
+              fontFamily: L_MONO, color: accent, fontSize: 11,
+              letterSpacing: '0.4em', textTransform: 'uppercase',
+              marginBottom: 12,
+            }}>{label}</div>
+            <div style={{
+              fontFamily: L_SERIF, color: L_PALETTE.ivory,
+              fontSize: 32, lineHeight: 1.1, letterSpacing: '-0.02em',
+            }}>{title}</div>
+            <div style={{
+              marginTop: 16,
+              fontFamily: L_SERIF, fontStyle: 'italic',
+              color: L_PALETTE.ice, fontSize: 15,
+              lineHeight: 1.5,
+            }}>{sub}</div>
+          </div>
 
-      {/* Side overlay panel with chapter caption */}
-      <div style={{
-        position: 'absolute',
-        top: 0, bottom: 0, left: 0,
-        width: 'clamp(380px, 36vw, 560px)',
-        background: 'linear-gradient(90deg, rgba(7,14,39,0.92) 0%, rgba(7,14,39,0.7) 75%, transparent 100%)',
-        padding: '0 56px',
-        display: 'flex', flexDirection: 'column', justifyContent: 'center',
-        color: L_PALETTE.ivory,
-        opacity: ease,
-      }}>
-        <div style={{
-          fontFamily: L_MONO, color: accent, fontSize: 12,
-          letterSpacing: '0.4em', marginBottom: 26,
-          textTransform: 'uppercase',
-        }}>{label}</div>
-        <div style={{
-          fontFamily: L_SERIF, fontSize: 'clamp(40px, 4.5vw, 72px)',
-          lineHeight: 1.0, letterSpacing: '-0.02em',
-        }}>{title}</div>
-        <div style={{
-          marginTop: 24,
-          fontFamily: L_SERIF, fontStyle: 'italic',
-          color: L_PALETTE.ice, fontSize: 'clamp(16px, 1.4vw, 22px)',
-          lineHeight: 1.5, maxWidth: 460,
-        }}>{sub}</div>
-      </div>
+          {/* Reel in proper 9:16 aspect ratio, contained */}
+          <div style={{
+            width: '100%', aspectRatio: '9 / 16', maxHeight: '75vh',
+            margin: '0 auto', position: 'relative',
+            border: `1px solid ${accent}33`,
+            overflow: 'hidden',
+            background: L_PALETTE.ink,
+          }}>
+            {seen && ReelComp && <ReelComp autoplay={true} hideChrome={true}/>}
+          </div>
+        </>
+      ) : (
+        <>
+          {/* The reel takes the full viewport */}
+          <div style={{ position: 'absolute', inset: 0 }}>
+            {seen && ReelComp && <ReelComp autoplay={true} hideChrome={true}/>}
+          </div>
 
-      {/* Bottom-right tag */}
-      <div style={{
-        position: 'absolute', right: 56, bottom: 48,
-        textAlign: 'right',
-        opacity: ease,
-      }}>
-        <div style={{
-          fontFamily: L_MONO, color: accent, fontSize: 11,
-          letterSpacing: '0.32em', textTransform: 'uppercase',
-        }}>REEL · {reelKey}</div>
-      </div>
+          {/* Side overlay panel with chapter caption */}
+          <div style={{
+            position: 'absolute',
+            top: 0, bottom: 0, left: 0,
+            width: 'clamp(380px, 36vw, 560px)',
+            background: 'linear-gradient(90deg, rgba(7,14,39,0.92) 0%, rgba(7,14,39,0.7) 75%, transparent 100%)',
+            padding: '0 56px',
+            display: 'flex', flexDirection: 'column', justifyContent: 'center',
+            color: L_PALETTE.ivory,
+            opacity: ease,
+          }}>
+            <div style={{
+              fontFamily: L_MONO, color: accent, fontSize: 12,
+              letterSpacing: '0.4em', marginBottom: 26,
+              textTransform: 'uppercase',
+            }}>{label}</div>
+            <div style={{
+              fontFamily: L_SERIF, fontSize: 'clamp(40px, 4.5vw, 72px)',
+              lineHeight: 1.0, letterSpacing: '-0.02em',
+            }}>{title}</div>
+            <div style={{
+              marginTop: 24,
+              fontFamily: L_SERIF, fontStyle: 'italic',
+              color: L_PALETTE.ice, fontSize: 'clamp(16px, 1.4vw, 22px)',
+              lineHeight: 1.5, maxWidth: 460,
+            }}>{sub}</div>
+          </div>
+
+          {/* Bottom-right tag */}
+          <div style={{
+            position: 'absolute', right: 56, bottom: 48,
+            textAlign: 'right',
+            opacity: ease,
+          }}>
+            <div style={{
+              fontFamily: L_MONO, color: accent, fontSize: 11,
+              letterSpacing: '0.32em', textTransform: 'uppercase',
+            }}>REEL · {reelKey}</div>
+          </div>
+        </>
+      )}
     </section>
   );
 }
