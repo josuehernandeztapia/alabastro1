@@ -72,7 +72,7 @@ function useViewport() {
   return {
     w, mobile, tablet, desktop,
     // helpers — common scaled values
-    padX: mobile ? 20 : tablet ? 48 : 96,
+    padX: mobile ? 16 : tablet ? 48 : 96,
     padY: mobile ? 100 : tablet ? 130 : 180,
     gap:  mobile ? 32 : tablet ? 48 : 80,
     // conditional columns: pass mobile/tablet/desktop strings
