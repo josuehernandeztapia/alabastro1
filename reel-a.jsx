@@ -427,12 +427,12 @@ const A_Scene6 = () => (
               fontFamily: SERIF, color: PALETTE.white, fontSize: 140, lineHeight: 1.0,
               letterSpacing: '-0.02em',
             }}>
-              $<Counter to={3577760} fraction={0.6}/>
+              $<Counter to={3100000} fraction={0.6}/>
             </div>
             <div style={{
               marginTop: 24,
               fontFamily: SANS, color: PALETTE.gold, fontSize: 36, letterSpacing: '0.16em',
-            }}>MXN  ·  $8,000 / m²</div>
+            }}>MXN  ·  $6,935 / m²</div>
           </div>
 
           {/* Card */}

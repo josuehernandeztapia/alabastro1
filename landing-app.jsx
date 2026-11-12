@@ -482,10 +482,17 @@ function L_Hero() {
         </div>
         <div style={{ textAlign: 'right' }}>
           <div style={{
+            display: 'inline-block',
+            fontFamily: L_SANS, fontWeight: 800, color: L_PALETTE.ink,
+            background: L_PALETTE.gold, fontSize: 10,
+            letterSpacing: '0.35em', textTransform: 'uppercase',
+            padding: '5px 10px 5px 13px', borderRadius: 2,
+          }}>Oportunidad</div>
+          <div style={{
             marginTop: 8,
             fontFamily: L_SERIF, color: L_PALETTE.ivory, fontSize: 36,
             letterSpacing: '-0.01em',
-          }}>$3,577,760 <span style={{ color: accent, transition: 'color 400ms' }}>MXN</span></div>
+          }}>$3,100,000 <span style={{ color: accent, transition: 'color 400ms' }}>MXN</span></div>
         </div>
       </div>
     </section>

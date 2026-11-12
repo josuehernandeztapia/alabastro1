@@ -406,11 +406,11 @@ const C_Scene5 = () => (
           }}>
             <div style={{
               fontFamily: SERIF, color: PALETTE.white, fontSize: 64, letterSpacing: '-0.02em',
-            }}>$3,577,760 <span style={{ color: PALETTE.gold }}>MXN</span></div>
+            }}>$3,100,000 <span style={{ color: PALETTE.gold }}>MXN</span></div>
             <div style={{
               fontFamily: MONO, color: PALETTE.ice, fontSize: 22, marginTop: 14,
               letterSpacing: '0.25em', opacity: 0.7,
-            }}>$8,000 / M²  ·  447 M²</div>
+            }}>$6,935 / M²  ·  447 M²</div>
           </div>
 
           <div style={{

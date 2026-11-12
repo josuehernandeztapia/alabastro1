@@ -334,7 +334,7 @@ const E_Scene7 = () => (
             <div style={{
               fontFamily: SERIF, color: PALETTE.white, fontSize: 56, marginTop: 22,
               letterSpacing: '-0.02em',
-            }}>$3,577,760 <span style={{ color: PALETTE.gold }}>MXN</span></div>
+            }}>$3,100,000 <span style={{ color: PALETTE.gold }}>MXN</span></div>
           </div>
 
           <div style={{

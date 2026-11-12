@@ -314,7 +314,7 @@ const B_Scene4 = () => (
             <div style={{
               fontFamily: SERIF, color: PALETTE.white, fontSize: 72, marginTop: 22,
               letterSpacing: '-0.02em',
-            }}>$8,000 <span style={{ color: PALETTE.gold }}>/ m²</span></div>
+            }}>$6,935 <span style={{ color: PALETTE.gold }}>/ m²</span></div>
           </div>
 
           <div style={{
@@ -323,10 +323,10 @@ const B_Scene4 = () => (
           }}>
             <B_PriceRow label="Bulk 3 lotes juntos" value="$5,500" source="Vivanuncios"
               t={reveal(0.4)}/>
-            <B_PriceRow label="Fase A baja (sin trámites)" value="$7,392" source="iCasas"
-              t={reveal(0.6)}/>
-            <B_PriceRow label="ALABASTRO 1 · con 11 trámites" value="$8,000" highlight
+            <B_PriceRow label="ALABASTRO 1 · con 11 trámites" value="$6,935" highlight
               source="Precio de oportunidad"
+              t={reveal(0.6)}/>
+            <B_PriceRow label="Fase A baja (sin trámites)" value="$7,392" source="iCasas"
               t={reveal(0.8)}/>
             <B_PriceRow label="Mediana Milenio III · feb 2026" value="$8,247" source="Doorvel"
               t={reveal(1.1)}/>

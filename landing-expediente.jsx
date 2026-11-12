@@ -393,8 +393,8 @@ function L_Mercado() {
 
   // Bars data — width is $/m² normalized to maxValue
   const ROWS = [
+    { label: 'ALABASTRO 1 · con expediente',  v: 6935,  src: 'Precio de oportunidad', kind: 'us' },
     { label: 'Fase A baja · sin trámites',    v: 7392,  src: 'Lamudi',      kind: 'mid' },
-    { label: 'ALABASTRO 1 · con expediente',  v: 8000,  src: 'Precio de oportunidad', kind: 'us' },
     { label: 'Mediana Milenio III · 2026',    v: 8529,  src: 'Spot2.mx',    kind: 'mid' },
     { label: 'Fase A alta',                   v: 8630,  src: 'Lamudi',      kind: 'mid' },
     { label: 'Fase B Sec. 11 · premium',      v: 10235, src: 'Spot2.mx',    kind: 'hi' },
@@ -435,8 +435,8 @@ function L_Mercado() {
             color: L_PALETTE.ice,
             maxWidth: 720,
           }}>
-            Alabastro 1 se ofrece a <span style={{ color: L_PALETTE.gold, fontStyle: 'normal' }}>$8,000 /m²</span> —
-            por debajo de la mediana del fraccionamiento, incluyendo el paquete documental
+            Alabastro 1 se ofrece a <span style={{ color: L_PALETTE.gold, fontStyle: 'normal' }}>$6,935 /m²</span> —
+            por debajo de todos los comparables del fraccionamiento, incluyendo el paquete documental
             completo. Diseñado para cierre rápido — el paquete documental acelera la due diligence.
           </div>
         </div>
@@ -451,11 +451,11 @@ function L_Mercado() {
             <div style={{
               fontFamily: L_SANS, fontWeight: 800, color: L_PALETTE.gold,
               fontSize: 11, letterSpacing: '0.4em', marginBottom: 14,
-            }}>NUESTRO PRECIO</div>
+            }}>PRECIO DE OPORTUNIDAD</div>
             <div style={{
               fontFamily: L_SERIF, fontSize: 96, lineHeight: 1.0,
               letterSpacing: '-0.03em', color: L_PALETTE.ivory,
-            }}>$8,000</div>
+            }}>$6,935</div>
             <div style={{
               marginTop: 12,
               fontFamily: L_SERIF, fontStyle: 'italic', color: L_PALETTE.gold, fontSize: 22,
@@ -537,7 +537,7 @@ function L_Mercado() {
             display: 'block', marginBottom: 10,
           }}>LECTURA</strong>
           Comparables sin trámites en zonas equivalentes cierran arriba de $8,500/m².
-          Alabastro 1 se ofrece por debajo de la mediana — con el paquete documental
+          Alabastro 1 se ofrece por debajo de todos los comparables — con el paquete documental
           completo ya incluido.
         </div>
       </div>

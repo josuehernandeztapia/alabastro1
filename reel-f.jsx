@@ -392,11 +392,11 @@ const F_Scene4 = () => (
           }}>
             <div style={{
               fontFamily: SERIF, color: PALETTE.white, fontSize: 80, letterSpacing: '-0.02em',
-            }}>$3,577,760 <span style={{ color: PALETTE.gold }}>MXN</span></div>
+            }}>$3,100,000 <span style={{ color: PALETTE.gold }}>MXN</span></div>
             <div style={{
               fontFamily: MONO, color: PALETTE.ice, fontSize: 22, marginTop: 14,
               letterSpacing: '0.3em',
-            }}>$8,000 / M²  ·  447 M²  ·  VENTA DIRECTA</div>
+            }}>$6,935 / M²  ·  447 M²  ·  VENTA DIRECTA</div>
           </div>
 
           <div style={{
