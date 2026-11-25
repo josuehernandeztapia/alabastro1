@@ -60,45 +60,40 @@
 
 <div id="root"></div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-
-<!-- Animation runtime + shared brand helpers -->
-<script type="text/babel" src="animations.jsx"></script>
-<script type="text/babel" src="shared.jsx"></script>
-
-<!-- Reels (used in S8 gallery, embedded live) -->
-<script type="text/babel" src="reel-a.jsx"></script>
-<script type="text/babel" src="reel-b.jsx"></script>
-<script type="text/babel" src="reel-c.jsx"></script>
-<script type="text/babel" src="reel-d.jsx"></script>
-<script type="text/babel" src="reel-e.jsx"></script>
-<script type="text/babel" src="reel-f.jsx"></script>
-
-<!-- Landing sections -->
-<script type="text/babel" src="landing-app.jsx"></script>
-<script type="text/babel" src="landing-content.jsx"></script>
-<script type="text/babel" src="landing-poligono.jsx"></script>
-<script type="text/babel" src="landing-recorrido.jsx"></script>
-<script type="text/babel" src="landing-rutas.jsx"></script>
-<script type="text/babel" src="landing-expediente.jsx"></script>
-<script type="text/babel" src="landing-planos.jsx"></script>
-<script type="text/babel" src="landing-interludes.jsx"></script>
-<script type="text/babel" src="landing-tail.jsx"></script>
-
-<!-- Root mount -->
-<script type="text/babel" src="landing-main.jsx"></script>
+<!-- Precompilado: los .jsx se editan y luego se corre `npm run build`
+     (genera app.min.js en este orden) -->
+<!--jsx:animations.jsx-->
+<!--jsx:shared.jsx-->
+<!--jsx:reel-a.jsx-->
+<!--jsx:reel-b.jsx-->
+<!--jsx:reel-c.jsx-->
+<!--jsx:reel-d.jsx-->
+<!--jsx:reel-e.jsx-->
+<!--jsx:reel-f.jsx-->
+<!--jsx:landing-app.jsx-->
+<!--jsx:landing-content.jsx-->
+<!--jsx:landing-poligono.jsx-->
+<!--jsx:landing-recorrido.jsx-->
+<!--jsx:landing-rutas.jsx-->
+<!--jsx:landing-expediente.jsx-->
+<!--jsx:landing-planos.jsx-->
+<!--jsx:landing-interludes.jsx-->
+<!--jsx:landing-tail.jsx-->
+<!--jsx:landing-main.jsx-->
+<script src="vendor/react.production.min.js"></script>
+<script src="vendor/react-dom.production.min.js"></script>
+<script src="app.min.js?v=2"></script>
 
 <script>
-  // Hide the boot splash once Babel has had time to compile + mount
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const b = document.getElementById('boot');
-      if (b) b.classList.add('hidden');
-      setTimeout(() => b && b.remove(), 700);
-    }, 1200);
-  });
+  // Hide the boot splash once the app has mounted (no in-browser compile anymore)
+  (function () {
+    const b = document.getElementById('boot');
+    if (!b) return;
+    requestAnimationFrame(() => setTimeout(() => {
+      b.classList.add('hidden');
+      setTimeout(() => b.remove(), 700);
+    }, 150));
+  })();
 </script>
 </body>
 </html>
