@@ -449,8 +449,8 @@ function L_Contacto() {
           opacity: ease,
         }}>
           {[
-            { v: '$3,100,000', l: 'MXN · precio de oportunidad' },
-            { v: '$6,935', l: '/m² · 447 m²' },
+            { v: '$2,950,000', l: 'MXN · precio de oportunidad' },
+            { v: '$6,600', l: '/m² · 447 m²' },
             { v: 'LOI', l: 'Documentación bajo' },
           ].map((s, i) => (
             <div key={i} style={{

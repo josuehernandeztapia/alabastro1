@@ -381,11 +381,11 @@ const D_Scene6 = () => (
             <div style={{
               fontFamily: SERIF, color: PALETTE.white, fontSize: 96, lineHeight: 1,
               marginTop: 28, letterSpacing: '-0.02em',
-            }}>$3,100,000</div>
+            }}>$2,950,000</div>
             <div style={{
               fontFamily: MONO, color: PALETTE.ice, fontSize: 22, marginTop: 16,
               letterSpacing: '0.3em',
-            }}>MXN · $6,935 / M²</div>
+            }}>MXN · $6,600 / M²</div>
           </div>
 
           <div style={{

@@ -492,7 +492,7 @@ function L_Hero() {
             marginTop: 8,
             fontFamily: L_SERIF, color: L_PALETTE.ivory, fontSize: 36,
             letterSpacing: '-0.01em',
-          }}>$3,100,000 <span style={{ color: accent, transition: 'color 400ms' }}>MXN</span></div>
+          }}>$2,950,000 <span style={{ color: accent, transition: 'color 400ms' }}>MXN</span></div>
         </div>
       </div>
     </section>

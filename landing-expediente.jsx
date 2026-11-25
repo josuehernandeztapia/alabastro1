@@ -393,7 +393,7 @@ function L_Mercado() {
 
   // Bars data — width is $/m² normalized to maxValue
   const ROWS = [
-    { label: 'ALABASTRO 1 · con expediente',  v: 6935,  src: 'Precio de oportunidad', kind: 'us' },
+    { label: 'ALABASTRO 1 · con expediente',  v: 6600,  src: 'Precio de oportunidad', kind: 'us' },
     { label: 'Fase A baja · sin trámites',    v: 7392,  src: 'Lamudi',      kind: 'mid' },
     { label: 'Mediana Milenio III · 2026',    v: 8529,  src: 'Spot2.mx',    kind: 'mid' },
     { label: 'Fase A alta',                   v: 8630,  src: 'Lamudi',      kind: 'mid' },
@@ -435,7 +435,7 @@ function L_Mercado() {
             color: L_PALETTE.ice,
             maxWidth: 720,
           }}>
-            Alabastro 1 se ofrece a <span style={{ color: L_PALETTE.gold, fontStyle: 'normal' }}>$6,935 /m²</span> —
+            Alabastro 1 se ofrece a <span style={{ color: L_PALETTE.gold, fontStyle: 'normal' }}>$6,600 /m²</span> —
             por debajo de todos los comparables del fraccionamiento, incluyendo el paquete documental
             completo. Diseñado para cierre rápido — el paquete documental acelera la due diligence.
           </div>
@@ -455,7 +455,7 @@ function L_Mercado() {
             <div style={{
               fontFamily: L_SERIF, fontSize: 96, lineHeight: 1.0,
               letterSpacing: '-0.03em', color: L_PALETTE.ivory,
-            }}>$6,935</div>
+            }}>$6,600</div>
             <div style={{
               marginTop: 12,
               fontFamily: L_SERIF, fontStyle: 'italic', color: L_PALETTE.gold, fontSize: 22,
